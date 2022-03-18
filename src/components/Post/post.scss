@@ -1,0 +1,68 @@
+@import '../sharedStyles/utils';
+
+.post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  border-radius: 2rem;
+  box-shadow: 0 .5rem 2rem rgba($color-black, .1);
+  padding: 1.5rem;
+  gap: 1rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__person {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      &__photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        height: 5rem;
+        clip-path: circle();
+
+        & img {
+          height: 100%;
+        }
+      }
+    }
+
+    &__more-options {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+
+    & img {
+      max-width: 100%;
+      max-height: 40rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    height: 3rem;
+    justify-content: space-between;
+
+    &__left {
+      gap: 3rem;
+      display: flex;
+    }
+
+  }
+}

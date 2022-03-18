@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+@import './base';
+@import './utils';
+
+@import '../NavBar/nav-bar';
+@import '../AuthModal/auth-modal';
+@import '../AuthForm/auth-form';
+@import '../MainSection/main-section';
+@import '../SecondaryLeftSection/secondary-left-section';
+@import '../SecondaryRightSection/secondary-right-section';
+@import '../../pages/HomePage/home-page';
+@import '../ActivityActions/activity-action';
+@import '../Post/post';
+@import '../Input/input';
+@import '../Label/label';
+@import '../InputLabeled/input-labeled';
+@import '../Button/button';
+
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: 'Hind', sans-serif;
+}
+
+body {
+  background-color: $color-grey-light;
+}
