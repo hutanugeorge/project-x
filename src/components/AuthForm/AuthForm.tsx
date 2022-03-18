@@ -26,14 +26,9 @@ import {
 import InputLabeled from '../InputLabeled'
 
 
-
 enum AuthView {
    LOGIN = 'LOGIN',
    SIGNUP = 'SIGNUP'
-}
-
-const onChangeInput = (e: any, cb: any) => {
-   cb(e.target.value)
 }
 
 export default () => {
@@ -107,27 +102,27 @@ export default () => {
                   {authView === AuthView.SIGNUP &&
                   <>
                       <InputLabeled name={'firstName'} type={'text'} placeholder={'First Name'}
-                                    onChange={[setFirstNameInput]}
+                                    onChange={[ setFirstNameInput ]}
                                     value={firstNameInput}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                     color={InputColor.PRIMARY} labelText={'First name'}/>
 
                       <InputLabeled name={'lastName'} type={'text'} placeholder={'Last Name'}
-                                    onChange={[setLastNameInput]}
+                                    onChange={[ setLastNameInput ]}
                                     value={lastNameInput}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                     color={InputColor.PRIMARY} labelText={'Last name'}/>
                   </>}
                   <InputLabeled name={'email'} type={'email'} placeholder={'Email'}
-                                onChange={[setEmailInput]}
+                                onChange={[ setEmailInput ]}
                                 value={emailInput}
                                 width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                 height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                 color={InputColor.PRIMARY} labelText={'Email'}/>
                   <InputLabeled type="password" name="password" placeholder="Password"
-                                onChange={[setPasswordInput]} value={passwordInput}
+                                onChange={[ setPasswordInput ]} value={passwordInput}
                                 labelText={'Password'}
                                 width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                 height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
@@ -138,7 +133,7 @@ export default () => {
                       <InputLabeled name="confirmPassword" type="password"
                                     placeholder="Repeat password"
                                     data-testid="repeat-password"
-                                    onChange={[setConfirmPasswordInput]}
+                                    onChange={[ setConfirmPasswordInput ]}
                                     value={confirmPasswordInput}
                                     labelText={'Repeat password'}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
@@ -157,9 +152,9 @@ export default () => {
                                         onClick={() => setAuthView(AuthView.LOGIN)}><u>Login!</u></span>
                      </p>}
                   </div>
-                  <Button type={'submit'} text={authView === AuthView.LOGIN ? 'Login' : 'Signup' }
+                  <Button type={'submit'} text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
                           width={[ DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M ]}
-                          height={[ DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.M ]} />
+                          height={[ DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.M ]}/>
                </div>
             </form>
          </div>
