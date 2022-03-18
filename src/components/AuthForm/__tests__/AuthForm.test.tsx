@@ -11,7 +11,8 @@ import store from '../../../redux/store'
 describe('AuthForm testing', () => {
    it('render AuthForm', () => {
       const div = document.createElement('div')
-      ReactDom.render(<Provider store={store}><BrowserRouter><AuthForm/></BrowserRouter></Provider>, div)
+      ReactDom.render(<Provider
+         store={store}><BrowserRouter><AuthForm/></BrowserRouter></Provider>, div)
    })
 
    it('have default login view', () => {
@@ -44,7 +45,7 @@ describe('AuthForm testing', () => {
    it('after click on "Signup link", "Repeat password" should exist', () => {
       render(<Provider store={store}><BrowserRouter><AuthForm/></BrowserRouter></Provider>)
       fireEvent.click(screen.getByTestId('signup-trigger'))
-      const repeatPassword = screen.getByTestId('repeat-password')
+      const repeatPassword = screen.getByTestId('confirm-password')
       expect(repeatPassword).toBeTruthy()
    })
 
@@ -66,7 +67,7 @@ describe('AuthForm testing', () => {
       const formLink = screen.getByTestId('form-link')
       expect(formLink.innerHTML).toBe('' +
          '<p class="auth__form__content__signup-link__content">' +
-         'Doesn\'t have an account? ' +
+         'You doesn\'t have an account? ' +
          '<span data-testid="signup-trigger">' +
          '<u>Sign up!</u>' +
          '</span>' +

@@ -128,21 +128,20 @@ export default () => {
                                 height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                 color={InputColor.PRIMARY}/>
                   {authView === AuthView.SIGNUP &&
-                  <div data-testid="confirm-password"
-                       className="auth__form__content__group confirmPassword">
+                  <div data-testid="confirm-password">
                       <InputLabeled name="confirmPassword" type="password"
                                     placeholder="Repeat password"
-                                    data-testid="repeat-password"
                                     onChange={[ setConfirmPasswordInput ]}
                                     value={confirmPasswordInput}
                                     labelText={'Repeat password'}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                     color={InputColor.PRIMARY}/>
-                  </div>}
+                  </div>
+                  }
                   <div className="auth__form__content__signup-link" data-testid="form-link">
                      {authView === AuthView.LOGIN &&
-                     <p className="auth__form__content__signup-link__content">Doesn't have an
+                     <p className="auth__form__content__signup-link__content">You doesn't have an
                          account? <span data-testid="signup-trigger"
                                         onClick={() => setAuthView(AuthView.SIGNUP)}><u>Sign up!</u></span>
                      </p>}
@@ -152,9 +151,12 @@ export default () => {
                                         onClick={() => setAuthView(AuthView.LOGIN)}><u>Login!</u></span>
                      </p>}
                   </div>
-                  <Button type={'submit'} text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
-                          width={[ DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M ]}
-                          height={[ DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.M ]}/>
+                  <div data-testid="form-button">
+                     <Button type={'submit'}
+                             text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
+                             width={[ DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M ]}
+                             height={[ DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.M ]}/>
+                  </div>
                </div>
             </form>
          </div>
