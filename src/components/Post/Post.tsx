@@ -10,11 +10,11 @@ export default () => {
          <p className="post__header__person">
             <div className="post__header__person__photo">
                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/196px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                  src="https://alexanderklebe.com/wp-content/uploads/Headshot_photographer_actors_Berlin_Joerg.jpg"
                   alt="person photo"/>
             </div>
             &nbsp;
-            Will Smith
+            Costica 'Titi' Bernard
          </p>
          <p className="post__header__more-options">
             <SettingsIcon/>
