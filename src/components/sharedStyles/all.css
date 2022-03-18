@@ -213,16 +213,6 @@
   justify-content: center;
 }
 
-.auth-modal {
-  position: absolute;
-  z-index: 99;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(4, 3, 3, 0.2);
-}
-
 .auth {
   display: flex;
   flex-direction: column;
