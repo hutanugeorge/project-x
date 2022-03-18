@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "jest --watchAll && vite",
+    "dev": "vite",
     "test": "jest --env=jsdom",
     "build": "tsc && vite build",
     "preview": "vite preview"
