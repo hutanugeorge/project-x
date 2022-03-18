@@ -58,7 +58,7 @@ export default () => {
                </div>
                <div className="auth__title-container__description">
                   <p className="auth__title-container__description__content">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam, cum
+                     Lorem ipsum dolor sit amet, consectet adipisicings elit. Ab aperiam, cum
                      cupiditate dicta dolores, eveniet excepturi laborum minima.
                   </p>
                </div>
