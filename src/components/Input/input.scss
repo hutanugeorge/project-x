@@ -237,4 +237,8 @@
       opacity: 0;
     }
   }
+
+  &__error {
+    border: 1px solid red;
+  }
 }
