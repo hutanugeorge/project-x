@@ -35,11 +35,18 @@ export default () => {
    const { isAuthenticated } = useSelector((state: RootState) => state.user)
 
    const [ authView, setAuthView ] = useState(AuthView.LOGIN)
-   const [ firstNameInput, setFirstNameInput ] = useState('')
-   const [ lastNameInput, setLastNameInput ] = useState('')
-   const [ emailInput, setEmailInput ] = useState('')
-   const [ passwordInput, setPasswordInput ] = useState('')
-   const [ confirmPasswordInput, setConfirmPasswordInput ] = useState('')
+
+   const [ firstName, setFirstName ] = useState<string | undefined>()
+   const [ lastName, setLastName ] = useState<string | undefined>()
+   const [ email, setEmail ] = useState<string | undefined>()
+   const [ password, setPassword ] = useState<string | undefined>()
+   const [ confirmPassword, setConfirmPassword ] = useState<string | undefined>()
+
+   const [ firstNameError, setFirstNameError ] = useState<string | undefined>()
+   const [ lastNameError, setLastNameError ] = useState<string | undefined>()
+   const [ emailError, setEmailError ] = useState<string | undefined>()
+   const [ passwordError, setPasswordError ] = useState<string | undefined>()
+   const [ confirmPasswordError, setConfirmPasswordError ] = useState<string | undefined>()
 
    const dispatch = useDispatch()
    const navigate = useNavigate()
@@ -65,31 +72,47 @@ export default () => {
             </div>
             <form className="auth__form" onSubmit={async (e) => {
                e.preventDefault()
-               console.log('running')
                if (authView === AuthView.LOGIN) {
-                  const response = await axios.post('http://localhost:3001/login', {
-                     email: emailInput,
-                     password: passwordInput
-                  })
-                  if (response.status === 200) {
-                     dispatch(loginUser({
+                  try {
+                     const response = await axios.post('http://localhost:3001/login', {
+                        email: email,
+                        password: password
+                     })
+                     if (response.status === 200) {
+                        dispatch(loginUser({
+                           user: response.data.user,
+                           token: response.data.token
+                        }))
+                        navigate('/homepage')
+                     }
+                  } catch (error: any) {
+                     if (error.response.status === 403) {
+                        setPasswordError(error.response.data.errors.password)
+                        setEmailError(error.response.data.errors.email)
+                     }
+                  }
+               } else if (authView === AuthView.SIGNUP) {
+                  try {
+                     const response = await axios.post('http://localhost:3001/signup', {
+                        email: email,
+                        password: password,
+                        confirmPassword: confirmPassword,
+                        firstName: firstName,
+                        lastName: lastName
+                     })
+                     response.status === 200 && dispatch(loginUser({
                         user: response.data.user,
                         token: response.data.token
                      }))
-                     navigate('/homepage')
+                  } catch (error: any) {
+                     if (error.response.status === 403) {
+                        setFirstNameError(error.response.data.errors.firstName)
+                        setLastNameError(error.response.data.errors.lastName)
+                        setEmailError(error.response.data.errors.email)
+                        setConfirmPasswordError(error.response.data.errors.confirmPassword)
+                        setPasswordError(error.response.data.errors.password)
+                     }
                   }
-               } else if (authView === AuthView.SIGNUP) {
-                  const response = await axios.post('http://localhost:3001/signup', {
-                     email: emailInput,
-                     password: passwordInput,
-                     confirmPassword: confirmPasswordInput,
-                     firstName: firstNameInput,
-                     lastName: lastNameInput
-                  })
-                  response.status === 200 && dispatch(loginUser({
-                     user: response.data.user,
-                     token: response.data.token
-                  }))
                }
             }}>
                <div className="auth__form__content">
@@ -102,38 +125,40 @@ export default () => {
                   {authView === AuthView.SIGNUP &&
                   <>
                       <InputLabeled name={'firstName'} type={'text'} placeholder={'First Name'}
-                                    onChange={[ setFirstNameInput ]}
-                                    value={firstNameInput}
+                                    onChange={[ setFirstName ]} error={firstNameError}
+                                    value={firstName ?? ''}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
-                                    color={InputColor.PRIMARY} labelText={'First name'}/>
+                                    color={InputColor.PRIMARY}
+                                    labelText={firstNameError ?? 'First name'}/>
 
                       <InputLabeled name={'lastName'} type={'text'} placeholder={'Last Name'}
-                                    onChange={[ setLastNameInput ]}
-                                    value={lastNameInput}
+                                    onChange={[ setLastName ]} error={lastNameError}
+                                    value={lastName ?? ''}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
-                                    color={InputColor.PRIMARY} labelText={'Last name'}/>
+                                    color={InputColor.PRIMARY}
+                                    labelText={lastNameError ?? 'Last name'}/>
                   </>}
                   <InputLabeled name={'email'} type={'email'} placeholder={'Email'}
-                                onChange={[ setEmailInput ]}
-                                value={emailInput}
+                                onChange={[ setEmail ]} error={emailError}
+                                value={email ?? ''}
                                 width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                 height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
-                                color={InputColor.PRIMARY} labelText={'Email'}/>
+                                color={InputColor.PRIMARY} labelText={emailError ?? 'Email'}/>
                   <InputLabeled type="password" name="password" placeholder="Password"
-                                onChange={[ setPasswordInput ]} value={passwordInput}
-                                labelText={'Password'}
+                                onChange={[ setPassword ]} value={password ?? ''}
+                                labelText={passwordError ?? 'Password'} error={passwordError}
                                 width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                 height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                 color={InputColor.PRIMARY}/>
                   {authView === AuthView.SIGNUP &&
                   <div data-testid="confirm-password">
                       <InputLabeled name="confirmPassword" type="password"
-                                    placeholder="Repeat password"
-                                    onChange={[ setConfirmPasswordInput ]}
-                                    value={confirmPasswordInput}
-                                    labelText={'Repeat password'}
+                                    placeholder="Repeat password" error={confirmPasswordError}
+                                    onChange={[ setConfirmPassword ]}
+                                    value={confirmPassword ?? ''}
+                                    labelText={confirmPasswordError ?? 'Repeat password'}
                                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M ]}
                                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L ]}
                                     color={InputColor.PRIMARY}/>

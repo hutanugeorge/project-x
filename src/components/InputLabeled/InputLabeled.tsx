@@ -13,13 +13,14 @@ export default (props: InputLabeledProps) => {
       height,
       color,
       labelText,
-      value
+      value,
+      error
    } = props
    return <div className="input-labeled">
       <Input name={name} type={type} placeholder={placeholder} onChange={onChange} width={width}
              value={value}
-             height={height}
+             height={height} error={error}
              color={color}/>
-      <Label htmlFor={labelText} text={labelText}/>
+      <Label htmlFor={labelText} text={labelText} error={error}/>
    </div>
 }
