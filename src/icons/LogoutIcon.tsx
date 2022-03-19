@@ -3,7 +3,7 @@ import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) =>
    <svg xmlns="http://www.w3.org/2000/svg" width={width ?? 24} height={height ?? 24}
-        fill={fillColor ?? "url(\'#myGradient\')"} viewBox="0 0 24 24">
+        fill={fillColor ?? "#000"} viewBox="0 0 24 24">
       <defs>
          <linearGradient id="myGradient" gradientTransform="rotate(90)">
             <stop offset="1%"  stopColor="gold" />

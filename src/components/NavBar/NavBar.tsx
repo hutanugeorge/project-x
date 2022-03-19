@@ -1,18 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
 import { useDispatch } from 'react-redux'
+import jwt_decode from 'jwt-decode'
+import { useNavigate } from 'react-router-dom'
 
 import { activateModal } from '../../redux/loginModal'
 import LogoutIcon from '../../icons/LogoutIcon'
 import PhotoIcon from '../../icons/PhotoIcon'
 import SearchIcon from '../../icons/SearchIcon'
+import { DecodedToken } from './interfaces'
+import { logoutUser } from '../../redux/user'
 
 
 export default () => {
 
    const [ inputValue, setInputValue ] = useState<string>('')
    const [ isAuth, setIsAuth ] = useState<boolean>(false)
+   const [ firstName, setFirstName ] = useState<string>()
+   const [ lastName, setLastName ] = useState<string>()
 
    const dispatch = useDispatch()
+   const navigate = useNavigate()
+
+   useEffect(() => {
+      const token = localStorage.getItem('token')
+      const decoded: '' | null | DecodedToken = token && jwt_decode(token)
+      decoded && 'firstName' in decoded && setFirstName(decoded.firstName)
+      decoded && 'lastName' in decoded && setLastName(decoded.lastName)
+   }, [])
+
 
    return <>
       <div className="nav-bar__wrapper" data-testid="nav-bar">
@@ -39,10 +55,18 @@ export default () => {
                </form>
             </div>
             <div className="nav-bar__element">
-               <div className="nav-bar__element__svg">
-                  <PhotoIcon/>
+               <div className="nav-bar__element__username">
+                  <p>{firstName} {lastName}</p>
                </div>
-               <div className="nav-bar__element__svg">
+               <div className="nav-bar__element__person__photo">
+                  <img
+                     src="https://alexanderklebe.com/wp-content/uploads/Headshot_photographer_actors_Berlin_Joerg.jpg"
+                     alt="person photo"/>
+               </div>
+               <div className="nav-bar__element__svg" onClick={() => {
+                  dispatch(logoutUser())
+                  navigate('/')
+               }}>
                   <LogoutIcon/>
                </div>
             </div>
@@ -80,7 +104,7 @@ export default () => {
                   </ul>
                </div>
             </div>
-         <div className="nav-bar__mobile__element">
+            <div className="nav-bar__mobile__element">
                <div className="nav-bar__mobile__element__profile">
                   <h2 className="nav-bar__mobile__element__profile__title">Profile</h2>
                   <div className="nav-bar__mobile__element__profile__info">
