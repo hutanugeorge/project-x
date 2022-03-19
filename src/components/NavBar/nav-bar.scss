@@ -29,6 +29,29 @@
     &__svg {
       height: 100%;
       @include displayFlexCenterCenter;
+      cursor: pointer;
+
+      &:hover svg {
+        fill: $color-negative;
+      }
+    }
+
+    &__username p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    &__person__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      clip-path: circle();
+
+      & img {
+        height: 100%;
+      }
     }
 
     &__title {
