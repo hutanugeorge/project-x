@@ -168,12 +168,23 @@ export default () => {
                      {authView === AuthView.LOGIN &&
                      <p className="auth__form__content__signup-link__content">You doesn't have an
                          account? <span data-testid="signup-trigger"
-                                        onClick={() => setAuthView(AuthView.SIGNUP)}><u>Sign up!</u></span>
+                                        onClick={() => {
+                                           setEmail(undefined)
+                                           setPassword(undefined)
+                                           setAuthView(AuthView.SIGNUP)
+                                        }}><u>Sign up!</u></span>
                      </p>}
                      {authView === AuthView.SIGNUP &&
                      <p className="auth__form__content__signup-link__content">Have an
                          account? <span data-testid="login-trigger"
-                                        onClick={() => setAuthView(AuthView.LOGIN)}><u>Login!</u></span>
+                                        onClick={() => {
+                                           setFirstName(undefined)
+                                           setLastName(undefined)
+                                           setEmail(undefined)
+                                           setPassword(undefined)
+                                           setConfirmPassword(undefined)
+                                           setAuthView(AuthView.LOGIN)
+                                        }}><u>Login!</u></span>
                      </p>}
                   </div>
                   <div data-testid="form-button">
