@@ -1,14 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { USER_DEFAULT } from './constants'
 
 
 export const userSlice = createSlice({
    name: 'user',
    initialState: {
-      isAuthenticated: false,
-      user: {}
+      user: USER_DEFAULT
    },
-   reducers: {}
+   reducers: {
+      loadUser: (state, action) => {
+         const { payload } = action
+         state.user = { ...payload }
+      }
+   }
 })
 
-export const {} = userSlice.actions
+export const { loadUser } = userSlice.actions
 export default userSlice.reducer
