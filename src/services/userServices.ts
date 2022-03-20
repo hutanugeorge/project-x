@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
+import jwt_decode from 'jwt-decode'
+import { DecodedToken } from '../components/NavBar/interfaces'
 
 
 interface LoginUserData {
@@ -39,6 +41,19 @@ export const signupUser = async (data: SignupUserData): Promise<[ AxiosResponse,
          lastName: lastName
       })
       localStorage.setItem('token', response.data.token)
+      return [ response, false ]
+   } catch (error: any) {
+      return [ error.response, true ]
+   }
+}
+
+export const getUser = async (): Promise<[ AxiosResponse, boolean ]> => {
+   const token = localStorage.getItem('token')
+   const decodedToken: any = token && jwt_decode(token)
+   try {
+      const response = await axios.get(`http://localhost:3001/user/${decodedToken.userID}`, {
+         headers: { 'Authorization': `Bearer ${token}` }
+      })
       return [ response, false ]
    } catch (error: any) {
       return [ error.response, true ]
