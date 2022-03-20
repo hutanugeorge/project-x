@@ -1,29 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import jwt_decode from 'jwt-decode'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import LogoutIcon from '../../icons/LogoutIcon'
 import PhotoIcon from '../../icons/PhotoIcon'
 import SearchIcon from '../../icons/SearchIcon'
-import { DecodedToken } from './interfaces'
+import { RootState } from '../../redux/store'
 
 
 export default () => {
 
+   const user = useSelector((state: RootState) => state.user)
+
    const [ inputValue, setInputValue ] = useState<string>('')
-   const [ firstName, setFirstName ] = useState<string>()
-   const [ lastName, setLastName ] = useState<string>()
 
    const navigate = useNavigate()
-
-   useEffect(() => {
-      const token = localStorage.getItem('token')
-      const decoded: '' | null | DecodedToken = token && jwt_decode(token)
-      decoded && 'firstName' in decoded && setFirstName(decoded.firstName)
-      decoded && 'lastName' in decoded && setLastName(decoded.lastName)
-   }, [])
-
 
    return <>
       <div className="nav-bar__wrapper" data-testid="nav-bar">
@@ -51,7 +43,7 @@ export default () => {
             </div>
             <div className="nav-bar__element">
                <div className="nav-bar__element__username">
-                  <p>{firstName} {lastName}</p>
+                  <p>{user.user.firstName} {user.user.lastName}</p>
                </div>
                <div className="nav-bar__element__person__photo">
                   <img
