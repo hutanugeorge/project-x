@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 
-import { activateModal } from '../../redux/loginModal'
 import LogoutIcon from '../../icons/LogoutIcon'
 import PhotoIcon from '../../icons/PhotoIcon'
 import SearchIcon from '../../icons/SearchIcon'
@@ -15,7 +14,6 @@ import { logoutUser } from '../../redux/user'
 export default () => {
 
    const [ inputValue, setInputValue ] = useState<string>('')
-   const [ isAuth, setIsAuth ] = useState<boolean>(false)
    const [ firstName, setFirstName ] = useState<string>()
    const [ lastName, setLastName ] = useState<string>()
 
@@ -114,14 +112,11 @@ export default () => {
                         <p className="nav-bar__mobile__element__profile__info__user__name">Will
                            Smith</p>
                      </div>
-                     <div className="nav-bar__mobile__element__profile__info__auth"
-                          onClick={() => !isAuth && dispatch(activateModal())}>
-
+                     <div className="nav-bar__mobile__element__profile__info__auth">
                         <p className="nav-bar__mobile__element__profile__info__auth__logout-icon">
                            <LogoutIcon/></p>
                         <p className="nav-bar__mobile__element__profile__info__auth__logout-text"> Log
                            Out </p>
-
                      </div>
                   </div>
                </div>
