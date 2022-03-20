@@ -13,7 +13,7 @@ export default ({
                    error
                 }: InputProps) => {
 
-   return <input name={name} type={type} placeholder={placeholder} value={value}
+   return <input data-testid="input" name={name} type={type} placeholder={placeholder} value={value}
                  onChange={(e) => {
                     onChange[0](e.target.value)
                     onChange[1] && onChange[1].forEach((fn: () => void) => {
