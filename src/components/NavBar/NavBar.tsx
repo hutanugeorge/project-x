@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { useDispatch } from 'react-redux'
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,7 +7,6 @@ import LogoutIcon from '../../icons/LogoutIcon'
 import PhotoIcon from '../../icons/PhotoIcon'
 import SearchIcon from '../../icons/SearchIcon'
 import { DecodedToken } from './interfaces'
-import { logoutUser } from '../../redux/user'
 
 
 export default () => {
@@ -17,7 +15,6 @@ export default () => {
    const [ firstName, setFirstName ] = useState<string>()
    const [ lastName, setLastName ] = useState<string>()
 
-   const dispatch = useDispatch()
    const navigate = useNavigate()
 
    useEffect(() => {
@@ -62,7 +59,7 @@ export default () => {
                      alt="person photo"/>
                </div>
                <div className="nav-bar__element__svg" onClick={() => {
-                  dispatch(logoutUser())
+                  localStorage.removeItem('token')
                   navigate('/')
                }}>
                   <LogoutIcon/>

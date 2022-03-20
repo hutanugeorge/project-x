@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 
 interface LoginUserData {
@@ -14,17 +14,33 @@ interface SignupUserData {
    confirmPassword: string
 }
 
-export const signinUser = async (data: LoginUserData) => {
-   const response = await axios.post('http://localhost:3001/login', data)
-   if (response.status <= 200 && response.status <= 300) {
-      return response
+export const signInUser = async (data: LoginUserData): Promise<[ AxiosResponse, boolean ]> => {
+   const { email, password } = data
+   try {
+      const response = await axios.post('http://localhost:3001/login', {
+         email: email,
+         password: password
+      })
+      localStorage.setItem('token', response.data.token)
+      return [ response, false ]
+   } catch (error: any) {
+      return [ error.response, true ]
    }
-   return null
 }
 
-export const signupUser = async (data: SignupUserData) => {
-   const response = await axios.post('http://localhost:3001/signup', data)
-   if (response.status <= 200 && response.status <= 300)
-      return response
-   return null
+export const signupUser = async (data: SignupUserData): Promise<[ AxiosResponse, boolean ]> => {
+   const { firstName, lastName, email, password, confirmPassword } = data
+   try {
+      const response = await axios.post('http://localhost:3001/signup', {
+         email: email,
+         password: password,
+         confirmPassword: confirmPassword,
+         firstName: firstName,
+         lastName: lastName
+      })
+      localStorage.setItem('token', response.data.token)
+      return [ response, false ]
+   } catch (error: any) {
+      return [ error.response, true ]
+   }
 }

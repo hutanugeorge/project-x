@@ -5,7 +5,7 @@ export interface InputProps {
    name: string
    type: string
    placeholder: string
-   onChange: [ Dispatch<SetStateAction<string | undefined>>, (() => void)[]? ]
+   onChange: [ Dispatch<SetStateAction<string>>, (() => void)[]? ]
    width: [ DesktopInputWidth, TabletInputWidth, MobileInputWidth ]
    height: [ DesktopInputHeight, TabletInputHeight, MobileInputHeight ]
    color: InputColor
