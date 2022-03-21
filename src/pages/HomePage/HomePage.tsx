@@ -11,30 +11,28 @@ import SecondaryRightSection from '../../components/SecondaryRightSection/Second
 import { loadUser } from '../../redux/user'
 import { getUser } from '../../services/userServices'
 
-
 export default () => {
-
    const navigate = useNavigate()
    const dispatch = useDispatch()
 
    useEffect(() => {
       const token = localStorage.getItem('token')
-      if (!token)
-         navigate('/')
-      else if (token && isJwtTokenExpired(token))
-         navigate('/');
-      (async () => {
-         const [ response, error ] = await getUser()
+      if (!token) navigate('/')
+      else if (token && isJwtTokenExpired(token)) navigate('/')
+      ;(async () => {
+         const [response, error] = await getUser()
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
       })()
    }, [])
 
-   return <>
-      <NavBar/>
-      <div className="home-page">
-         <SecondaryLeftSection/>
-         <MainSection/>
-         <SecondaryRightSection/>
-      </div>
-   </>
+   return (
+      <>
+         <NavBar />
+         <div className="home-page">
+            <SecondaryLeftSection />
+            <MainSection />
+            <SecondaryRightSection />
+         </div>
+      </>
+   )
 }

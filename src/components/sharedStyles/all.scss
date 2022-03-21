@@ -16,14 +16,16 @@
 @import '../InputLabeled/input-labeled';
 @import '../Button/button';
 
-*, html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 10px;
-  font-family: 'Hind', sans-serif;
+*,
+html,
+body {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-size: 10px;
+   font-family: 'Hind', sans-serif;
 }
 
 body {
-  background-color: $color-grey-light;
+   background-color: $color-grey-light;
 }

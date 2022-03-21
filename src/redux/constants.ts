@@ -1,6 +1,5 @@
 import User from '../shared/interfaces/user'
 
-
 export const USER_DEFAULT: User = {
    bio: '',
    cityLiving: '',
@@ -29,5 +28,5 @@ export const USER_DEFAULT: User = {
    previousJobs: [],
    profilePhoto: '',
    sex: 'Male',
-   userID: ''
+   userID: '',
 }

@@ -1,6 +1,5 @@
 import IPost from './post'
 
-
 export default interface User {
    userID: string
    firstName: string
