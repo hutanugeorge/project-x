@@ -1,4 +1,3 @@
 export default () => {
-   return <div className="right-section">
-   </div>
+   return <div className="right-section"></div>
 }

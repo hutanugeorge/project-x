@@ -7,12 +7,11 @@ import App from './App'
 import store from './redux/store'
 import '../src/components/sharedStyles/all.scss'
 
-
 ReactDOM.render(
    <React.StrictMode>
       <Provider store={store}>
-         <App/>
+         <App />
       </Provider>
    </React.StrictMode>,
-   document.getElementById('root')
+   document.getElementById('root'),
 )

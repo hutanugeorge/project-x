@@ -1,13 +1,13 @@
 .activity-action {
-  display: flex;
+   display: flex;
 
-  &__photo {
-    width: 4rem;
-    @include displayFlexCenterCenter;
-  }
+   &__photo {
+      width: 4rem;
+      @include displayFlexCenterCenter;
+   }
 
-  &__action {
-    display: flex;
-    align-items: center;
-  }
+   &__action {
+      display: flex;
+      align-items: center;
+   }
 }

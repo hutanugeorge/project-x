@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from 'axios'
 import jwt_decode from 'jwt-decode'
 import getHeaders from '../utils/getHeaders'
 
-
 interface LoginUserData {
    email: string
    password: string
@@ -16,46 +15,54 @@ interface SignupUserData {
    confirmPassword: string
 }
 
-export const signInUser = async (data: LoginUserData): Promise<[ AxiosResponse, boolean ]> => {
+export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, boolean]> => {
    const { email, password } = data
    try {
-      const response = await axios.post('http://localhost:3001/login', {
-         email: email,
-         password: password
-      }, { headers: getHeaders() })
+      const response = await axios.post(
+         'http://localhost:3001/login',
+         {
+            email: email,
+            password: password,
+         },
+         { headers: getHeaders() },
+      )
       localStorage.setItem('token', response.data.token)
-      return [ response, false ]
+      return [response, false]
    } catch (error: any) {
-      return [ error.response, true ]
+      return [error.response, true]
    }
 }
 
-export const signupUser = async (data: SignupUserData): Promise<[ AxiosResponse, boolean ]> => {
+export const signupUser = async (data: SignupUserData): Promise<[AxiosResponse, boolean]> => {
    const { firstName, lastName, email, password, confirmPassword } = data
    try {
-      const response = await axios.post('http://localhost:3001/signup', {
-         email: email,
-         password: password,
-         confirmPassword: confirmPassword,
-         firstName: firstName,
-         lastName: lastName
-      }, { headers: getHeaders() })
+      const response = await axios.post(
+         'http://localhost:3001/signup',
+         {
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
+            firstName: firstName,
+            lastName: lastName,
+         },
+         { headers: getHeaders() },
+      )
       localStorage.setItem('token', response.data.token)
-      return [ response, false ]
+      return [response, false]
    } catch (error: any) {
-      return [ error.response, true ]
+      return [error.response, true]
    }
 }
 
-export const getUser = async (): Promise<[ AxiosResponse, boolean ]> => {
+export const getUser = async (): Promise<[AxiosResponse, boolean]> => {
    const token = localStorage.getItem('token')
    const decodedToken: any = token && jwt_decode(token)
    try {
       const response = await axios.get(`http://localhost:3001/user/${decodedToken.userID}`, {
-         headers: getHeaders(true)
+         headers: getHeaders(true),
       })
-      return [ response, false ]
+      return [response, false]
    } catch (error: any) {
-      return [ error.response, true ]
+      return [error.response, true]
    }
 }

@@ -1,4 +1,3 @@
-import ActivityActions from "./ActivityAction";
-
+import ActivityActions from './ActivityAction'
 
 export default ActivityActions

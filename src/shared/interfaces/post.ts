@@ -1,7 +1,6 @@
 import User from './user'
 import { PartialUser } from './user'
 
-
 export default interface Post {
    readonly date: string
    description: string

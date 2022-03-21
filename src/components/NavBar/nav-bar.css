@@ -1,202 +1,202 @@
 .nav-bar {
-  display: flex;
-  max-width: 160rem;
-  min-width: fit-content;
-  margin: 0 auto;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
+   display: flex;
+   max-width: 160rem;
+   min-width: fit-content;
+   margin: 0 auto;
+   justify-content: space-around;
+   align-items: center;
+   height: 100%;
 }
 .nav-bar__wrapper {
-  width: 100vw;
-  height: 5rem;
-  padding: 1rem 0;
-  background-color: white;
+   width: 100vw;
+   height: 5rem;
+   padding: 1rem 0;
+   background-color: white;
 }
 @media (max-width: 56em) {
-  .nav-bar__wrapper {
-    display: none;
-  }
+   .nav-bar__wrapper {
+      display: none;
+   }
 }
 .nav-bar__element {
-  display: flex;
-  gap: 2rem;
-  height: 100%;
-  align-items: center;
+   display: flex;
+   gap: 2rem;
+   height: 100%;
+   align-items: center;
 }
 .nav-bar__element__title {
-  font-size: 1.5rem;
+   font-size: 1.5rem;
 }
 .nav-bar__element__form {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   gap: 1rem;
 }
 .nav-bar__element__form__input {
-  width: 30rem;
-  height: 3rem;
-  border: none;
-  border-radius: 0.7rem;
-  background-color: #f3f5f7;
-  text-align: center;
+   width: 30rem;
+   height: 3rem;
+   border: none;
+   border-radius: 0.7rem;
+   background-color: #f3f5f7;
+   text-align: center;
 }
 .nav-bar__element__form__input::placeholder {
-  text-align: center;
+   text-align: center;
 }
 .nav-bar__element__form__input:focus {
-  outline: none;
+   outline: none;
 }
 .nav-bar__element__form__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 3rem;
-  border: none;
-  cursor: pointer;
-  background-color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 3rem;
+   width: 3rem;
+   border-radius: 3rem;
+   border: none;
+   cursor: pointer;
+   background-color: white;
 }
 .nav-bar__element__form__button:hover {
-  background-color: #f3f5f7;
+   background-color: #f3f5f7;
 }
 
 .nav-bar__mobile {
-  width: 85%;
-  height: 100%;
-  background: #f3f5f7;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10rem;
+   width: 85%;
+   height: 100%;
+   background: #f3f5f7;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 10rem;
 }
 .nav-bar__mobile__wrapper {
-  display: none;
-  background: #D1D1D1;
+   display: none;
+   background: #d1d1d1;
 }
 @media (max-width: 37em) {
-  .nav-bar__mobile__wrapper {
-    display: block;
-    height: 100vh;
-    width: 100vw;
-  }
+   .nav-bar__mobile__wrapper {
+      display: block;
+      height: 100vh;
+      width: 100vw;
+   }
 }
 @media (max-width: 37em) {
-  .nav-bar__mobile__wrapper {
-    display: block;
-    height: 100vh;
-    width: 100vw;
-  }
+   .nav-bar__mobile__wrapper {
+      display: block;
+      height: 100vh;
+      width: 100vw;
+   }
 }
 .nav-bar__mobile__element {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
+   gap: 2rem;
 }
 .nav-bar__mobile__element__title {
-  display: flex;
-  height: 100%;
-  justify-content: flex-end;
-  align-items: flex-end;
-  font-size: 2.5rem;
-  color: black;
+   display: flex;
+   height: 100%;
+   justify-content: flex-end;
+   align-items: flex-end;
+   font-size: 2.5rem;
+   color: black;
 }
 .nav-bar__mobile__element__form {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
 }
 .nav-bar__mobile__element__form__input {
-  display: flex;
-  width: 70%;
-  height: 4rem;
-  border: none;
-  border-radius: 0.7rem;
-  text-align: center;
+   display: flex;
+   width: 70%;
+   height: 4rem;
+   border: none;
+   border-radius: 0.7rem;
+   text-align: center;
 }
 .nav-bar__mobile__element__form__input::placeholder {
-  display: flex;
-  align-content: center;
+   display: flex;
+   align-content: center;
 }
 .nav-bar__mobile__element__form__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3rem;
-  width: 4rem;
-  border: none;
-  cursor: pointer;
-  background-color: #D1D1D1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 3rem;
+   width: 4rem;
+   border: none;
+   cursor: pointer;
+   background-color: #d1d1d1;
 }
 .nav-bar__mobile__element__menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   gap: 1rem;
 }
 .nav-bar__mobile__element__menu__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-size: 2rem;
-  list-style: none;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   font-size: 2rem;
+   list-style: none;
 }
 .nav-bar__mobile__element__menu__list li {
-  font-size: 1.5rem;
+   font-size: 1.5rem;
 }
 .nav-bar__mobile__element__menu__title {
-  font-size: 2rem;
-  color: #2D31FA;
+   font-size: 2rem;
+   color: #2d31fa;
 }
 .nav-bar__mobile__element__profile {
-  display: flex;
-  flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 .nav-bar__mobile__element__profile__title {
-  font-size: 2rem;
-  color: #2D31FA;
+   font-size: 2rem;
+   color: #2d31fa;
 }
 .nav-bar__mobile__element__profile__info {
-  height: 100%;
+   height: 100%;
 }
 .nav-bar__mobile__element__profile__info__user {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+   display: flex;
+   align-items: center;
+   gap: 1rem;
 }
 .nav-bar__mobile__element__profile__info__user__name {
-  font-size: 1.5rem;
+   font-size: 1.5rem;
 }
 .nav-bar__mobile__element__profile__info__auth {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
+   display: flex;
+   height: 100%;
+   width: 100%;
+   align-items: center;
 }
 .nav-bar__mobile__element__profile__info__auth__login {
-  display: flex;
+   display: flex;
 }
 .nav-bar__mobile__element__profile__info__auth__login-text {
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   font-size: 1.8rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 .nav-bar__mobile__element__profile__info__auth__logout {
-  display: flex;
+   display: flex;
 }
 .nav-bar__mobile__element__profile__info__auth__logout-text {
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   font-size: 1.8rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 /*# sourceMappingURL=nav-bar.css.map */
