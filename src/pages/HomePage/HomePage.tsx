@@ -27,7 +27,6 @@ export default () => {
 
    return (
       <>
-         <NavBar />
          <div className="home-page">
             <SecondaryLeftSection />
             <MainSection />
