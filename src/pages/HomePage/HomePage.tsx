@@ -27,9 +27,9 @@ export default () => {
    return (
       <>
          <div className="home-page">
-            {/*<SecondaryLeftSection />*/}
-            {/*<MainSection />*/}
-            {/*<SecondaryRightSection />*/}
+            <SecondaryLeftSection />
+            <MainSection />
+            <SecondaryRightSection />
          </div>
       </>
    )
