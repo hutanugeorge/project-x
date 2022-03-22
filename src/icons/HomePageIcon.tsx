@@ -7,21 +7,14 @@ export default ({ width, height }: IconProps) => (
          strokeLinecap="round"
          strokeLinejoin="round"
          strokeWidth="1.5"
-         d="M15.75 8.75L19.25 12L15.75 15.25"
+         d="M6.75024 19.2502H17.2502C18.3548 19.2502 19.2502 18.3548 19.2502 17.2502V9.75025L12.0002 4.75024L4.75024 9.75025V17.2502C4.75024 18.3548 5.64568 19.2502 6.75024 19.2502Z"
       />
       <path
          stroke="currentColor"
          strokeLinecap="round"
          strokeLinejoin="round"
          strokeWidth="1.5"
-         d="M19 12H10.75"
-      />
-      <path
-         stroke="currentColor"
-         strokeLinecap="round"
-         strokeLinejoin="round"
-         strokeWidth="1.5"
-         d="M15.25 4.75H6.75C5.64543 4.75 4.75 5.64543 4.75 6.75V17.25C4.75 18.3546 5.64543 19.25 6.75 19.25H15.25"
+         d="M9.74963 15.7493C9.74963 14.6447 10.6451 13.7493 11.7496 13.7493H12.2496C13.3542 13.7493 14.2496 14.6447 14.2496 15.7493V19.2493H9.74963V15.7493Z"
       />
    </svg>
 )

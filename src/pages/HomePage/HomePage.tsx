@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import isJwtTokenExpired from 'jwt-check-expiry'
 
 import MainSection from '../../components/MainSection/MainSection'
-import NavBar from '../../components/NavBar'
 import SecondaryLeftSection from '../../components/SecondaryLeftSection/SecondaryLeftSection'
 import SecondaryRightSection from '../../components/SecondaryRightSection/SecondaryRightSection'
 import { loadUser } from '../../redux/user'
@@ -28,9 +27,9 @@ export default () => {
    return (
       <>
          <div className="home-page">
-            <SecondaryLeftSection />
-            <MainSection />
-            <SecondaryRightSection />
+            {/*<SecondaryLeftSection />*/}
+            {/*<MainSection />*/}
+            {/*<SecondaryRightSection />*/}
          </div>
       </>
    )
