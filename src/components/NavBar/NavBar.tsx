@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 import LogoutIcon from '../../icons/LogoutIcon'
 import PhotoIcon from '../../icons/PhotoIcon'
@@ -13,9 +12,7 @@ export default () => {
 
    const [inputValue, setInputValue] = useState<string>('')
 
-   const navigate = useNavigate()
-
-   return (
+   return window.location.href !== 'http://localhost:3000/' ? (
       <>
          <div className="nav-bar__wrapper" data-testid="nav-bar">
             <nav className="nav-bar">
@@ -61,7 +58,7 @@ export default () => {
                      className="nav-bar__element__svg"
                      onClick={() => {
                         localStorage.removeItem('token')
-                        navigate('/')
+                        window.location.href = '/'
                      }}
                   >
                      <LogoutIcon />
@@ -117,7 +114,13 @@ export default () => {
                               Will Smith
                            </p>
                         </div>
-                        <div className="nav-bar__mobile__element__profile__info__auth">
+                        <div
+                           className="nav-bar__mobile__element__profile__info__auth"
+                           onClick={() => {
+                              localStorage.removeItem('token')
+                              window.location.href = '/'
+                           }}
+                        >
                            <p className="nav-bar__mobile__element__profile__info__auth__logout-icon">
                               <LogoutIcon />
                            </p>
@@ -132,5 +135,7 @@ export default () => {
             </div>
          </div>
       </>
+   ) : (
+      <></>
    )
 }

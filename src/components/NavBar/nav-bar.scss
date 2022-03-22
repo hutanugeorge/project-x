@@ -1,6 +1,10 @@
 @import '../sharedStyles/utils/mixins';
 @import '../sharedStyles/utils/variables';
 
+.nav-bar__none {
+   display: none;
+}
+
 .nav-bar {
    display: flex;
    max-width: 160rem;
