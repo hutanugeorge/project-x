@@ -63,11 +63,12 @@ export default () => {
          <div className='nav-bar__wrapper' data-testid='nav-bar'>
             <nav className='nav-bar'>
                <div className='nav-bar__element'>
-                  <h1 className='nav-bar__element__title'>ProjectX</h1>
+                  <h1 className='nav-bar__element__title' data-testid='title'>ProjectX</h1>
                </div>
                <div className='nav-bar__element'>
                   <form className='nav-bar__element__form' autoComplete='off'>
                      <input
+                        data-testid='input'
                         className='nav-bar__element__form__input'
                         type='text'
                         value={inputValue}
@@ -79,6 +80,7 @@ export default () => {
                      />
                      <button
                         className='nav-bar__element__form__button'
+                        data-testid='button-trigger'
                         onClick={(e) => {
                            e.preventDefault()
                            setInputValue('')
@@ -101,12 +103,12 @@ export default () => {
                      />
                   </div>
                   <div
-                     className='nav-bar__element__svg'
-                     onClick={() => {
-                        localStorage.removeItem('token')
-                        window.location.href = '/'
-                     }}
-                  >
+                     className='nav-bar__element__svg' data-testid = 'logout-trigger'
+                        onClick={() => {
+                           localStorage.removeItem('token')
+                           window.location.href = '/'
+                        }}
+                        >
                      <LogoutIcon />
                   </div>
                </div>
