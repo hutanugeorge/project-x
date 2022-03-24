@@ -1,13 +1,13 @@
 import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) => (
-   <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width ?? 24}
-      height={height ?? 24}
-      fill={fillColor ?? '#000'}
-      viewBox="0 0 16 16"
-   >
-      <path d="M 8 1 C 4.139959 1 1.0000428 4.1398846 1 8 C 0.99997942 11.860115 4.1399146 15 8 15 C 11.860086 15 15.00002 11.860115 15 8 C 14.999957 4.1398846 11.860041 1 8 1 z M 8 2 C 11.319604 2 13.999963 4.6803455 14 8 C 14.000018 11.319654 11.319644 14 8 14 C 4.6803565 14 1.9980292 11.319654 1.9980469 8 C 1.9980837 4.6803455 4.6803952 2 8 2 z M 11.492188 7.4980469 L 4.5039062 7.5097656 A 0.50095123 0.50095123 0 0 0 4.5058594 8.5117188 L 11.494141 8.4980469 A 0.50005001 0.50005001 0 1 0 11.492188 7.4980469 z " />
+   <svg width={width ?? 24} height={height ?? 24} fill="none" viewBox="0 0 24 24">
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M18.25 12.25L5.75 12.25"
+      />
    </svg>
 )

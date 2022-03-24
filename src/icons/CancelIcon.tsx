@@ -1,31 +1,27 @@
 import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) => (
-   <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width ?? 24}
-      height={height ?? 24}
-      viewBox="0 0 48 48"
-   >
-      <g transform="translate(106.832 -1004.371)">
-         <circle
-            cx="-82.833"
-            cy="1028.371"
-            r="23.25"
-            fill="none"
-            stroke={fillColor ?? '#000'}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-         />
-         <path
-            fill="none"
-            stroke={fillColor ?? '#000'}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-            d="M-94.83251 1016.3711l24 24M-70.83251 1016.3711l-24 24"
-         />
-      </g>
+   <svg width={width ?? 24} height={height ?? 24} fill="none" viewBox="0 0 24 24">
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M4.75 12C4.75 7.99594 7.99594 4.75 12 4.75V4.75C16.0041 4.75 19.25 7.99594 19.25 12V12C19.25 16.0041 16.0041 19.25 12 19.25V19.25C7.99594 19.25 4.75 16.0041 4.75 12V12Z"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M9.75 9.75L14.25 14.25"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M14.25 9.75L9.75 14.25"
+      />
    </svg>
 )
