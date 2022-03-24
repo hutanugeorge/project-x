@@ -4,6 +4,7 @@ export interface ButtonProps {
    width: [DesktopButtonWidth, TabletButtonWidth, MobileButtonWidth]
    height: [DesktopButtonHeight, TabletButtonHeight, MobileButtonHeight]
    text?: string
+   color?: ButtonColor
 }
 
 export enum DesktopButtonWidth {
@@ -46,4 +47,10 @@ export enum MobileButtonHeight {
    M = 'button-mobile-height-medium',
    L = 'button-mobile-height-large',
    XL = 'button-mobile-height-extra-large',
+}
+
+export enum ButtonColor {
+   PRIMARY = 'button-primary-color',
+   SECONDARY = 'button-secondary-color',
+   POSITIVE = 'button-positive-color',
 }
