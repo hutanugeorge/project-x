@@ -120,6 +120,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      userTab && '__active'
                   } nav-bar__mobile__elements__element`}
+                  data-testid = 'profile'
                   onClick={() => selectTab(Tabs.USER_TAB)}>
                   <ActivityIcon />
                </div>
@@ -127,6 +128,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      activityTab && '__active'
                   } nav-bar__mobile__elements__element`}
+                  data-testid = 'activity'
                   onClick={() => selectTab(Tabs.ACTIVITY_TAB)}>
                   <ActivityIcon />
                </div>
@@ -134,6 +136,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      homepageTab && '__active'
                   } nav-bar__mobile__elements__element`}
+                  data-testid = 'homepage'
                   onClick={() => selectTab(Tabs.HOMEPAGE_TAB)}>
                   <HomePageIcon />
                </div>
@@ -141,6 +144,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      exploreTab && '__active'
                   } nav-bar__mobile__elements__element`}
+                  data-testid = 'explore'
                   onClick={() => selectTab(Tabs.EXPLORER_TAB)}>
                   <ExploreIcon />
                </div>
@@ -148,6 +152,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      settingsTab && '__active'
                   } nav-bar__mobile__elements__element`}
+                  data-testid = 'settings'
                   onClick={() => selectTab(Tabs.SETTINGS_TAB)}>
                   <SettingsIcon />
                </div>
