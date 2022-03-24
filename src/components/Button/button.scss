@@ -142,12 +142,23 @@
    }
 }
 
+.button-primary-color {
+   background-color: rgba($color-primary-light, 0.5)
+}
+
+.button-secondary-color {
+   background-color: rgba($color-grey-light, 0.5)
+}
+
+.button-positive-color {
+   background-color: rgba($color-positive, 0.5)
+}
+
 .button {
    text-transform: uppercase;
    border: none;
    border-radius: 0.7rem;
    box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
-   background-color: rgba($color-positive, 0.6);
    outline: none;
    color: white;
    cursor: pointer;
