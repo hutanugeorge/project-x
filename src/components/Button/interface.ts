@@ -1,9 +1,9 @@
 export interface ButtonProps {
-   type: 'button' | 'submit' | 'reset' | undefined
+   type?: 'button' | 'submit' | 'reset' | undefined
    onClickFunctions?: (() => void)[]
    width: [DesktopButtonWidth, TabletButtonWidth, MobileButtonWidth]
    height: [DesktopButtonHeight, TabletButtonHeight, MobileButtonHeight]
-   text: string
+   text?: string
 }
 
 export enum DesktopButtonWidth {
