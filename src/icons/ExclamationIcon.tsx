@@ -1,13 +1,21 @@
 import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) => (
-   <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width ?? 24}
-      height={height ?? 24}
-      fill={fillColor ?? '#000'}
-      viewBox="0 0 24 24"
-   >
-      <path d="M12,16a1,1,0,1,0,1,1A1,1,0,0,0,12,16Zm10.67,1.47-8.05-14a3,3,0,0,0-5.24,0l-8,14A3,3,0,0,0,3.94,22H20.06a3,3,0,0,0,2.61-4.53Zm-1.73,2a1,1,0,0,1-.88.51H3.94a1,1,0,0,1-.88-.51,1,1,0,0,1,0-1l8-14a1,1,0,0,1,1.78,0l8.05,14A1,1,0,0,1,20.94,19.49ZM12,8a1,1,0,0,0-1,1v4a1,1,0,0,0,2,0V9A1,1,0,0,0,12,8Z" />
+   <svg width={width ?? 24} height={height ?? 24} fill="none" viewBox="0 0 24 24">
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M4.9522 16.3536L10.2152 5.85658C10.9531 4.38481 13.0539 4.3852 13.7913 5.85723L19.0495 16.3543C19.7156 17.6841 18.7487 19.25 17.2613 19.25H6.74007C5.25234 19.25 4.2854 17.6835 4.9522 16.3536Z"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="2"
+         d="M12 10V12"
+      />
+      <circle cx="12" cy="16" r="1" fill="currentColor" />
    </svg>
 )

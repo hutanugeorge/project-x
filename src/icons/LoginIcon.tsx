@@ -1,14 +1,27 @@
 import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) => (
-   <svg
-      style={{ cursor: 'pointer' }}
-      xmlns="http://www.w3.org/2000/svg"
-      width={width ?? 24}
-      height={height ?? 24}
-      fill={fillColor ?? '#000'}
-      viewBox="0 0 24 24"
-   >
-      <path d="M20.5,15.1a1,1,0,0,0-1.34.45A8,8,0,1,1,12,4a7.93,7.93,0,0,1,7.16,4.45,1,1,0,0,0,1.8-.9,10,10,0,1,0,0,8.9A1,1,0,0,0,20.5,15.1ZM21,11H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H21a1,1,0,0,0,0-2Z" />
+   <svg width={width ?? 24} height={height ?? 24} fill="none" viewBox="0 0 24 24">
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M9.75 8.75L13.25 12L9.75 15.25"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M9.75 4.75H17.25C18.3546 4.75 19.25 5.64543 19.25 6.75V17.25C19.25 18.3546 18.3546 19.25 17.25 19.25H9.75"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M13 12H4.75"
+      />
    </svg>
 )

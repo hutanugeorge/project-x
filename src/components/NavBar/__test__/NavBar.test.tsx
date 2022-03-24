@@ -7,7 +7,6 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import NavBar from '../NavBar'
 import store from '../../../redux/store'
 
-
 describe('NavBar testing', () => {
    it('renders without crashes', () => {
       const div = document.createElement('div')
@@ -61,6 +60,5 @@ describe('NavBar testing', () => {
       const settings = screen.getByTestId('settings')
       fireEvent.click(screen.getByTestId('settings'))
       expect(settings.className).toContain('__active')
-
    })
 })

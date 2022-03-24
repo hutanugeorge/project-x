@@ -1,13 +1,34 @@
 import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) => (
-   <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width ?? 24}
-      height={height ?? 24}
-      fill={fillColor ?? '#000'}
-      viewBox="0 0 24 24"
-   >
-      <path d="M19,4H17V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12H20Zm0-9H4V7A1,1,0,0,1,5,6H7V7A1,1,0,0,0,9,7V6h6V7a1,1,0,0,0,2,0V6h2a1,1,0,0,1,1,1Z" />
+   <svg width={width ?? 24} height={height ?? 24} fill="none" viewBox="0 0 24 24">
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M4.75 8.75C4.75 7.64543 5.64543 6.75 6.75 6.75H17.25C18.3546 6.75 19.25 7.64543 19.25 8.75V17.25C19.25 18.3546 18.3546 19.25 17.25 19.25H6.75C5.64543 19.25 4.75 18.3546 4.75 17.25V8.75Z"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M8 4.75V8.25"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M16 4.75V8.25"
+      />
+      <path
+         stroke="currentColor"
+         strokeLinecap="round"
+         strokeLinejoin="round"
+         strokeWidth="1.5"
+         d="M7.75 10.75H16.25"
+      />
    </svg>
 )
