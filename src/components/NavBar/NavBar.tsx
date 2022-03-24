@@ -6,10 +6,19 @@ import ExploreIcon from '../../icons/ExploreIcon'
 import HomePageIcon from '../../icons/HomePageIcon'
 
 import LogoutIcon from '../../icons/LogoutIcon'
-import PhotoIcon from '../../icons/PhotoIcon'
 import SearchIcon from '../../icons/SearchIcon'
 import SettingsIcon from '../../icons/SettingsIcon'
 import { RootState } from '../../redux/store'
+import Input from '../Input'
+import {
+   DesktopInputHeight,
+   DesktopInputWidth,
+   InputColor,
+   MobileInputHeight,
+   MobileInputWidth,
+   TabletInputHeight,
+   TabletInputWidth,
+} from '../Input/interface'
 
 
 export default () => {
@@ -67,20 +76,18 @@ export default () => {
                </div>
                <div className='nav-bar__element'>
                   <form className='nav-bar__element__form' autoComplete='off'>
-                     <input
-                        data-testid='input'
-                        className='nav-bar__element__form__input'
+                     <Input
                         type='text'
                         value={inputValue}
-                        onChange={(e) => {
-                           setInputValue(e.target.value)
-                        }}
+                        onChange={[ setInputValue ]}
                         placeholder='Search anything...'
                         name='SearchInput'
-                     />
+                        width={[ DesktopInputWidth.L, TabletInputWidth.L, MobileInputWidth.L ]}
+                        height={[ DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M ]}
+                        color={InputColor.PRIMARY}
+                        error={undefined} />
                      <button
                         className='nav-bar__element__form__button'
-                        data-testid='button-trigger'
                         onClick={(e) => {
                            e.preventDefault()
                            setInputValue('')
@@ -103,12 +110,12 @@ export default () => {
                      />
                   </div>
                   <div
-                     className='nav-bar__element__svg' data-testid = 'logout-trigger'
-                        onClick={() => {
-                           localStorage.removeItem('token')
-                           window.location.href = '/'
-                        }}
-                        >
+                     className='nav-bar__element__svg' data-testid='logout-trigger'
+                     onClick={() => {
+                        localStorage.removeItem('token')
+                        window.location.href = '/'
+                     }}
+                  >
                      <LogoutIcon />
                   </div>
                </div>
@@ -120,7 +127,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      userTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid = 'profile'
+                  data-testid='profile'
                   onClick={() => selectTab(Tabs.USER_TAB)}>
                   <ActivityIcon />
                </div>
@@ -128,7 +135,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      activityTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid = 'activity'
+                  data-testid='activity'
                   onClick={() => selectTab(Tabs.ACTIVITY_TAB)}>
                   <ActivityIcon />
                </div>
@@ -136,7 +143,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      homepageTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid = 'homepage'
+                  data-testid='homepage'
                   onClick={() => selectTab(Tabs.HOMEPAGE_TAB)}>
                   <HomePageIcon />
                </div>
@@ -144,7 +151,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      exploreTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid = 'explore'
+                  data-testid='explore'
                   onClick={() => selectTab(Tabs.EXPLORER_TAB)}>
                   <ExploreIcon />
                </div>
@@ -152,7 +159,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      settingsTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid = 'settings'
+                  data-testid='settings'
                   onClick={() => selectTab(Tabs.SETTINGS_TAB)}>
                   <SettingsIcon />
                </div>
