@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ActivityIcon from '../../icons/ActivityIcon'
 import ExploreIcon from '../../icons/ExploreIcon'
 import HomePageIcon from '../../icons/HomePageIcon'
@@ -8,6 +8,7 @@ import HomePageIcon from '../../icons/HomePageIcon'
 import LogoutIcon from '../../icons/LogoutIcon'
 import SearchIcon from '../../icons/SearchIcon'
 import SettingsIcon from '../../icons/SettingsIcon'
+import { setModalsOff, toggleExplore, toggleNotifications } from '../../redux/homepageModals'
 import { RootState } from '../../redux/store'
 import Input from '../Input'
 import {
@@ -17,18 +18,22 @@ import {
    MobileInputHeight,
    MobileInputWidth,
    TabletInputHeight,
-   TabletInputWidth,
+   TabletInputWidth
 } from '../Input/interface'
 
+
 export default () => {
+
+   const dispatch = useDispatch()
+
    const user = useSelector((state: RootState) => state.user)
 
-   const [inputValue, setInputValue] = useState<string>('')
-   const [userTab, setUserTab] = useState<boolean>(false)
-   const [activityTab, setActivityTab] = useState<boolean>(false)
-   const [homepageTab, setHomepageTab] = useState<boolean>(true)
-   const [exploreTab, setExploreTab] = useState<boolean>(false)
-   const [settingsTab, setSettingsTab] = useState<boolean>(false)
+   const [ inputValue, setInputValue ] = useState<string>('')
+   const [ userTab, setUserTab ] = useState<boolean>(false)
+   const [ activityTab, setActivityTab ] = useState<boolean>(false)
+   const [ homepageTab, setHomepageTab ] = useState<boolean>(true)
+   const [ exploreTab, setExploreTab ] = useState<boolean>(false)
+   const [ settingsTab, setSettingsTab ] = useState<boolean>(false)
 
    enum Tabs {
       USER_TAB = 'USER_TAB',
@@ -80,11 +85,11 @@ export default () => {
                      <Input
                         type="text"
                         value={inputValue}
-                        onChange={[setInputValue]}
+                        onChange={[ setInputValue ]}
                         placeholder="Search anything..."
                         name="SearchInput"
-                        width={[DesktopInputWidth.L, TabletInputWidth.L, MobileInputWidth.L]}
-                        height={[DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M]}
+                        width={[ DesktopInputWidth.L, TabletInputWidth.L, MobileInputWidth.L ]}
+                        height={[ DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M ]}
                         color={InputColor.PRIMARY}
                         error={undefined}
                      />
@@ -95,7 +100,7 @@ export default () => {
                            setInputValue('')
                         }}
                      >
-                        <SearchIcon width={20} height={20} fillColor="#000" />
+                        <SearchIcon width={20} height={20} fillColor="#000"/>
                      </button>
                   </form>
                </div>
@@ -119,7 +124,7 @@ export default () => {
                         window.location.href = '/'
                      }}
                   >
-                     <LogoutIcon />
+                     <LogoutIcon/>
                   </div>
                </div>
             </nav>
@@ -131,9 +136,14 @@ export default () => {
                      userTab && '__active'
                   } nav-bar__mobile__elements__element`}
                   data-testid="profile"
-                  onClick={() => selectTab(Tabs.USER_TAB)}
+                  onClick={() => {
+                     if (!userTab) {
+                        selectTab(Tabs.USER_TAB)
+                        dispatch(toggleNotifications())
+                     }
+                  }}
                >
-                  <ActivityIcon />
+                  <ActivityIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
@@ -142,25 +152,33 @@ export default () => {
                   data-testid="activity"
                   onClick={() => selectTab(Tabs.ACTIVITY_TAB)}
                >
-                  <ActivityIcon />
+                  <ActivityIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
                      homepageTab && '__active'
                   } nav-bar__mobile__elements__element`}
                   data-testid="homepage"
-                  onClick={() => selectTab(Tabs.HOMEPAGE_TAB)}
+                  onClick={() => {
+                     selectTab(Tabs.HOMEPAGE_TAB)
+                     dispatch(setModalsOff())
+                  }}
                >
-                  <HomePageIcon />
+                  <HomePageIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
                      exploreTab && '__active'
                   } nav-bar__mobile__elements__element`}
                   data-testid="explore"
-                  onClick={() => selectTab(Tabs.EXPLORER_TAB)}
+                  onClick={() => {
+                     if (!exploreTab) {
+                        selectTab(Tabs.EXPLORER_TAB)
+                        dispatch(toggleExplore())
+                     }
+                  }}
                >
-                  <ExploreIcon />
+                  <ExploreIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
@@ -169,7 +187,7 @@ export default () => {
                   data-testid="settings"
                   onClick={() => selectTab(Tabs.SETTINGS_TAB)}
                >
-                  <SettingsIcon />
+                  <SettingsIcon/>
                </div>
             </div>
          </div>
