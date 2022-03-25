@@ -4,7 +4,6 @@ export default ({ type, onClickFunctions, width, height, text, color }: ButtonPr
    return (
       <button
          onClick={(e) => {
-            e.preventDefault()
             onClickFunctions &&
                onClickFunctions.forEach((fn: () => void) => {
                   fn()
