@@ -124,7 +124,7 @@ $desktopAuthModalHeight: 45rem;
          }
 
          @include respond($phone) {
-            height: 30rem;
+            height: fit-content;
          }
 
          &__title__content {
