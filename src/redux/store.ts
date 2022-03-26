@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import  modals  from './homepageModals'
+import modals from './homepageModals'
 
 import user from './user'
 

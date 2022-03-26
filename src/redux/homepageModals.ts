@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
 export const homepageModalsSlice = createSlice({
    name: 'homepageModals',
    initialState: {
       showNotifications: false,
-      showExplore: false
+      showExplore: false,
    },
    reducers: {
       toggleNotifications: (state) => {
@@ -19,8 +18,8 @@ export const homepageModalsSlice = createSlice({
       setModalsOff: (state) => {
          state.showNotifications = false
          state.showExplore = false
-      }
-   }
+      },
+   },
 })
 
 export const { toggleExplore, toggleNotifications, setModalsOff } = homepageModalsSlice.actions
