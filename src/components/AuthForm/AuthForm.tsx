@@ -225,6 +225,7 @@ export default () => {
                      <Button
                         color={ButtonColor.POSITIVE}
                         type={'submit'}
+                        reactive={true}
                         text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
                         width={[DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M]}
                         height={[DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.L]}

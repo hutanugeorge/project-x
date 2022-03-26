@@ -154,6 +154,8 @@
 
 .input-mobile-height-small {
    @include respond($phone) {
+      border-radius: 1rem !important;
+      box-shadow: 0 0.1rem 0.3rem rgba($color-black, 0.1) !important;
       height: 1rem;
       font-size: 1rem;
    }
@@ -167,6 +169,8 @@
 
 .input-mobile-height-medium {
    @include respond($phone) {
+      border-radius: 1rem !important;
+      box-shadow: 0 0.1rem 0.3rem rgba($color-black, 0.1) !important;
       height: 2rem;
       font-size: 1.2rem;
    }
@@ -180,6 +184,8 @@
 
 .input-mobile-height-large {
    @include respond($phone) {
+      border-radius: 1rem !important;
+      box-shadow: 0 0.1rem 0.3rem rgba($color-black, 0.1) !important;
       height: 3rem;
       font-size: 1.4rem;
    }
@@ -193,6 +199,8 @@
 
 .input-mobile-height-extra-large {
    @include respond($phone) {
+      border-radius: 1rem !important;
+      box-shadow: 0 0.1rem 0.3rem rgba($color-black, 0.1) !important;
       height: 4rem;
       font-size: 1.6rem;
    }
@@ -210,12 +218,17 @@
 
 .input-secondary-color {
    background-color: rgba($color-grey-light, 0.5);
+   color: black !important;
+
+   &::placeholder {
+      color: rgba(black, 0.4) !important;
+   }
 }
 
 .input {
    border: none;
    border-radius: 0.7rem;
-   box-shadow: 0 0.5rem 2rem rgba($color-black, 0.1);
+   box-shadow: 0 0.1rem 0.3rem rgba($color-black, 0.4);
    outline: none;
    text-align: center;
    color: white;

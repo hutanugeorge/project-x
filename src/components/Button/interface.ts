@@ -6,9 +6,12 @@ export interface ButtonProps {
    text?: string
    color?: ButtonColor
    preventDefault?: boolean
+   children?: JSX.Element
+   reactive?: Boolean
 }
 
 export enum DesktopButtonWidth {
+   FIT = 'button-desktop-width-fit-content',
    S = 'button-desktop-width-small',
    M = 'button-desktop-width-medium',
    L = 'button-desktop-width-large',
@@ -16,6 +19,7 @@ export enum DesktopButtonWidth {
 }
 
 export enum TabletButtonWidth {
+   FIT = 'button-tablet-width-fit-content',
    S = 'button-tablet-width-small',
    M = 'button-tablet-width-medium',
    L = 'button-tablet-width-large',
@@ -23,6 +27,7 @@ export enum TabletButtonWidth {
 }
 
 export enum MobileButtonWidth {
+   FIT = 'button-mobile-width-fit-content',
    S = 'button-mobile-width-small',
    M = 'button-mobile-width-medium',
    L = 'button-mobile-width-large',
@@ -30,6 +35,7 @@ export enum MobileButtonWidth {
 }
 
 export enum DesktopButtonHeight {
+   FIT = 'button-desktop-height-fit-content',
    S = 'button-desktop-height-small',
    M = 'button-desktop-height-medium',
    L = 'button-desktop-height-large',
@@ -37,6 +43,7 @@ export enum DesktopButtonHeight {
 }
 
 export enum TabletButtonHeight {
+   FIT = 'button-tablet-height-fit-content',
    S = 'button-tablet-height-small',
    M = 'button-tablet-height-medium',
    L = 'button-tablet-height-large',
@@ -44,6 +51,7 @@ export enum TabletButtonHeight {
 }
 
 export enum MobileButtonHeight {
+   FIT = 'button-mobile-height-fit-content',
    S = 'button-mobile-height-small',
    M = 'button-mobile-height-medium',
    L = 'button-mobile-height-large',
@@ -51,7 +59,8 @@ export enum MobileButtonHeight {
 }
 
 export enum ButtonColor {
-   PRIMARY = 'button-primary-color',
-   SECONDARY = 'button-secondary-color',
-   POSITIVE = 'button-positive-color',
+   PRIMARY = 'button-color-primary',
+   SECONDARY = 'button-color-secondary',
+   POSITIVE = 'button-color-positive',
+   TRANSPARENT = 'button-color-transparent',
 }

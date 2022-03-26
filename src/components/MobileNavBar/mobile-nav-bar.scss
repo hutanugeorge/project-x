@@ -4,9 +4,9 @@
 .nav-bar__mobile {
    background: white;
    display: none;
-   z-index: 999;
 
    @include respond($tablet-portrait) {
+      z-index: 999;
       display: block;
       position: fixed;
       left: 0;
