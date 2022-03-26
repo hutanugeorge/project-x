@@ -5,9 +5,10 @@ import NavBar from './components/NavBar'
 import HomePage from './pages/HomePage'
 
 export default () => {
+   const token = localStorage.getItem('token')
    return (
       <>
-         <NavBar />
+         {window.location.href !== 'http://localhost:3000/' && token && <NavBar />}
          <Router>
             <Routes>
                <Route element={<AuthForm />} path={'/'} />

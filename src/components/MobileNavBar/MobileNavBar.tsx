@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 
@@ -54,7 +54,7 @@ export default () => {
       }
    }
 
-   return window.location.href !== 'http://localhost:3000/' ? (
+   return (
       <>
          <MobileUpperNavigation />
          <div className="nav-bar__mobile">
@@ -120,7 +120,5 @@ export default () => {
             </div>
          </div>
       </>
-   ) : (
-      <></>
    )
 }

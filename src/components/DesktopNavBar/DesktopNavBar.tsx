@@ -29,7 +29,7 @@ export default () => {
 
    const user = useSelector((state: RootState) => state.user)
 
-   return window.location.href !== 'http://localhost:3000/' ? (
+   return (
       <div className="nav-bar__wrapper" data-testid="nav-bar">
          <nav className="nav-bar">
             <div className="nav-bar__element">
@@ -89,7 +89,5 @@ export default () => {
             </div>
          </nav>
       </div>
-   ) : (
-      <></>
    )
 }
