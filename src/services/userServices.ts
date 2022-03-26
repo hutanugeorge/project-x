@@ -1,19 +1,9 @@
 import axios, { AxiosResponse } from 'axios'
 import jwt_decode from 'jwt-decode'
+
 import getHeaders from '../utils/getHeaders'
+import { LoginUserData, SignupUserData } from './interfaces'
 
-interface LoginUserData {
-   email: string
-   password: string
-}
-
-interface SignupUserData {
-   firstName: string
-   lastName: string
-   email: string
-   password: string
-   confirmPassword: string
-}
 
 export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, boolean]> => {
    const { email, password } = data
