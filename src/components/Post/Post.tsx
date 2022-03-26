@@ -21,6 +21,19 @@ export default () => {
             </div>
          </div>
          <div className="post__content">
+            <p className="post__content__text">
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi
+               minima officiis provident recusandae voluptatibus. Adipisci amet blanditiis
+               consequuntur, corporis dicta ducimus earum error fuga, ipsa iste itaque laudantium
+               minus numquam officiis quaerat quibusdam rem, repellat repellendus sapiente sed unde
+               voluptas voluptatibus! Adipisci animi architecto aut commodi consequatur corporis
+               cupiditate delectus deserunt dignissimos dolores eius error exercitationem facere
+               fuga illum incidunt inventore iure labore, minima mollitia nobis nostrum, numquam
+               optio perspiciatis quae quaerat quia quibusdam quis reprehenderit sapiente soluta
+               suscipit temporibus unde. At consequatur deserunt dicta sunt? Adipisci architecto
+               dignissimos dolore error ex iure maiores necessitatibus neque temporibus
+               voluptatibus.
+            </p>
             <img
                src="https://alexanderklebe.com/wp-content/uploads/Headshot_photographer_actors_Berlin_Joerg.jpg"
                alt="photo"

@@ -26,7 +26,7 @@ export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, b
          },
          { headers: getHeaders() },
       )
-      localStorage.setItem('token', response.data.token)
+      response.status === 200 && localStorage.setItem('token', response.data.token)
       return [response, false]
    } catch (error: any) {
       return [error.response, true]
@@ -47,7 +47,7 @@ export const signupUser = async (data: SignupUserData): Promise<[AxiosResponse, 
          },
          { headers: getHeaders() },
       )
-      localStorage.setItem('token', response.data.token)
+      response.status === 200 && localStorage.setItem('token', response.data.token)
       return [response, false]
    } catch (error: any) {
       return [error.response, true]
