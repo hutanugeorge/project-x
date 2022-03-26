@@ -227,7 +227,7 @@ export default () => {
                         type={'submit'}
                         text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
                         width={[DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M]}
-                        height={[DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.M]}
+                        height={[DesktopButtonHeight.L, TabletButtonHeight.M, MobileButtonHeight.L]}
                      />
                   </div>
                </div>
