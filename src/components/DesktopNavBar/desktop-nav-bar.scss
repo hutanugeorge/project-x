@@ -1,0 +1,105 @@
+@import '../sharedStyles/utils/mixins';
+@import '../sharedStyles/utils/variables';
+
+.nav-bar {
+   display: flex;
+   max-width: 160rem;
+   min-width: fit-content;
+   margin: 0 auto;
+   justify-content: space-around;
+   align-items: center;
+   height: 100%;
+
+   &__wrapper {
+      position: fixed;
+      width: 100vw;
+      height: 5rem;
+      padding: 1rem 0;
+      background-color: white;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+
+      @include respond($tablet-portrait) {
+         display: none;
+      }
+   }
+
+   &__element {
+      display: flex;
+      gap: 2rem;
+      height: 100%;
+      align-items: center;
+
+      &__svg {
+         height: 100%;
+         @include displayFlexCenterCenter;
+         cursor: pointer;
+
+         &:hover svg {
+            color: $color-negative;
+         }
+      }
+
+      &__username p {
+         font-size: 1.2rem;
+         font-weight: 500;
+      }
+
+      &__person__photo {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 3rem;
+         height: 3rem;
+         clip-path: circle();
+
+         & img {
+            height: 100%;
+         }
+      }
+
+      &__title {
+         font-size: 1.5rem;
+      }
+
+      &__form {
+         height: 100%;
+         display: flex;
+         align-items: center;
+         gap: 1rem;
+
+         &__input {
+            width: 30rem;
+            height: 3rem;
+            border: none;
+            border-radius: 0.7rem;
+            background-color: $color-grey-light;
+            text-align: center;
+
+            &::placeholder {
+               text-align: center;
+            }
+
+            &:focus {
+               outline: none;
+            }
+         }
+
+         &__button {
+            @include displayFlexCenterCenter;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 3rem;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+
+            &:hover {
+               background-color: $color-grey-light;
+            }
+         }
+      }
+   }
+}
