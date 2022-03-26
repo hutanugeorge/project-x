@@ -1,9 +1,16 @@
+@import '../../components/sharedStyles/utils/mixins';
+@import '../../components/sharedStyles/utils/variables';
+
 .home-page {
    width: 100vw;
-   height: 100vh;
+   height: fit-content;
    display: flex;
    gap: 2rem;
    padding-top: 3rem;
    justify-content: center;
-   margin-top: 4rem;
+
+   @include respond($tablet-portrait) {
+      margin-top: 2rem;
+      margin-bottom: 7rem;
+   }
 }

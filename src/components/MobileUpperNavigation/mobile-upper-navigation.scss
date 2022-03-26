@@ -1,0 +1,26 @@
+.upper-mobile-navigation {
+   display: none;
+
+   @include respond($tablet-portrait) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: white;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 1000;
+   }
+
+   &__title {
+      font-size: 1.2rem;
+   }
+
+   &__input-group {
+      display: flex;
+      gap: 1rem;
+   }
+}

@@ -3,6 +3,16 @@ import { useSelector } from 'react-redux'
 import LogoutIcon from '../../icons/LogoutIcon'
 import SearchIcon from '../../icons/SearchIcon'
 import { RootState } from '../../redux/store'
+import Button from '../Button'
+import {
+   ButtonColor,
+   DesktopButtonHeight,
+   DesktopButtonWidth,
+   MobileButtonHeight,
+   MobileButtonWidth,
+   TabletButtonHeight,
+   TabletButtonWidth,
+} from '../Button/interface'
 import Input from '../Input'
 import {
    DesktopInputHeight,
@@ -37,18 +47,21 @@ export default () => {
                      name="SearchInput"
                      width={[DesktopInputWidth.L, TabletInputWidth.L, MobileInputWidth.L]}
                      height={[DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M]}
-                     color={InputColor.PRIMARY}
+                     color={InputColor.SECONDARY}
                      error={undefined}
                   />
-                  <button
-                     className="nav-bar__element__form__button"
-                     onClick={(e) => {
-                        e.preventDefault()
-                        setInputValue('')
-                     }}
+                  <Button
+                     type={'submit'}
+                     color={ButtonColor.TRANSPARENT}
+                     width={[DesktopButtonWidth.FIT, TabletButtonWidth.FIT, MobileButtonWidth.FIT]}
+                     height={[
+                        DesktopButtonHeight.FIT,
+                        TabletButtonHeight.FIT,
+                        MobileButtonHeight.FIT,
+                     ]}
                   >
-                     <SearchIcon width={20} height={20} fillColor="#000" />
-                  </button>
+                     <SearchIcon width={20} height={20} fillColor={'#c4c4c4'} />
+                  </Button>
                </form>
             </div>
             <div className="nav-bar__element">
