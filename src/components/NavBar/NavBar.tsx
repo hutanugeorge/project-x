@@ -18,22 +18,20 @@ import {
    MobileInputHeight,
    MobileInputWidth,
    TabletInputHeight,
-   TabletInputWidth
+   TabletInputWidth,
 } from '../Input/interface'
 
-
 export default () => {
-
    const dispatch = useDispatch()
 
    const user = useSelector((state: RootState) => state.user)
 
-   const [ inputValue, setInputValue ] = useState<string>('')
-   const [ userTab, setUserTab ] = useState<boolean>(false)
-   const [ activityTab, setActivityTab ] = useState<boolean>(false)
-   const [ homepageTab, setHomepageTab ] = useState<boolean>(true)
-   const [ exploreTab, setExploreTab ] = useState<boolean>(false)
-   const [ settingsTab, setSettingsTab ] = useState<boolean>(false)
+   const [inputValue, setInputValue] = useState<string>('')
+   const [userTab, setUserTab] = useState<boolean>(false)
+   const [activityTab, setActivityTab] = useState<boolean>(false)
+   const [homepageTab, setHomepageTab] = useState<boolean>(true)
+   const [exploreTab, setExploreTab] = useState<boolean>(false)
+   const [settingsTab, setSettingsTab] = useState<boolean>(false)
 
    enum Tabs {
       USER_TAB = 'USER_TAB',
@@ -85,11 +83,11 @@ export default () => {
                      <Input
                         type="text"
                         value={inputValue}
-                        onChange={[ setInputValue ]}
+                        onChange={[setInputValue]}
                         placeholder="Search anything..."
                         name="SearchInput"
-                        width={[ DesktopInputWidth.L, TabletInputWidth.L, MobileInputWidth.L ]}
-                        height={[ DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M ]}
+                        width={[DesktopInputWidth.L, TabletInputWidth.L, MobileInputWidth.L]}
+                        height={[DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M]}
                         color={InputColor.PRIMARY}
                         error={undefined}
                      />
@@ -100,7 +98,7 @@ export default () => {
                            setInputValue('')
                         }}
                      >
-                        <SearchIcon width={20} height={20} fillColor="#000"/>
+                        <SearchIcon width={20} height={20} fillColor="#000" />
                      </button>
                   </form>
                </div>
@@ -124,7 +122,7 @@ export default () => {
                         window.location.href = '/'
                      }}
                   >
-                     <LogoutIcon/>
+                     <LogoutIcon />
                   </div>
                </div>
             </nav>
@@ -143,7 +141,7 @@ export default () => {
                      }
                   }}
                >
-                  <ActivityIcon/>
+                  <ActivityIcon />
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
@@ -152,7 +150,7 @@ export default () => {
                   data-testid="activity"
                   onClick={() => selectTab(Tabs.ACTIVITY_TAB)}
                >
-                  <ActivityIcon/>
+                  <ActivityIcon />
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
@@ -164,7 +162,7 @@ export default () => {
                      dispatch(setModalsOff())
                   }}
                >
-                  <HomePageIcon/>
+                  <HomePageIcon />
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
@@ -178,7 +176,7 @@ export default () => {
                      }
                   }}
                >
-                  <ExploreIcon/>
+                  <ExploreIcon />
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
@@ -187,7 +185,7 @@ export default () => {
                   data-testid="settings"
                   onClick={() => selectTab(Tabs.SETTINGS_TAB)}
                >
-                  <SettingsIcon/>
+                  <SettingsIcon />
                </div>
             </div>
          </div>

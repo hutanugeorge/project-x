@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { signInUser, signupUser } from '../../services/userServices'
 import Button from '../Button'
 import {
+   ButtonColor,
    DesktopButtonHeight,
    DesktopButtonWidth,
    MobileButtonHeight,
@@ -222,6 +223,7 @@ export default () => {
                   </div>
                   <div data-testid="form-button">
                      <Button
+                        color={ButtonColor.POSITIVE}
                         type={'submit'}
                         text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
                         width={[DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M]}

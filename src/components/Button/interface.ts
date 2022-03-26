@@ -5,6 +5,7 @@ export interface ButtonProps {
    height: [DesktopButtonHeight, TabletButtonHeight, MobileButtonHeight]
    text?: string
    color?: ButtonColor
+   preventDefault?: boolean
 }
 
 export enum DesktopButtonWidth {
