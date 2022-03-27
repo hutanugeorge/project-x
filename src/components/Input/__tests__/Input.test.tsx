@@ -51,9 +51,12 @@ describe('Input component testing', () => {
       expect(input.getAttribute('placeholder')).toBe('Last Name')
       expect(input.className).toContain('input__error')
       expect(input.getAttribute('value')).toBe('lastName')
-      expect(input.className).toContain('input-desktop-width-small input-tablet-width-small input-mobile-width-medium')
-      expect(input.className).toContain('input-desktop-height-medium input-tablet-height-medium' +
-         ' input-mobile-height-large')
+      expect(input.className).toContain(
+         'input-desktop-width-small input-tablet-width-small input-mobile-width-medium',
+      )
+      expect(input.className).toContain(
+         'input-desktop-height-medium input-tablet-height-medium' + ' input-mobile-height-large',
+      )
       expect(input.className).toContain('input-color-primary')
    })
 })
