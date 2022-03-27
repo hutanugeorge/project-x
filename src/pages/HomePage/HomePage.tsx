@@ -26,6 +26,7 @@ export default () => {
          <div className="home-page">
             <DesktopNotifications />
             <MainSection />
+            <DesktopNotifications />
          </div>
       </>
    )

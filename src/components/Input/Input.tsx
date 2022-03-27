@@ -25,8 +25,7 @@ export default ({
                   fn()
                })
          }}
-         className={`input ${width[0]} ${width[1]} ${width[2]} ${height[0]} ${height[1]} 
-         ${height[2]} ${color} ${error ? 'input__error' : ''}`}
+         className={`input ${width[0]} ${width[1]} ${width[2]} ${height[0]} ${height[1]} ${height[2]} ${color} ${error ? 'input__error' : ''}`}
       />
    )
 }

@@ -3,14 +3,14 @@
 
 .home-page {
    width: 100vw;
-   height: fit-content;
+   height: 100vh;
    display: flex;
    gap: 2rem;
-   padding-top: 3rem;
+   padding-top: 7rem;
    justify-content: center;
-   margin-top: 4rem;
 
    @include respond($tablet-portrait) {
+      height: fit-content;
       margin-top: 2rem;
       margin-bottom: 7rem;
    }
