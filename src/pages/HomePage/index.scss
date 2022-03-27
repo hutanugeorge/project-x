@@ -6,12 +6,13 @@
    height: 100vh;
    display: flex;
    gap: 2rem;
-   padding-top: 7rem;
+   padding-top: 5rem;
    justify-content: center;
 
    @include respond($tablet-portrait) {
       height: fit-content;
       margin-top: 2rem;
       margin-bottom: 7rem;
+      padding-top: 2rem;
    }
 }

@@ -2,29 +2,29 @@
 
 @mixin respond($size, $length: 0) {
    @if $size == $mini-phone {
-      @media (max-width: $mini-phone) {
+      @media (any-hover: none), (max-width: $mini-phone) {
          @content;
       }
    }
    @if $size == $phone {
-      @media (max-width: $phone) {
+      @media (any-hover: none), (max-width: $phone) {
          @content;
       }
    }
    @if $size == $phone {
       @if $length == 0 {
-         @media (max-width: $phone) {
+         @media (any-hover: none), (max-width: $phone) {
             @content;
          }
       }
    }
    @if $size == $tablet-portrait {
-      @media (max-width: $tablet-portrait) {
+      @media (any-hover: none), (max-width: $tablet-portrait) {
          @content;
       }
    }
    @if $size == $tablet-landscape {
-      @media (max-width: $tablet-landscape) {
+      @media (any-hover: none), (max-width: $tablet-landscape) {
          @content;
       }
    }
