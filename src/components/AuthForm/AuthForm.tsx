@@ -2,8 +2,6 @@ import { AxiosResponse } from 'axios'
 import isJwtTokenExpired from 'jwt-check-expiry'
 import { useEffect, useState } from 'react'
 
-import { useNavigate } from 'react-router-dom'
-
 import { signInUser, signupUser } from '../../services/userServices'
 import Button from '../Button'
 import {
@@ -47,11 +45,10 @@ export default () => {
    const [passwordError, setPasswordError] = useState<string | undefined>()
    const [confirmPasswordError, setConfirmPasswordError] = useState<string | undefined>()
 
-   const navigate = useNavigate()
-
    useEffect(() => {
       const token = localStorage.getItem('token')
-      token && !isJwtTokenExpired(token!) && navigate('/homepage')
+      if (token && !isJwtTokenExpired(token!))
+         window.location.href = 'http://localhost:3000/homepage'
    }, [])
 
    const setInputsErrors = (authView: AuthView, response: AxiosResponse) => {
@@ -95,7 +92,8 @@ export default () => {
                         email,
                         password,
                      })
-                     !error && response?.status === 200 && navigate('/homepage')
+                     if (!error && response?.status === 200)
+                        window.location.href = 'http://localhost:3000/'
                      error && response?.status === 403 && setInputsErrors(AuthView.LOGIN, response)
                   } else if (authView === AuthView.SIGNUP) {
                      const [response, error] = await signupUser({
@@ -105,7 +103,8 @@ export default () => {
                         password,
                         confirmPassword,
                      })
-                     !error && response?.status === 200 && navigate('/homepage')
+                     if (!error && response?.status === 200)
+                        window.location.href = 'http://localhost:3000/homepage'
                      error && response?.status === 403 && setInputsErrors(AuthView.SIGNUP, response)
                   }
                }}

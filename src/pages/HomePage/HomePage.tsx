@@ -13,8 +13,8 @@ export default () => {
 
    useEffect(() => {
       const token = localStorage.getItem('token')
-      if (!token) window.location.pathname = ('/')
-      else if (token && isJwtTokenExpired(token)) window.location.pathname = ('/')
+      if (!token) window.location.href = 'http://localhost:3000/'
+      else if (token && isJwtTokenExpired(token)) window.location.href = 'http://localhost:3000/'
       ;(async () => {
          const [response, error] = await getUser()
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
@@ -26,7 +26,6 @@ export default () => {
          <div className="home-page">
             <DesktopNotifications />
             <MainSection />
-            <DesktopNotifications />
          </div>
       </>
    )

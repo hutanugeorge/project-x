@@ -22,7 +22,6 @@ import {
    TabletInputWidth,
 } from '../Input/interface'
 
-
 export default () => {
    const [inputValue, setInputValue] = useState<string>('')
 
@@ -41,9 +40,13 @@ export default () => {
                value={inputValue}
                error={undefined}
             />
-            <Button type="submit" color={ButtonColor.TRANSPARENT}
-                    width={[DesktopButtonWidth.FIT, TabletButtonWidth.FIT, MobileButtonWidth.FIT]}
-                    height={[DesktopButtonHeight.M, TabletButtonHeight.M, MobileButtonHeight.M]}>
+            <Button
+               type="submit"
+               color={ButtonColor.TRANSPARENT}
+               preventDefault={true}
+               width={[DesktopButtonWidth.FIT, TabletButtonWidth.FIT, MobileButtonWidth.FIT]}
+               height={[DesktopButtonHeight.M, TabletButtonHeight.M, MobileButtonHeight.M]}
+            >
                <SearchIcon />
             </Button>
          </form>

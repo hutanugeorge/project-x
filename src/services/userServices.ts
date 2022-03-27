@@ -1,19 +1,9 @@
 import axios, { AxiosResponse } from 'axios'
 import jwt_decode from 'jwt-decode'
+
 import getHeaders from '../utils/getHeaders'
+import { LoginUserData, SignupUserData } from './interfaces'
 
-interface LoginUserData {
-   email: string
-   password: string
-}
-
-interface SignupUserData {
-   firstName: string
-   lastName: string
-   email: string
-   password: string
-   confirmPassword: string
-}
 
 export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, boolean]> => {
    const { email, password } = data
@@ -26,7 +16,7 @@ export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, b
          },
          { headers: getHeaders() },
       )
-      localStorage.setItem('token', response.data.token)
+      response.status === 200 && localStorage.setItem('token', response.data.token)
       return [response, false]
    } catch (error: any) {
       return [error.response, true]
@@ -47,7 +37,7 @@ export const signupUser = async (data: SignupUserData): Promise<[AxiosResponse, 
          },
          { headers: getHeaders() },
       )
-      localStorage.setItem('token', response.data.token)
+      response.status === 200 && localStorage.setItem('token', response.data.token)
       return [response, false]
    } catch (error: any) {
       return [error.response, true]

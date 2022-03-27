@@ -3,20 +3,21 @@
 @import './base';
 @import './utils';
 
-@import '../NavBar/nav-bar';
-@import '../AuthForm/auth-form';
-@import '../MainSection/main-section';
-@import '../../pages/HomePage/home-page';
-@import '../ActivityActions/activity-action';
-@import '../Post/post';
-@import '../Input/input';
-@import '../Label/label';
-@import '../InputLabeled/input-labeled';
-@import '../Button/button';
-@import '../SideMenu/side-menu';
-@import '../DesktopNavBar/desktop-nav-bar';
-@import '../MobileNavBar/mobile-nav-bar';
-@import '../MobileUpperNavigation/mobile-upper-navigation';
+@import '../../pages/HomePage';
+
+@import '../NavBar';
+@import '../AuthForm';
+@import '../MainSection';
+@import '../Post';
+@import '../Input';
+@import '../Label';
+@import '../InputLabeled';
+@import '../Button';
+@import '../SideMenu';
+@import '../DesktopNavBar';
+@import '../MobileNavBar';
+@import '../MobileUpperNavigation';
+@import '../Notification';
 
 *,
 html,

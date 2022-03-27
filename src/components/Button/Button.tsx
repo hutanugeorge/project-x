@@ -9,10 +9,12 @@ export default ({
    color,
    children,
    reactive,
+   preventDefault,
 }: ButtonProps) => {
    return (
       <button
          onClick={(e) => {
+            preventDefault && e.preventDefault()
             onClickFunctions &&
                onClickFunctions.forEach((fn: () => void) => {
                   fn()
