@@ -15,6 +15,10 @@
    box-shadow: 0.3rem 0.4rem 1rem rgba($color-black, 0.1);
    margin: 1rem;
 
+   &__mobile {
+      background-color: white;
+   }
+
    &__header {
       width: 100%;
       height: fit-content;

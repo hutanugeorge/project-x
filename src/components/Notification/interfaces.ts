@@ -3,6 +3,7 @@ export interface NotificationProps {
    username: string
    type: NotificationTypes
    date: string
+   mobileView?: boolean
 }
 
 export enum NotificationTypes {
