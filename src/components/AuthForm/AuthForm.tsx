@@ -45,8 +45,9 @@ export default () => {
    const [passwordError, setPasswordError] = useState<string | undefined>()
    const [confirmPasswordError, setConfirmPasswordError] = useState<string | undefined>()
 
+   const token = localStorage.getItem('token')
+
    useEffect(() => {
-      const token = localStorage.getItem('token')
       if (token && !isJwtTokenExpired(token!))
          window.location.href = 'http://localhost:3000/homepage'
    }, [])
@@ -70,7 +71,7 @@ export default () => {
    }
 
    return (
-      <div className="auth__wrapper">
+      !(token && !isJwtTokenExpired(token!)) && <div className="auth__wrapper">
          <div data-testid="auth" className="auth">
             <div className="auth__title-container">
                <div className="auth__title-container__title">
