@@ -13,6 +13,7 @@ export interface InputProps {
 }
 
 export enum DesktopInputWidth {
+   FIT = 'input-desktop-width-fit-content',
    S = 'input-desktop-width-small',
    M = 'input-desktop-width-medium',
    L = 'input-desktop-width-large',
@@ -20,6 +21,7 @@ export enum DesktopInputWidth {
 }
 
 export enum TabletInputWidth {
+   FIT = 'input-tablet-width-fit-content',
    S = 'input-tablet-width-small',
    M = 'input-tablet-width-medium',
    L = 'input-tablet-width-large',
@@ -27,6 +29,7 @@ export enum TabletInputWidth {
 }
 
 export enum MobileInputWidth {
+   FIT = 'input-mobile-width-fit-content',
    S = 'input-mobile-width-small',
    M = 'input-mobile-width-medium',
    L = 'input-mobile-width-large',
@@ -34,6 +37,7 @@ export enum MobileInputWidth {
 }
 
 export enum DesktopInputHeight {
+   FIT = 'input-desktop-height-fit-content',
    S = 'input-desktop-height-small',
    M = 'input-desktop-height-medium',
    L = 'input-desktop-height-large',
@@ -41,6 +45,7 @@ export enum DesktopInputHeight {
 }
 
 export enum TabletInputHeight {
+   FIT = 'input-tablet-height-fit-content',
    S = 'input-tablet-height-small',
    M = 'input-tablet-height-medium',
    L = 'input-tablet-height-large',
@@ -48,6 +53,7 @@ export enum TabletInputHeight {
 }
 
 export enum MobileInputHeight {
+   FIT = 'input-mobile-height-fit-content',
    S = 'input-mobile-height-small',
    M = 'input-mobile-height-medium',
    L = 'input-mobile-height-large',
@@ -55,6 +61,8 @@ export enum MobileInputHeight {
 }
 
 export enum InputColor {
-   PRIMARY = 'input-primary-color',
-   SECONDARY = 'input-secondary-color',
+   PRIMARY = 'input-color-primary',
+   SECONDARY = 'input-color-secondary',
+   POSITIVE = 'input-color-positive',
+   TRANSPARENT = 'input-color-transparent',
 }
