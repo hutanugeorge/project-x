@@ -7,4 +7,5 @@ export interface CommentProps {
    liked?: boolean
    children?: JSX.Element
    noReplies: number
+   isReply?: boolean
 }

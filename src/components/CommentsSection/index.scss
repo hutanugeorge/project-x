@@ -10,13 +10,24 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
     padding-bottom: 1rem;
 
-    & img {
-      width: 3.5rem;
+    &__form {
+      width: fit-content;
+    }
+
+    &__user-photo {
+      @include displayFlexCenterCenter;
       height: 3.5rem;
+      width: 3.5rem;
       clip-path: circle();
       cursor: pointer;
+
+      & img {
+          height: 100%;
+        }
     }
+
   }
 }
