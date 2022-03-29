@@ -1,4 +1,4 @@
-import { InputProps } from './interface'
+import { InputBorderRadius, InputProps } from './interface'
 
 export default ({
    name,
@@ -10,7 +10,9 @@ export default ({
    color,
    value,
    error,
+   borderRadius = InputBorderRadius.STANDARD
 }: InputProps) => {
+   console.log(width, height)
    return (
       <input
          data-testid="input"
@@ -25,9 +27,8 @@ export default ({
                   fn()
                })
          }}
-         className={`input ${width[0]} ${width[1]} ${width[2]} ${height[0]} ${height[1]} ${
-            height[2]
-         } ${color} ${error ? 'input__error' : ''}`}
+         className={`input ${width[0]} ${width[1]} ${width[2]} ${height[0]} ${height[1]} 
+         ${height[2]} ${borderRadius} ${color} ${error ? 'input__error' : ''}`}
       />
    )
 }

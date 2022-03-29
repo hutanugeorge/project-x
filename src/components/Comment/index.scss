@@ -1,0 +1,148 @@
+@import '../sharedStyles/utils';
+
+
+.comment {
+  padding: 1rem 1rem 0 2rem ;
+  display: flex;
+  background-color: $color-grey-light;
+  border-radius: 2rem;
+
+  &__wrap {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  &__user-photo {
+    @include displayFlexCenterCenter;
+    height: 3.5rem;
+    width: 3.5rem;
+    clip-path: circle();
+    cursor: pointer;
+
+    & img {
+      height: 100%;
+    }
+  }
+
+  &__elements {
+
+    &__content {
+      width: fit-content;
+      max-width: 100%;
+      border-radius: 1rem;
+
+      &__username {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin: 0 .5rem 0 .5rem;
+      }
+
+      &__comment {
+        font-size: 1.2rem;
+        margin: 0 1rem 0 1rem;
+
+      }
+
+      &__no-likes {
+        display: none;
+
+        &__active {
+          display: block;
+        }
+
+        & svg {
+          stroke-opacity: 0;
+        }
+      }
+    }
+
+    &__actions {
+      display: flex;
+      gap: 1.5rem;
+      margin-left: 1rem;
+
+      &__action {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        &__like {
+          display: flex;
+          align-items: center;
+          height: 100%;
+
+          &__active {
+            svg {
+              fill: red;
+              stroke-opacity: 0;
+            }
+          }
+
+          &:hover {
+            & svg {
+              cursor: pointer;
+              fill: rgba(red, 0.7);
+              stroke-opacity: 0;
+            }
+          }
+        }
+
+        &__comments {
+          display: flex;
+          align-items: center;
+          height: 100%;
+
+          & svg {
+            & .point {
+              stroke: black !important;
+              stroke-width: 1;
+            }
+          }
+
+          &:hover {
+            & svg {
+              & .outline {
+                cursor: pointer;
+                fill: rgba(blue, 0.6);
+                stroke-opacity: 0;
+              }
+
+              & .point {
+                stroke: white !important;
+              }
+            }
+          }
+        }
+
+        &__count {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          font-size: 1.1rem;
+        }
+      }
+
+      &__comment {
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+
+      &__date {
+        color: rgba(grey, 0.3);
+      }
+    }
+  }
+
+  &__replies {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

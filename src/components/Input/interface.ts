@@ -10,6 +10,12 @@ export interface InputProps {
    color: InputColor
    value: string
    error: string | undefined
+   borderRadius?: InputBorderRadius
+}
+
+export enum InputBorderRadius {
+   STANDARD = "input-border-radius-standard",
+   FULL = "input-border-radius-full"
 }
 
 export enum DesktopInputWidth {
