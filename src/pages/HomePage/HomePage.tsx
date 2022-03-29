@@ -1,15 +1,19 @@
 import { useEffect } from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import isJwtTokenExpired from 'jwt-check-expiry'
 
 import DesktopNotifications from '../../components/DesktopNotifications'
 import MainSection from '../../components/MainSection/MainSection'
+import MobileNotifications from '../../components/MobileNotifications'
+import { RootState } from '../../redux/store'
 import { loadUser } from '../../redux/user'
 import { getUser } from '../../services/userServices'
 
 export default () => {
    const dispatch = useDispatch()
+
+   const { showNotifications, showExplore } = useSelector((state:RootState) => state.modals)
 
    useEffect(() => {
       const token = localStorage.getItem('token')
@@ -25,7 +29,8 @@ export default () => {
       <>
          <div className="home-page">
             <DesktopNotifications />
-            <MainSection />
+            {showNotifications && <MobileNotifications />}
+            {!showNotifications && !showExplore && <MainSection />}
             <DesktopNotifications />
          </div>
       </>

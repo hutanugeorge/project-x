@@ -3,9 +3,9 @@ import MobileNavBar from '../MobileNavBar'
 
 export default () => {
    return (
-      <>
+      <div className="nav-bar">
          <DesktopNavBar />
          <MobileNavBar />
-      </>
+      </div>
    )
 }

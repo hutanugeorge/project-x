@@ -2,6 +2,7 @@ import Post from '../Post'
 
 
 export default () => {
+
    return (
       <div className='main-section'>
          <Post userID={'4234535246'} postID={'654636546436'} username={'Costica Titi Bernard'}
