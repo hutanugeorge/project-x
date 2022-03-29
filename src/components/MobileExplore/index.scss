@@ -1,4 +1,4 @@
-.mobile-notifications {
+.mobile-explore {
    position: absolute;
    top: 0;
    bottom: 0;
@@ -9,19 +9,17 @@
    align-content: center;
    flex-direction: column;
    overflow-y: scroll;
+   gap: 2rem;
 
    &__header {
       &__title {
-         font-size: 1.8rem;
-         margin-left: 10%;
-         font-weight: 400;
-         padding: 2rem;
+         font-size: 1.5rem;
+         margin-left: 1rem;
       }
    }
 
    &__content {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
    }
 }

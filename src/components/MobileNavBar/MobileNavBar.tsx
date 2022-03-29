@@ -10,15 +10,14 @@ import ExploreIcon from '../../icons/ExploreIcon'
 import HomePageIcon from '../../icons/HomePageIcon'
 import SettingsIcon from '../../icons/SettingsIcon'
 
-
 export default () => {
    const dispatch = useDispatch()
 
-   const [ userTab, setUserTab ] = useState<boolean>(false)
-   const [ activityTab, setActivityTab ] = useState<boolean>(false)
-   const [ homepageTab, setHomepageTab ] = useState<boolean>(true)
-   const [ exploreTab, setExploreTab ] = useState<boolean>(false)
-   const [ settingsTab, setSettingsTab ] = useState<boolean>(false)
+   const [userTab, setUserTab] = useState<boolean>(false)
+   const [activityTab, setActivityTab] = useState<boolean>(false)
+   const [homepageTab, setHomepageTab] = useState<boolean>(true)
+   const [exploreTab, setExploreTab] = useState<boolean>(false)
+   const [settingsTab, setSettingsTab] = useState<boolean>(false)
 
    enum Tabs {
       USER_TAB = 'USER_TAB',
@@ -59,13 +58,13 @@ export default () => {
    return (
       <>
          <MobileUpperNavigation />
-         <div className='nav-bar__mobile'>
-            <div className='nav-bar__mobile__elements'>
+         <div className="nav-bar__mobile">
+            <div className="nav-bar__mobile__elements">
                <div
                   className={`nav-bar__mobile__elements__element${
                      userTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='profile'
+                  data-testid="profile"
                   onClick={() => {
                      if (!userTab) {
                         selectTab(Tabs.USER_TAB)
@@ -78,7 +77,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      activityTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='activity'
+                  data-testid="activity"
                   onClick={() => {
                      if (!activityTab) {
                         selectTab(Tabs.ACTIVITY_TAB)
@@ -92,7 +91,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      homepageTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='homepage'
+                  data-testid="homepage"
                   onClick={() => {
                      selectTab(Tabs.HOMEPAGE_TAB)
                      dispatch(setModalsOff())
@@ -104,7 +103,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      exploreTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='explore'
+                  data-testid="explore"
                   onClick={() => {
                      if (!exploreTab) {
                         selectTab(Tabs.EXPLORER_TAB)
@@ -118,7 +117,7 @@ export default () => {
                   className={`nav-bar__mobile__elements__element${
                      settingsTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='settings'
+                  data-testid="settings"
                   onClick={() => selectTab(Tabs.SETTINGS_TAB)}
                >
                   <SettingsIcon />

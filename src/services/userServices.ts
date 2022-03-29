@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode'
 import getHeaders from '../utils/getHeaders'
 import { LoginUserData, SignupUserData } from './interfaces'
 
-
 export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, boolean]> => {
    const { email, password } = data
    try {

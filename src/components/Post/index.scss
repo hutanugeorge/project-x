@@ -1,208 +1,207 @@
 @import '../sharedStyles/utils';
 
 .post {
-  width: 95%;
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  border-radius: 2rem;
-  box-shadow: 0 0.5rem 2rem rgba($color-black, 0.1);
-  padding: 1.5rem;
-  gap: 1rem;
-  background-color: white;
+   width: 95%;
+   display: flex;
+   flex-direction: column;
+   height: fit-content;
+   border-radius: 2rem;
+   box-shadow: 0 0.5rem 2rem rgba($color-black, 0.1);
+   padding: 1.5rem;
+   gap: 1rem;
+   background-color: white;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    &__more-options {
-      &:hover {
-        & svg {
-          cursor: pointer;
-
-          & path {
-            stroke: $color-primary-light !important;
-          }
-        }
-      }
-    }
-
-    &__person {
+   &__header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      &__more-options {
+         &:hover {
+            & svg {
+               cursor: pointer;
+
+               & path {
+                  stroke: $color-primary-light !important;
+               }
+            }
+         }
+      }
+
+      &__person {
+         display: flex;
+         align-items: center;
+         width: 100%;
+         font-size: 1.5rem;
+         font-weight: 600;
+         gap: 1rem;
+
+         &__photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 5rem;
+            clip-path: circle();
+
+            & img {
+               height: 100%;
+               cursor: pointer;
+            }
+         }
+
+         &__username {
+            &__content {
+               font-size: 1.3rem;
+               text-shadow: 0.1rem 0.1rem 0.4rem rgba(black, 0.2);
+            }
+
+            &__date {
+               font-size: 1rem;
+               font-weight: 400;
+               color: rgba(black, 0.3);
+
+               &:hover {
+                  color: rgba(black, 0.4);
+                  text-decoration: underline;
+                  cursor: pointer;
+               }
+            }
+         }
+      }
+
+      &__more-options {
+         display: flex;
+         align-items: center;
+      }
+   }
+
+   &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: fit-content;
       width: 100%;
-      font-size: 1.5rem;
-      font-weight: 600;
       gap: 1rem;
 
-      &__photo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 5rem;
-        height: 5rem;
-        clip-path: circle();
-
-        & img {
-          height: 100%;
-          cursor: pointer;
-        }
+      & img {
+         max-width: 100%;
+         max-height: 40rem;
+         border-radius: 2rem;
       }
 
-      &__username {
-        &__content {
-          font-size: 1.3rem;
-          text-shadow: .1rem .1rem .4rem rgba(black, .2);
-        }
-
-        &__date {
-          font-size: 1rem;
-          font-weight: 400;
-          color: rgba(black, .3);
-
-          &:hover {
-            color: rgba(black, .4);
-            text-decoration: underline;
-            cursor: pointer;
-          }
-        }
+      &__text {
+         font-size: 1.3rem;
+         width: 100%;
+         max-height: 5rem;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         display: -webkit-box;
+         -webkit-line-clamp: 3;
+         -webkit-box-orient: vertical;
       }
-    }
+   }
 
-    &__more-options {
+   &__actions {
       display: flex;
-      align-items: center;
-    }
-  }
+      height: 3rem;
+      justify-content: space-between;
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: fit-content;
-    width: 100%;
-    gap: 1rem;
+      &__left {
+         gap: 3rem;
+         display: flex;
 
-    & img {
-      max-width: 100%;
-      max-height: 40rem;
-      border-radius: 2rem;
-    }
+         &__action {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
 
-    &__text {
-      font-size: 1.3rem;
-      width: 100%;
-      max-height: 5rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-    }
-  }
+            &__like {
+               display: flex;
+               align-items: center;
+               height: 100%;
 
-  &__actions {
-    display: flex;
-    height: 3rem;
-    justify-content: space-between;
+               &__active {
+                  svg {
+                     fill: red;
+                     stroke-opacity: 0;
+                  }
+               }
 
-    &__left {
-      gap: 3rem;
-      display: flex;
-
-      &__action {
-        display: flex;
-        align-items: center;
-        gap: .4rem;
-
-        &__like {
-          display: flex;
-          align-items: center;
-          height: 100%;
-
-          &__active {
-            svg {
-              fill: red;
-              stroke-opacity: 0;
+               &:hover {
+                  & svg {
+                     cursor: pointer;
+                     fill: rgba(red, 0.7);
+                     stroke-opacity: 0;
+                  }
+               }
             }
-          }
 
-          &:hover {
-            & svg {
-              cursor: pointer;
-              fill: rgba(red, .7);
-              stroke-opacity: 0;
+            &__comments {
+               display: flex;
+               align-items: center;
+               height: 100%;
+
+               & svg {
+                  & .point {
+                     stroke: black !important;
+                     stroke-width: 1;
+                  }
+               }
+
+               &:hover {
+                  & svg {
+                     & .outline {
+                        cursor: pointer;
+                        fill: rgba(blue, 0.6);
+                        stroke-opacity: 0;
+                     }
+
+                     & .point {
+                        stroke: white !important;
+                     }
+                  }
+               }
             }
-          }
-        }
 
-        &__comments {
-          display: flex;
-          align-items: center;
-          height: 100%;
-
-          & svg {
-            & .point {
-              stroke: black !important;
-              stroke-width: 1;
+            &__count {
+               display: flex;
+               align-items: center;
+               height: 100%;
+               font-size: 1.1rem;
             }
-          }
-
-          &:hover {
-            & svg {
-              & .outline {
-                cursor: pointer;
-                fill: rgba(blue, .6);
-                stroke-opacity: 0;
-              }
-
-              & .point {
-                stroke: white !important;
-              }
-            }
-          }
-        }
-
-        &__count {
-          display: flex;
-          align-items: center;
-          height: 100%;
-          font-size: 1.1rem
-        }
-
+         }
       }
-    }
 
-    &__right {
-      display: flex;
+      &__right {
+         display: flex;
 
-      &__action {
-        display: flex;
-        align-items: center;
-        gap: .4rem;
+         &__action {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
 
-        &__save{
-          display: flex;
-          align-items: center;
-          height: 100%
-        }
+            &__save {
+               display: flex;
+               align-items: center;
+               height: 100%;
+            }
 
-        &__count {
-          display: flex;
-          align-items: center;
-          height: 100%;
-          font-size: 1.1rem
-        }
+            &__count {
+               display: flex;
+               align-items: center;
+               height: 100%;
+               font-size: 1.1rem;
+            }
 
-        &:hover {
-          & div svg {
-            cursor: pointer;
-            fill: $color-primary-light;
-            stroke-opacity: 0;
-          }
-        }
+            &:hover {
+               & div svg {
+                  cursor: pointer;
+                  fill: $color-primary-light;
+                  stroke-opacity: 0;
+               }
+            }
+         }
       }
-    }
-  }
+   }
 }
