@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import CommentsSection from '../CommentsSection'
+import CommentsSection from '../CommentsSection/CommentsSection'
 import SettingsIcon from '../../icons/SettingsIcon'
 import LikeIcon from '../../icons/LikeIcon'
 import SaveIcon from '../../icons/SaveIcon'

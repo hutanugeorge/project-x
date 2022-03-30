@@ -10,7 +10,7 @@ export default () => {
             <Post
                userID={'4234535246'}
                postID={'654636546436'}
-               username={'Aurica Bernard'}
+               username={'Mia Amelia'}
                noLikes={95}
                noComments={5}
                noSaves={10}
