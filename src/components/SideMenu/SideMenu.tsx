@@ -1,4 +1,5 @@
-import React, { Scrollbars } from 'react-custom-scrollbars'
+import React from 'react';
+import { Scrollbars } from 'react-custom-scrollbars'
 
 interface SideMenuProps {
    title: string
