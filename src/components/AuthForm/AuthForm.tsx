@@ -71,7 +71,7 @@ export default () => {
    }
 
    return (
-      !(token && !isJwtTokenExpired(token!)) && (
+      !(token && !isJwtTokenExpired(token!)) ? (
          <div className="auth__wrapper">
             <div data-testid="auth" className="auth">
                <div className="auth__title-container">
@@ -259,6 +259,6 @@ export default () => {
                </form>
             </div>
          </div>
-      )
+      ) : <></>
    )
 }
