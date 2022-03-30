@@ -36,7 +36,7 @@ export default () => {
    return (
       <>
          <div className='home-page'>
-            {/*<DesktopNotifications />*/}
+            <DesktopNotifications />
             {/*{showNotifications && <MobileNotifications />}*/}
             {!showNotifications && !showExplore && <MainSection />}
             {/*{showExplore && <MobileExplore />}*/}
