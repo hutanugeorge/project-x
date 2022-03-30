@@ -103,7 +103,7 @@ export default () => {
                         const [ response, error ] = await signInUser({
                            email,
                            password,
-                        }, url)
+                        }, `${url}/login`)
                         if (!error && response?.status === 200)
                            window.location.pathname = '/'
                         error &&
@@ -116,7 +116,7 @@ export default () => {
                            email,
                            password,
                            confirmPassword,
-                        }, url)
+                        }, `${url}/signup`)
                         if (!error && response?.status === 200)
                            window.location.pathname = '/homepage'
                         error &&
