@@ -8,7 +8,7 @@ export default () => {
    return (
       <SideMenu title={'Notifications'}>
          <p>Salut</p>
-         <>
+         {/*<>*/}
             {/*<Notification*/}
             {/*   text={'Mary wants to be friends with you'}*/}
             {/*   username={'Mary Sophia'}*/}
@@ -26,7 +26,7 @@ export default () => {
             {/*<Notification text={'Emma post a new photo.'} username={'Emma Watson'}*/}
             {/*              type={NotificationTypes.NEW_POST}*/}
             {/*              date={'a few minutes ago'} userPhoto={'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg'} />*/}
-         </>
+         {/*</>*/}
       </SideMenu>
    )
 }
