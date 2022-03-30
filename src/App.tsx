@@ -12,7 +12,8 @@ export default () => {
          <Router>
             <Routes>
                <Route element={<AuthForm />} path={'/'} />
-               <Route element={<HomePage />} path={'/homepage'} />
+               <Route element={<p>Is working</p>} path={'/homepage'} />
+               {/*<Route element={<HomePage />} path={'/homepage'} />*/}
             </Routes>
          </Router>
       </>
