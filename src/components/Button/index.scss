@@ -186,29 +186,29 @@
 
          &-small {
             @include respond($phone) {
-               height: 1.5rem;
+               height: 2rem;
                font-size: 1rem;
             }
          }
 
          &-medium {
             @include respond($phone) {
-               height: 2rem;
+               height: 2.5rem;
                font-size: 1rem;
             }
          }
 
          &-large {
             @include respond($phone) {
-               height: 2.5rem;
+               height: 3rem;
                font-size: 1.2rem;
             }
          }
 
          &-extra-large {
             @include respond($phone) {
-               height: 3rem;
-               font-size: 1.4rem;
+               height: 4rem;
+               font-size: 1.6rem;
             }
          }
       }

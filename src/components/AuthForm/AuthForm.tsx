@@ -134,11 +134,11 @@ export default () => {
                               onChange={[setFirstName]}
                               error={firstNameError}
                               value={firstName ?? ''}
-                              width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M]}
+                              width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
                               height={[
                                  DesktopInputHeight.M,
                                  TabletInputHeight.M,
-                                 MobileInputHeight.L,
+                                 MobileInputHeight.XL,
                               ]}
                               color={InputColor.PRIMARY}
                               labelText={firstNameError ?? 'First name'}
@@ -151,11 +151,11 @@ export default () => {
                               onChange={[setLastName]}
                               error={lastNameError}
                               value={lastName ?? ''}
-                              width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M]}
+                              width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
                               height={[
                                  DesktopInputHeight.M,
                                  TabletInputHeight.M,
-                                 MobileInputHeight.L,
+                                 MobileInputHeight.XL,
                               ]}
                               color={InputColor.PRIMARY}
                               labelText={lastNameError ?? 'Last name'}
@@ -169,8 +169,8 @@ export default () => {
                         onChange={[setEmail]}
                         error={emailError}
                         value={email ?? ''}
-                        width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M]}
-                        height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L]}
+                        width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                        height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL]}
                         color={InputColor.PRIMARY}
                         labelText={emailError ?? 'Email'}
                      />
@@ -182,8 +182,8 @@ export default () => {
                         value={password ?? ''}
                         labelText={passwordError ?? 'Password'}
                         error={passwordError}
-                        width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M]}
-                        height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.L]}
+                        width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                        height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL]}
                         color={InputColor.PRIMARY}
                      />
                      {authView === AuthView.SIGNUP && (
@@ -196,11 +196,11 @@ export default () => {
                               onChange={[setConfirmPassword]}
                               value={confirmPassword ?? ''}
                               labelText={confirmPasswordError ?? 'Repeat password'}
-                              width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.M]}
+                              width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
                               height={[
                                  DesktopInputHeight.M,
                                  TabletInputHeight.M,
-                                 MobileInputHeight.L,
+                                 MobileInputHeight.XL,
                               ]}
                               color={InputColor.PRIMARY}
                            />
@@ -209,7 +209,7 @@ export default () => {
                      <div className="auth__form__content__signup-link" data-testid="form-link">
                         {authView === AuthView.LOGIN && (
                            <p className="auth__form__content__signup-link__content">
-                              You doesn't have an account?{' '}
+                              Don't have an account yet? {' '}
                               <span
                                  data-testid="signup-trigger"
                                  onClick={() => {
@@ -247,11 +247,11 @@ export default () => {
                            type={'submit'}
                            reactive={true}
                            text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
-                           width={[DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.M]}
+                           width={[DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.XL]}
                            height={[
                               DesktopButtonHeight.L,
                               TabletButtonHeight.M,
-                              MobileButtonHeight.L,
+                              MobileButtonHeight.XL,
                            ]}
                         />
                      </div>

@@ -19,7 +19,7 @@ $desktopAuthModalHeight: 45rem;
    }
 
    @include respond($phone) {
-      width: 30rem;
+      width: 35rem;
       min-height: 50rem;
       justify-content: center;
    }
@@ -47,7 +47,7 @@ $desktopAuthModalHeight: 45rem;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 5rem;
+      gap: 2rem;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -74,7 +74,7 @@ $desktopAuthModalHeight: 45rem;
             font-weight: 900;
 
             @include respond($phone) {
-               font-size: 2rem;
+               font-size: 3.5rem;
             }
          }
       }
@@ -90,7 +90,7 @@ $desktopAuthModalHeight: 45rem;
             font-weight: 500;
 
             @include respond($phone) {
-               font-size: 1.2rem;
+               font-size: 1.3rem;
             }
          }
       }
@@ -132,7 +132,7 @@ $desktopAuthModalHeight: 45rem;
             color: $color-primary-light;
 
             @include respond($phone) {
-               font-size: 1.8rem;
+               font-size: 3rem;
             }
          }
 
@@ -203,7 +203,7 @@ $desktopAuthModalHeight: 45rem;
             color: $color-primary-light;
 
             @include respond($phone) {
-               font-size: 1rem;
+               font-size: 1.5rem;
             }
 
             & span u {
@@ -233,8 +233,8 @@ $desktopAuthModalHeight: 45rem;
             transition: all 0.3s;
 
             @include respond($phone) {
-               font-size: 1rem;
-               width: 5rem;
+               font-size: 1.2rem;
+               width: 5.5rem;
                height: 1.5rem;
             }
 
