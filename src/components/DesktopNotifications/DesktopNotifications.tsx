@@ -6,7 +6,7 @@ import SideMenu from '../SideMenu'
 
 export default () => {
    return (
-      // <SideMenu title={'Notifications'}>
+      <SideMenu title={'Notifications'}>
          <>
             <Notification
                text={'Mary wants to be friends with you'}
@@ -26,6 +26,6 @@ export default () => {
                           type={NotificationTypes.NEW_POST}
                           date={'a few minutes ago'} userPhoto={'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg'} />
          </>
-      // </SideMenu>
+      </SideMenu>
    )
 }
