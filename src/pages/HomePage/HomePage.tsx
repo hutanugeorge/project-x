@@ -37,10 +37,10 @@ export default () => {
       <>
          <div className='home-page'>
             <DesktopNotifications />
-            {/*{showNotifications && <MobileNotifications />}*/}
+            {showNotifications && <MobileNotifications />}
             {!showNotifications && !showExplore && <MainSection />}
-            {/*{showExplore && <MobileExplore />}*/}
-            {/*<DesktopNotifications />*/}
+            {showExplore && <MobileExplore />}
+            <DesktopNotifications />
          </div>
       </>
    )
