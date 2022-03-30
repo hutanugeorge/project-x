@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import MessageIcon from '../../icons/MessageIcon'
 import SearchIcon from '../../icons/SearchIcon'
 import Button from '../Button'

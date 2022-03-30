@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Comment from '../Comment'
 import Input from '../Input'
 import {

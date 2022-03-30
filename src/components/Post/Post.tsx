@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import CommentsSection from '../CommentsSection/CommentsSection'
 import SettingsIcon from '../../icons/SettingsIcon'
