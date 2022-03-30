@@ -1,6 +1,6 @@
 import Notification from '../Notification'
 import { NotificationTypes } from '../Notification/interfaces'
-import SideMenu from '../SideMenu/SideMenu'
+import SideMenu from '../SideMenu'
 
 
 export default () => {
