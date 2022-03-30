@@ -8,7 +8,7 @@ export default () => {
    const token = localStorage.getItem('token')
    return (
       <>
-         {window.location.href !== 'http://localhost:3000/' && token && <NavBar />}
+         {window.location.pathname !== '/' && token && <NavBar />}
          <Router>
             <Routes>
                <Route element={<AuthForm />} path={'/'} />

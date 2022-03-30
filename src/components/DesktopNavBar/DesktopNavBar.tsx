@@ -81,7 +81,7 @@ export default () => {
                   data-testid="logout-trigger"
                   onClick={() => {
                      localStorage.removeItem('token')
-                     window.location.href = '/'
+                     window.location.pathname = '/'
                   }}
                >
                   <LogoutIcon />
