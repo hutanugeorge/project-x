@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import LogoutIcon from '../../icons/LogoutIcon'
 import SearchIcon from '../../icons/SearchIcon'
@@ -81,7 +81,7 @@ export default () => {
                   data-testid="logout-trigger"
                   onClick={() => {
                      localStorage.removeItem('token')
-                     window.location.href = '/'
+                     window.location.pathname = '/'
                   }}
                >
                   <LogoutIcon />

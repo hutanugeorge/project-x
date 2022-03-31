@@ -1,3 +1,4 @@
+import React from 'react';
 import { InputBorderRadius, InputProps } from './interface'
 
 export default ({

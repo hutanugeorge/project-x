@@ -4,11 +4,11 @@ import jwt_decode from 'jwt-decode'
 import getHeaders from '../utils/getHeaders'
 import { LoginUserData, SignupUserData } from './interfaces'
 
-export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, boolean]> => {
+export const signInUser = async (data: LoginUserData, url: string): Promise<[AxiosResponse, boolean]> => {
    const { email, password } = data
    try {
       const response = await axios.post(
-         'http://localhost:3001/login',
+         url,
          {
             email: email,
             password: password,
@@ -22,11 +22,11 @@ export const signInUser = async (data: LoginUserData): Promise<[AxiosResponse, b
    }
 }
 
-export const signupUser = async (data: SignupUserData): Promise<[AxiosResponse, boolean]> => {
+export const signupUser = async (data: SignupUserData, url: string): Promise<[AxiosResponse, boolean]> => {
    const { firstName, lastName, email, password, confirmPassword } = data
    try {
       const response = await axios.post(
-         'http://localhost:3001/signup',
+         url,
          {
             email: email,
             password: password,
@@ -43,11 +43,11 @@ export const signupUser = async (data: SignupUserData): Promise<[AxiosResponse, 
    }
 }
 
-export const getUser = async (): Promise<[AxiosResponse, boolean]> => {
+export const getUser = async (url: string): Promise<[AxiosResponse, boolean]> => {
    const token = localStorage.getItem('token')
    const decodedToken: any = token && jwt_decode(token)
    try {
-      const response = await axios.get(`http://localhost:3001/user/${decodedToken.userID}`, {
+      const response = await axios.get(`${url}/${decodedToken.userID}`, {
          headers: getHeaders(true),
       })
       return [response, false]

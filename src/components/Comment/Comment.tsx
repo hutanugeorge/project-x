@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react'
 import LikeIcon from '../../icons/LikeIcon'
 import MessageIcon from '../../icons/MessageIcon'

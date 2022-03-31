@@ -2,7 +2,9 @@
    "name": "projectx",
    "private": true,
    "version": "0.0.0",
+   "type": "module",
    "scripts": {
+      "start": "node index.js",
       "dev": "vite",
       "test": "jest --env=jsdom",
       "pretty": "npx prettier --write .",
