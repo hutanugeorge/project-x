@@ -1,41 +1,38 @@
 .comments-section {
+   &__comments {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+   }
 
-  &__comments {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  &__elemets {
-    &__content {
-      &__comment {
-        
+   &__elemets {
+      &__content {
+         &__comment {
+         }
       }
-    }
-  }
+   }
 
-  &__write-comment {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1rem;
+   &__write-comment {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 1rem;
 
-    &__form {
-      width: fit-content;
-    }
+      &__form {
+         width: fit-content;
+      }
 
-    &__user-photo {
-      @include displayFlexCenterCenter;
-      height: 3.5rem;
-      width: 3.5rem;
-      clip-path: circle();
-      cursor: pointer;
+      &__user-photo {
+         @include displayFlexCenterCenter;
+         height: 3.5rem;
+         width: 3.5rem;
+         clip-path: circle();
+         cursor: pointer;
 
-      & img {
-          height: 100%;
-        }
-    }
-
-  }
+         & img {
+            height: 100%;
+         }
+      }
+   }
 }

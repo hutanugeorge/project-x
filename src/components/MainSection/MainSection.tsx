@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Post from '../Post'
 
 export default () => {
@@ -29,10 +29,8 @@ export default () => {
             noComments={0}
             noSaves={0}
             date={'two hours ago'}
-            text={'Best fireworks show I\'ve ever seen!'}
-            photo={
-               'https://i.ytimg.com/vi/CNjggrxUQ78/maxresdefault.jpg'
-            }
+            text={"Best fireworks show I've ever seen!"}
+            photo={'https://i.ytimg.com/vi/CNjggrxUQ78/maxresdefault.jpg'}
             userPhoto={
                'https://ath2.unileverservices.com/wp-content/uploads/sites/4/2020/02/IG-annvmariv-1024x1016.jpg'
             }
@@ -45,8 +43,10 @@ export default () => {
             noComments={1}
             noSaves={0}
             date={'a day ago'}
-            text={'There is no greater thing you can do with your life and your work than follow' +
-            ' your passions in a way that serves the world and you.'}
+            text={
+               'There is no greater thing you can do with your life and your work than follow' +
+               ' your passions in a way that serves the world and you.'
+            }
             userPhoto={
                'https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/211859445_10158300571710872_1739945872121343798_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=hxoHy23JsGIAX8fZ7rb&_nc_ht=scontent.fias1-1.fna&oh=00_AT9MFNn7t5eKo0L9_PLP-cOwTqn07mLs_e24Q8vJNSKU3w&oe=624988D0'
             }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import DesktopNavBar from '../DesktopNavBar'
 import MobileNavBar from '../MobileNavBar'
 

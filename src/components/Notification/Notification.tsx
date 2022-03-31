@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import _ from 'lodash'
 import { useState } from 'react'
 
@@ -9,14 +9,16 @@ export default ({ text, username, type, date, mobileView, userPhoto, seen }: Not
    const [isSeen, setIsSeen] = useState<boolean>(seen)
 
    return (
-      <div className={`notification ${mobileView ? 'notification__mobile' : ''} ${!isSeen ? 'notification__unseen': ''}`} onClick={() => !isSeen && setIsSeen(true)}>
+      <div
+         className={`notification ${mobileView ? 'notification__mobile' : ''} ${
+            !isSeen ? 'notification__unseen' : ''
+         }`}
+         onClick={() => !isSeen && setIsSeen(true)}
+      >
          <div className="notification__header">
             <div className="notification__header__left">
                <div className="notification__header__left__user-image">
-                  <img
-                     src={userPhoto}
-                     alt="user photo"
-                  />
+                  <img src={userPhoto} alt="user photo" />
                </div>
             </div>
             <div className="notification__header__right">

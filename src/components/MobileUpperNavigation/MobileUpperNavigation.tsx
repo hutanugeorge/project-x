@@ -50,7 +50,7 @@ export default () => {
                <SearchIcon />
             </Button>
          </form>
-         <MessageIcon width={30} height={30}/>
+         <MessageIcon width={30} height={30} />
       </div>
    )
 }
