@@ -19,7 +19,7 @@
       }
    }
    @if $size == $tablet-portrait {
-      @media (max-width: $tablet-portrait) {
+      @media (any-hover: none), (max-width: $tablet-portrait) {
          @content;
       }
    }

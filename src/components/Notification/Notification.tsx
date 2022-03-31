@@ -1,12 +1,14 @@
 import _ from 'lodash'
+import { useState } from 'react'
 
 import { NotificationProps } from './interfaces'
 
-export default ({ text, username, type, date, mobileView, userPhoto }: NotificationProps) => {
+export default ({ text, username, type, date, mobileView, userPhoto, seen }: NotificationProps) => {
    const notificationType = _.capitalize(type.replaceAll('_', ' '))
+   const [isSeen, setIsSeen] = useState<boolean>(seen)
 
    return (
-      <div className={`notification ${mobileView ? 'notification__mobile' : ''}`}>
+      <div className={`notification ${mobileView ? 'notification__mobile' : ''} ${!isSeen ? 'notification__unseen': ''}`} onClick={() => !isSeen && setIsSeen(true)}>
          <div className="notification__header">
             <div className="notification__header__left">
                <div className="notification__header__left__user-image">

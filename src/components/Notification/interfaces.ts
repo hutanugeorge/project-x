@@ -5,6 +5,7 @@ export interface NotificationProps {
    date: string
    mobileView?: boolean
    userPhoto: string
+   seen: boolean
 }
 
 export enum NotificationTypes {
