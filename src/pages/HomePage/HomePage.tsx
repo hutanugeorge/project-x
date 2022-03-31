@@ -20,7 +20,7 @@ export default () => {
 
    const { showNotifications, showExplore } = useSelector((state: RootState) => state.modals)
 
-   // dispatch(goDevelop())
+   dispatch(goDevelop())
    useEffect(() => {
       const token = localStorage.getItem('token')
       if (!token) window.location.pathname = '/'
