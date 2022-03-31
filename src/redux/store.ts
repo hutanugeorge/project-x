@@ -7,7 +7,7 @@ const store = configureStore({
    reducer: {
       user,
       modals,
-      url
+      url,
    },
 })
 

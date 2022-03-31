@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import _ from 'lodash'
 
 import { NotificationProps } from './interfaces'
@@ -11,10 +11,7 @@ export default ({ text, username, type, date, mobileView, userPhoto }: Notificat
          <div className="notification__header">
             <div className="notification__header__left">
                <div className="notification__header__left__user-image">
-                  <img
-                     src={userPhoto}
-                     alt="user photo"
-                  />
+                  <img src={userPhoto} alt="user photo" />
                </div>
             </div>
             <div className="notification__header__right">
