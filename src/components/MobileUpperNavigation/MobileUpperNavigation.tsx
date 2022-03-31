@@ -35,7 +35,7 @@ export default () => {
                placeholder={'Search everything...'}
                onChange={[setInputValue]}
                width={[DesktopInputWidth.S, TabletInputWidth.L, MobileInputWidth.L]}
-               height={[DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.M]}
+               height={[DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.L]}
                color={InputColor.SECONDARY}
                value={inputValue}
                error={undefined}
@@ -50,7 +50,7 @@ export default () => {
                <SearchIcon />
             </Button>
          </form>
-         <MessageIcon />
+         <MessageIcon width={30} height={30}/>
       </div>
    )
 }
