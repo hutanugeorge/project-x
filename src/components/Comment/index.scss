@@ -1,10 +1,12 @@
 @import '../sharedStyles/utils';
 
 .comment {
-   padding: 1rem 1rem 0 2rem;
+   padding: 1rem 1rem 1rem 2rem;
    display: flex;
    background-color: $color-grey-light;
    border-radius: 2rem;
+   flex-direction: column;
+   gap: .5rem;
 
    &__wrap {
       display: flex;
@@ -12,29 +14,44 @@
       flex-direction: column;
    }
 
-   &__user-photo {
-      @include displayFlexCenterCenter;
-      height: 3.5rem;
-      width: 3.5rem;
-      clip-path: circle();
-      cursor: pointer;
+   &__user {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
 
-      & img {
-         height: 100%;
+      &__photo {
+         @include displayFlexCenterCenter;
+         height: 3.5rem;
+         width: 3.5rem;
+         clip-path: circle();
+         cursor: pointer;
+
+         & img {
+            height: 100%;
+         }
+      }
+
+      &__username {
+         display: flex;
+         align-items: center;
+
+         &__content {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 0 0.5rem;
+         }
       }
    }
 
    &__elements {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
       &__content {
          width: fit-content;
          max-width: 100%;
          border-radius: 1rem;
-
-         &__username {
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin: 0 0.5rem 0 0.5rem;
-         }
 
          &__comment {
             font-size: 1.2rem;
