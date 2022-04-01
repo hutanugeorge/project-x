@@ -1,0 +1,12 @@
+.post-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  width: 60rem;
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

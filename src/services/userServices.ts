@@ -61,3 +61,14 @@ export const getUser = async (url: string): Promise<[AxiosResponse, boolean]> =>
       return [error.response, true]
    }
 }
+
+export const getPost = async (url: string): Promise<[AxiosResponse, boolean]> => {
+   try {
+      const response = await axios.get(url, {
+         headers: getHeaders(true)
+      })
+      return [response, false]
+   }catch(error: any) {
+      return [error.response, true]
+   }
+}

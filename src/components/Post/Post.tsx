@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import CommentsSection from '../CommentsSection/CommentsSection'
 import SettingsIcon from '../../icons/SettingsIcon'
@@ -22,6 +23,8 @@ export default ({
 }: PostProps) => {
    const [showComments, setShowComments] = useState<boolean>(false)
 
+   const navigate = useNavigate()
+
    return (
       <div className="post">
          <div className="post__header">
@@ -31,7 +34,7 @@ export default ({
                </div>
                <div className="post__header__person__username">
                   <p className="post__header__person__username__content">{username}</p>
-                  <p className="post__header__person__username__date">{date}</p>
+                  <p className="post__header__person__username__date" onClick={() => navigate(`/post/${postID}`)}>{date}</p>
                </div>
             </div>
             <div className="post__header__more-options">
