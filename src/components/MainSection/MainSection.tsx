@@ -6,7 +6,7 @@ export default () => {
       <div className="main-section">
          <Post
             userID={'4234535246'}
-            postID={'654636546436'}
+            postID={'6237ab482e30d402f150c4db'}
             username={'Will Smith'}
             noLikes={22}
             noComments={1}
