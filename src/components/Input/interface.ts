@@ -14,8 +14,8 @@ export interface InputProps {
 }
 
 export enum InputBorderRadius {
-   STANDARD = "input-border-radius-standard",
-   FULL = "input-border-radius-full"
+   STANDARD = 'input-border-radius-standard',
+   FULL = 'input-border-radius-full',
 }
 
 export enum DesktopInputWidth {

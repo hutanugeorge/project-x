@@ -20,6 +20,7 @@ export default () => {
    const { user } = useSelector((state: RootState) => state.user)
 
    dispatch(goDevelop())
+  
    useEffect(() => {
       (async () => {
          const [ response, error ] = await getUser(`${url}/user`, userID)
@@ -27,8 +28,6 @@ export default () => {
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
       })()
    }, [ userID, url ])
-
-   console.log(user)
 
    return <>
       <div className='user-page__wrapper'>

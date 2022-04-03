@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { InputBorderRadius, InputProps } from './interface'
 
 export default ({
@@ -11,7 +11,7 @@ export default ({
    color,
    value,
    error,
-   borderRadius = InputBorderRadius.STANDARD
+   borderRadius = InputBorderRadius.STANDARD,
 }: InputProps) => {
    return (
       <input

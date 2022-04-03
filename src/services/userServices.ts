@@ -4,7 +4,10 @@ import jwt_decode from 'jwt-decode'
 import getHeaders from '../utils/getHeaders'
 import { LoginUserData, SignupUserData } from './interfaces'
 
-export const signInUser = async (data: LoginUserData, url: string): Promise<[AxiosResponse, boolean]> => {
+export const signInUser = async (
+   data: LoginUserData,
+   url: string,
+): Promise<[AxiosResponse, boolean]> => {
    const { email, password } = data
    try {
       const response = await axios.post(
@@ -22,7 +25,10 @@ export const signInUser = async (data: LoginUserData, url: string): Promise<[Axi
    }
 }
 
-export const signupUser = async (data: SignupUserData, url: string): Promise<[AxiosResponse, boolean]> => {
+export const signupUser = async (
+   data: SignupUserData,
+   url: string,
+): Promise<[AxiosResponse, boolean]> => {
    const { firstName, lastName, email, password, confirmPassword } = data
    try {
       const response = await axios.post(
@@ -52,6 +58,17 @@ export const getUser = async (url: string, userID?: string): Promise<[AxiosRespo
       })
       return [response, false]
    } catch (error: any) {
+      return [error.response, true]
+   }
+}
+
+export const getPost = async (url: string): Promise<[AxiosResponse, boolean]> => {
+   try {
+      const response = await axios.get(url, {
+         headers: getHeaders(true)
+      })
+      return [response, false]
+   }catch(error: any) {
       return [error.response, true]
    }
 }
