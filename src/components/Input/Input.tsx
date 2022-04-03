@@ -13,7 +13,6 @@ export default ({
    error,
    borderRadius = InputBorderRadius.STANDARD,
 }: InputProps) => {
-   console.log(width, height)
    return (
       <input
          data-testid="input"
