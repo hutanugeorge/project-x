@@ -9,23 +9,16 @@ import MessageIcon from '../../icons/MessageIcon'
 import { PostProps } from './interfaces'
 
 export default ({
-   userID,
-   postID,
-   userPhoto,
-   username,
-   text,
-   photo,
-   noLikes,
-   noComments,
-   noSaves,
-   date,
-   liked = false,
-}: PostProps) => {
    const [showComments, setShowComments] = useState<boolean>(false)
 
    const navigate = useNavigate()
 
    return (
+      <div className='post'>
+         <div className='post__header'>
+            <div className='post__header__person' onClick={() => navigate(`/user/${userID}`)}>
+               <div className='post__header__person__photo'>
+                  <img src={userPhoto} alt='person photo' />
       <div className="post">
          <div className="post__header">
             <div className="post__header__person">

@@ -49,11 +49,11 @@ export const signupUser = async (
    }
 }
 
-export const getUser = async (url: string): Promise<[AxiosResponse, boolean]> => {
+export const getUser = async (url: string, userID?: string): Promise<[AxiosResponse, boolean]> => {
    const token = localStorage.getItem('token')
    const decodedToken: any = token && jwt_decode(token)
    try {
-      const response = await axios.get(`${url}/${decodedToken.userID}`, {
+      const response = await axios.get(`${url}/${userID ?? decodedToken.userID}`, {
          headers: getHeaders(true),
       })
       return [response, false]
