@@ -48,7 +48,7 @@ export default () => {
                ' your passions in a way that serves the world and you.'
             }
             userPhoto={
-               'https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/211859445_10158300571710872_1739945872121343798_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=hxoHy23JsGIAX8fZ7rb&_nc_ht=scontent.fias1-1.fna&oh=00_AT9MFNn7t5eKo0L9_PLP-cOwTqn07mLs_e24Q8vJNSKU3w&oe=624988D0'
+               'https://q-xx.bstatic.com/xdata/images/hotel/840x460/103875013.jpg?k=87bdb822961e3d76486492ce7721f5e74df5a2ed2249055b97f5fca85530a29f&o='
             }
          />
       </div>
