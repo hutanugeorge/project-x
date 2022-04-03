@@ -62,7 +62,7 @@ export default () => {
             </div>
             <div className='user-page__posts'>
                <Post
-                  userID={'4234535246'}
+                  userID={'622dc0f07c3f071f571bd5e7'}
                   postID={'654636546436'}
                   username={'Will Smith'}
                   noLikes={22}
