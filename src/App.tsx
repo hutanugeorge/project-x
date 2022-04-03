@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import UserPage from './pages/UserPage'
 
 
+
 export default () => {
    const token = localStorage.getItem('token')
    return (
@@ -16,6 +17,7 @@ export default () => {
                <Route element={<AuthForm />} path={'/'} />
                <Route element={<HomePage />} path={'/homepage'} />
                <Route element={<UserPage />} path={'/user/:userID'} />
+               <Route element={<PostPage/>} path={'/post/:postID'} />
             </Routes>
          </Router>
       </>

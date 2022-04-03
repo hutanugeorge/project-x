@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-
 interface SideMenuProps {
    title: string
    children: JSX.Element
