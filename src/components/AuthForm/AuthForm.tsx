@@ -79,6 +79,7 @@ export default () => {
       }
    }
 
+
    return !(token && !isJwtTokenExpired(token!)) ? (
       <div className="auth__wrapper">
          <div data-testid="auth" className="auth">
@@ -252,7 +253,7 @@ export default () => {
                         type={'submit'}
                         reactive={true}
                         text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
-                        width={[DesktopButtonWidth.M, TabletButtonWidth.M, MobileButtonWidth.XL]}
+                        width={[DesktopButtonWidth.L, TabletButtonWidth.M, MobileButtonWidth.XL]}
                         height={[
                            DesktopButtonHeight.L,
                            TabletButtonHeight.M,

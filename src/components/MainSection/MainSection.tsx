@@ -1,9 +1,11 @@
 import React from 'react'
 import Post from '../Post'
+import PostForm from '../PostForm'
 
 export default () => {
    return (
       <div className="main-section">
+         <PostForm />
          <Post
             userID={'4234535246'}
             postID={'6237ab482e30d402f150c4db'}

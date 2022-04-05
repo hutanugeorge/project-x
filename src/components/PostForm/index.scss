@@ -1,0 +1,50 @@
+.post-form {
+    margin-top: 2rem;
+
+  &__input-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    &__user-image {
+      @include displayFlexCenterCenter;
+      width: 4rem;
+      height: 4rem;
+      clip-path: circle();
+
+      & img {
+        height: 100%;
+        cursor: pointer;
+
+      }
+    }
+
+    &__form {
+      @include displayFlexCenterCenter;
+      gap: 2rem;
+
+      &__button {
+        color: grey;
+      }
+    }
+  }
+
+  &__file-upload {
+    display: flex;
+    justify-content: center;
+
+    &__label {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      color: grey;
+      cursor: pointer;
+    }
+
+    & input {
+      display: none;
+      cursor: pointer;
+    }
+  }
+}

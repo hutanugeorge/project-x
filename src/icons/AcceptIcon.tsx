@@ -1,7 +1,7 @@
 import IconProps from './interfaces'
 
 export default ({ fillColor, width, height }: IconProps) => (
-   <svg width={width ?? 24} height={height ?? 24} fill="none" viewBox="0 0 24 24">
+   <svg width={width ?? 24} height={height ?? 24} fill={fillColor ?? 'none'} viewBox="0 0 24 24">
       <path
          stroke="currentColor"
          strokeLinecap="round"
