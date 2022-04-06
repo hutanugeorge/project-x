@@ -11,12 +11,13 @@ import DesktopNotifications from '../../components/DesktopNotifications'
 import MainSection from '../../components/MainSection/MainSection'
 import MobileNotifications from '../../components/MobileNotifications'
 import MobileExplore from '../../components/MobileExplore'
+import MobileSettings from '../../components/MobileSettings'
 
 export default () => {
    const { url } = useSelector((state: RootState) => state.url)
    const dispatch = useDispatch()
 
-   const { showNotifications, showExplore } = useSelector((state: RootState) => state.modals)
+   const { showNotifications, showExplore, showSettings } = useSelector((state: RootState) => state.modals)
 
    dispatch(goDevelop())
    useEffect(() => {
@@ -34,8 +35,9 @@ export default () => {
          <div className="home-page">
             <DesktopNotifications />
             {showNotifications && <MobileNotifications />}
-            {!showNotifications && !showExplore && <MainSection />}
+            {!showNotifications && !showExplore && !showSettings &&  <MainSection />}
             {showExplore && <MobileExplore />}
+            {showSettings && <MobileSettings />}
             <DesktopNotifications />
          </div>
       </>
