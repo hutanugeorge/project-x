@@ -22,7 +22,6 @@ export default () => {
    const { url } = useSelector((state: RootState) => state.url)
    const { showNotifications, showExplore } = useSelector((state: RootState) => state.modals)
 
-   const [ photo, setPhoto ] = useState(null)
 
    // dispatch(goDevelop())
    useEffect(() => {
@@ -34,27 +33,11 @@ export default () => {
          const [ response, error ] = await getUser(`${url}/user`)
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
       })()
-      if (photo) {
-         let formData = new FormData()
-         formData.append('userID', '622dc0bdc4cfec2f9ccd213f')
-         formData.append('description', 'Test test bun')
-         formData.append('photo', new File([photo], Date.now().toString()))
 
-         ;(async () => await axios.post('https://project-x-server.vercel.app/post', formData, {
-            headers: {
-               'authorization': 'Bearer ' + localStorage.getItem('token'),
-               'Content-Type': 'multipart/form-data',
-            },
-         }))()
-      }
-
-   }, [ photo ])
+   }, [ ])
 
    return (
       <>
-         <input type='file' onChange={ (e) => {
-            setPhoto(e.target.files[0])
-         }} />
          <div className='home-page'>
             <DesktopNotifications />
             {showNotifications && <MobileNotifications />}
