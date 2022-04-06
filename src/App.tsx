@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import AuthForm from './components/AuthForm'
@@ -10,6 +11,7 @@ import UserPage from './pages/UserPage'
 
 export default () => {
    const token = localStorage.getItem('token')
+
    return (
       <>
          {window.location.pathname !== '/' && token && <NavBar />}
