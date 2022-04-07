@@ -25,6 +25,7 @@
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
+      width: 100%;
 
       &__button {
         color: grey;
@@ -36,6 +37,7 @@
         align-items: center;
         justify-content: center;
         gap: 1.5rem;
+        width: 90%;
       }
     }
 
