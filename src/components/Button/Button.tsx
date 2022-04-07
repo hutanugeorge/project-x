@@ -11,6 +11,7 @@ export default ({
    children,
    reactive,
    preventDefault,
+   id
 }: ButtonProps) => {
    return (
       <button
@@ -25,6 +26,7 @@ export default ({
             height[2]
          } ${color} ${reactive && 'button-reactive'}`}
          type={type}
+         id ={id}
       >
          {' '}
          {text ?? children}

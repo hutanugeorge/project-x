@@ -6,7 +6,7 @@
    outline: none;
    color: white;
    transition: all 0.3s;
-   padding-left: 3%;
+   padding: 1%;
 
    &::placeholder {
       text-align: center;
@@ -27,6 +27,10 @@
 
    &__error {
       border: 1px solid red;
+   }
+
+   &__hidden {
+      opacity: 0;
    }
 
    &-border-radius {
@@ -345,6 +349,16 @@
       &-transparent {
          background-color: transparent;
          color: inherit;
+      }
+
+      &-white {
+         background-color: white;
+         color: black !important;
+
+         &::placeholder {
+            text-align: center;
+            color: rgba(black, 0.4) !important;
+         }
       }
    }
 }

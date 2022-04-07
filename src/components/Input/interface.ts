@@ -11,6 +11,9 @@ export interface InputProps {
    value: string
    error: string | undefined
    borderRadius?: InputBorderRadius
+   id?: string
+   ref?: any
+   hidden?: boolean
 }
 
 export enum InputBorderRadius {
@@ -71,4 +74,5 @@ export enum InputColor {
    SECONDARY = 'input-color-secondary',
    POSITIVE = 'input-color-positive',
    TRANSPARENT = 'input-color-transparent',
+   WHITE = 'input-color-white',
 }

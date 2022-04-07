@@ -22,5 +22,35 @@
    &__input-group {
       display: flex;
       gap: 1rem;
+
+      &__floating-input {
+         display: flex;
+         align-items: center;
+         padding-top: 6rem;
+         position: absolute;
+         z-index: 50;
+         background-color: rgba(black, .8);
+         top: 0;
+         right: 0;
+         left: 0;
+         height: 100vh;
+         cursor: pointer;
+         flex-direction: column;
+         gap: 2rem;
+
+         &--hidden {
+            display: none;
+         }
+
+         &__results {
+            @include displayFlexCenterCenter;
+            background-color: white;
+            width: 24rem;
+            height: fit-content;
+            min-height: 5rem;
+            border-radius: 1rem;
+
+         }
+      }
    }
 }
