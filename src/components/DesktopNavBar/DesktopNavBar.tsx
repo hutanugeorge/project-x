@@ -80,17 +80,19 @@ export default () => {
                      <SearchIcon width={20} height={20} fillColor={'#c4c4c4'} />
                   </Button>
                </form>
-            </div>
-               <div className="nav-bar__element__username" onClick={() => window.location.pathname = `/user/${user._id}`}>
+
+               <div className='nav-bar__element__username'
+                    onClick={() => window.location.pathname = `/user/${user._id}`}>
                   <p>
                      {user.firstName} {user.lastName}
                   </p>
                </div>
 
-               <div className="nav-bar__element__person__photo" onClick={() => window.location.pathname = `/user/${user._id}`}>
+               <div className='nav-bar__element__person__photo'
+                    onClick={() => window.location.pathname = `/user/${user._id}`}>
                   <img
                      src={`https://spaces.george-hutanu.com/${user.profilePhoto}`}
-                     alt="person photo"
+                     alt='person photo'
                   />
                </div>
                <div
