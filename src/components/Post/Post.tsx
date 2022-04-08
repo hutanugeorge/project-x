@@ -30,7 +30,7 @@ export default ({
          <div className="post__header">
             <div className="post__header__person">
                <div className="post__header__person__photo" onClick={() => navigate(`/user/${userID}`)}>
-                  <img src={userPhoto} alt="person photo" />
+                  <img src={'https://images.squarespace-cdn.com/content/v1/568ebf61a976afb1dc261dce/1584550323853-EJ80OC10T9S0H11579OM/Long+Legs+Full+Length+Portrait.jpg?format=1000w'} alt="person photo" />
                </div>
                <div className="post__header__person__username">
                   <p className="post__header__person__username__content"  onClick={() => navigate(`/user/${userID}`)}>{username}</p>

@@ -1,7 +1,7 @@
 import IPost from './post'
 
 export default interface User {
-   userID: string
+   _id: string
    firstName: string
    lastName: string
    middleName?: string

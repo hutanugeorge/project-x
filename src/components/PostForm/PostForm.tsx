@@ -2,8 +2,10 @@ import axios from 'axios'
 import FormData from 'form-data'
 import jwt_decode from 'jwt-decode'
 import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import ArrowRightIcon from '../../icons/ArrowRightIcon'
 import ImageIcon from '../../icons/ImageIcon'
+import { RootState } from '../../redux/store'
 
 
 import Input from '../Input'
@@ -24,6 +26,8 @@ export default () => {
 
    const [ postDescription, setPostDescription ] = useState<string>('')
    const [ postPhoto, setPostPhoto ] = useState<File | null>(null)
+
+   const {user} = useSelector((state: RootState) => state.user)
 
    const photoInput = useRef<any>(null)
 
@@ -56,7 +60,7 @@ export default () => {
          <div className='post-form__form__input'>
             <div className='post-form__user-image'>
                <img
-                  src='https://media.npr.org/assets/img/2021/11/10/will-smith-new-headshot-credit-lorenzo-agius_wide-fce30e30fbf83a2c586848fa991d1d61ab768cd2.jpg?s=1400'
+                  src={`https://spaces.george-hutanu.com/${user.profilePhoto}`}
                   alt='user-image' />
             </div>
             <Input name={'post-input'} type={'text'} placeholder={'What\'s on your mind?'}
