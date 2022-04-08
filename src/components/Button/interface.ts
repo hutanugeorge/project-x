@@ -8,6 +8,7 @@ export interface ButtonProps {
    preventDefault?: boolean
    children?: JSX.Element
    reactive?: Boolean
+   id?: string
 }
 
 export enum DesktopButtonWidth {
