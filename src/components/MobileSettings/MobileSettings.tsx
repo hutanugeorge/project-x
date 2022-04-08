@@ -39,6 +39,26 @@ export default () => {
                <p className='mobile-settings__content__settings__settings1__name'>Settings6</p>
                <ArrowRightIcon />
             </div>
+            <div className='mobile-settings__content__settings__settings1'>
+               <p className='mobile-settings__content__settings__settings1__name'>Settings6</p>
+               <ArrowRightIcon />
+            </div>
+            <div className='mobile-settings__content__settings__settings1'>
+               <p className='mobile-settings__content__settings__settings1__name'>Settings6</p>
+               <ArrowRightIcon />
+            </div>
+            <div className='mobile-settings__content__settings__settings1'>
+               <p className='mobile-settings__content__settings__settings1__name'>Settings6</p>
+               <ArrowRightIcon />
+            </div>
+            <div className='mobile-settings__content__settings__settings1'>
+               <p className='mobile-settings__content__settings__settings1__name'>Settings6</p>
+               <ArrowRightIcon />
+            </div>
+            <div className='mobile-settings__content__settings__settings1'>
+               <p className='mobile-settings__content__settings__settings1__name'>Settings7</p>
+               <ArrowRightIcon />
+            </div>
          </div>
          <div className='mobile-settings__content__log-out' onClick={() => {
             localStorage.removeItem('token')
