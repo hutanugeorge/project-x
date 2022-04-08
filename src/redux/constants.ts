@@ -28,5 +28,5 @@ export const USER_DEFAULT: User = {
    previousJobs: [],
    profilePhoto: '',
    sex: 'Male',
-   userID: '',
+   _id: '',
 }

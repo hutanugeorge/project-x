@@ -30,9 +30,7 @@ export default () => {
    const [ inputValue, setInputValue ] = useState<string>('')
    const [ showInput, setShowInput ] = useState<boolean>(false)
 
-   const user = useSelector((state: RootState) => state.user)
-   const token = localStorage.getItem('token')
-   const { userID }: any = token && jwt_decode(token)
+   const { user } = useSelector((state: RootState) => state.user)
 
 
    return (
@@ -82,17 +80,17 @@ export default () => {
                      <SearchIcon width={20} height={20} fillColor={'#c4c4c4'} />
                   </Button>
                </form>
-               <div className='nav-bar__element__username'
-                    onClick={() => window.location.pathname = `/user/${userID}`}>
+            </div>
+               <div className="nav-bar__element__username" onClick={() => window.location.pathname = `/user/${user._id}`}>
                   <p>
-                     {user.user.firstName} {user.user.lastName}
+                     {user.firstName} {user.lastName}
                   </p>
                </div>
-               <div className='nav-bar__element__person__photo'
-                    onClick={() => window.location.pathname = `/user/${userID}`}>
+
+               <div className="nav-bar__element__person__photo" onClick={() => window.location.pathname = `/user/${user._id}`}>
                   <img
-                     src='https://scontent.fias1-1.fna.fbcdn.net/v/t1.6435-9/131986095_1595640257304818_7572429008707616586_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=263ZILrQ_rQAX83f7s3&_nc_ht=scontent.fias1-1.fna&oh=00_AT94VYVn_-E7Zm8jAa-hs2DbklOeg5dEfNu-jjyQF1X-ug&oe=626B4D69'
-                     alt='person photo'
+                     src={`https://spaces.george-hutanu.com/${user.profilePhoto}`}
+                     alt="person photo"
                   />
                </div>
                <div

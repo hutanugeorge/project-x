@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import axios from 'axios'
+import jwt_decode from 'jwt-decode'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -10,16 +12,40 @@ import { loadUser } from '../../redux/user'
 import { getUser } from '../../services/userServices'
 
 
+const uploadProfilePhoto = (profilePhoto: File | null, url: string) => {
+   if (profilePhoto) {
+      const token = localStorage.getItem('token')
+      const decodedToken: any = token && jwt_decode(token)
+      let formData = new FormData()
+      formData.append('profilePhoto', profilePhoto);
+
+      (async () => {
+         await axios.post(`${url}/user/profile-photo/${decodedToken.userID}`, formData, {
+            headers: {
+               Authorization: `Bearer ${token}`,
+               'Content-Type': 'multipart/form-data',
+            },
+         })
+      })()
+   }
+}
+
 export default () => {
 
    const dispatch = useDispatch()
+
    const { userID } = useParams()
+
+   const photoInput = useRef<any>(null)
 
    const { url } = useSelector((state: RootState) => state.url)
    const { user } = useSelector((state: RootState) => state.user)
 
-   dispatch(goDevelop())
-  
+   const [ showFullScreenProfilePhoto, setShowFullScreenProfilePhoto ] = useState<boolean>(false)
+   const [ profilePhoto, setProfilePhoto ] = useState<File | null>(null)
+
+   // dispatch(goDevelop())
+
    useEffect(() => {
       (async () => {
          const [ response, error ] = await getUser(`${url}/user`, userID)
@@ -28,7 +54,14 @@ export default () => {
       })()
    }, [ userID, url ])
 
+
    return <>
+      {showFullScreenProfilePhoto && <div className='profile-photo-full-screen'
+                                          onClick={() => setShowFullScreenProfilePhoto(false)}>
+         <img onClick={(e) => e.stopPropagation()}
+              src={profilePhoto ? URL.createObjectURL(profilePhoto) : `https://spaces.george-hutanu.com/${user.profilePhoto}`}
+              alt='profile photo' />
+      </div>}
       <div className='user-page__wrapper'>
          <div className='user-page'>
             <div className='user-page__upper-section'>
@@ -37,9 +70,37 @@ export default () => {
                      <img src='https://wallpaperaccess.com/full/508751.jpg' alt='cover photo' />
                   </div>
                   <div className='user-page__upper-section__user-photos__profile-photo'>
+                     <div className='user-page__upper-section__user-photos__profile-photo__options'>
+                        <div onClick={() => setShowFullScreenProfilePhoto(true)}
+                             className='user-page__upper-section__user-photos__profile-photo__options__view-photo'>
+                           View photo
+                        </div>
+                        <div onClick={() => {
+                           photoInput.current && photoInput.current.click()
+                        }} className='user-page__upper-section__user-photos__profile-photo__options__upload-photo'>
+                           <input type='file' accept='image/png, image/jpeg, image/jpg'
+                                  onChange={(e) => {
+                                     e.target.files && setProfilePhoto(e.target.files[0])
+                                  }} ref={photoInput} />
+                           Upload photo
+                        </div>
+                     </div>
                      <img
-                        src='https://swashvillage.org/storage/img/images_2/william-biography_20.jpg'
+                        src={profilePhoto ? URL.createObjectURL(profilePhoto) : `https://spaces.george-hutanu.com/${user.profilePhoto}`}
                         alt='profile photo' />
+                     <div
+                        className='user-page__upper-section__user-photos__profile-photo__action-buttons'>
+                        {profilePhoto && <button
+                           className='user-page__upper-section__user-photos__profile-photo__action-buttons__discard'
+                           onClick={() => setProfilePhoto(null)}>Discard</button>}
+                        {profilePhoto && <button
+                           className='user-page__upper-section__user-photos__profile-photo__action-buttons__upload'
+                           onClick={async () => {
+                              await uploadProfilePhoto(profilePhoto, url)
+                              setProfilePhoto(null)
+                           }}
+                        >Upload Photo</button>}
+                     </div>
                   </div>
                </div>
                <div className='user-page__upper-section__navigation-tabs'>
@@ -58,7 +119,7 @@ export default () => {
                   </div>
                </div>
             </div>
-            <div className='user-page__posts'>
+            <div className={`user-page__posts ${profilePhoto ? 'user-page__posts__editing' : ''}`}>
                <Post
                   userID={'622dc0f07c3f071f571bd5e7'}
                   postID={'654636546436'}
