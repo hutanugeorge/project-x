@@ -10,6 +10,7 @@ import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
 import { loadUser } from '../../redux/user'
 import { getUser } from '../../services/userServices'
+import ImageModeler from '../../utils/ImageModeler/ImageModeler'
 
 
 const uploadProfilePhoto = (profilePhoto: File | null, url: string) => {
@@ -56,6 +57,7 @@ export default () => {
 
 
    return <>
+      {profilePhoto && <ImageModeler imgSrc={URL.createObjectURL(profilePhoto)} /> }
       {showFullScreenProfilePhoto && <div className='profile-photo-full-screen'
                                           onClick={() => setShowFullScreenProfilePhoto(false)}>
          <img onClick={(e) => e.stopPropagation()}
