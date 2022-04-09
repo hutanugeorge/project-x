@@ -1,11 +1,6 @@
 .mobile-settings {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 6rem 0;
-  overflow-y: scroll;
+  width: 100vw;
+  height: 85vh;
 
   &__header {
     display: flex;
@@ -15,9 +10,11 @@
     height: 35%;
     gap: 2rem;
 
+
     &__user-photo {
       @include displayFlexCenterCenter;
       clip-path: circle();
+
 
       & img {
         width: 10rem;
@@ -28,7 +25,7 @@
 
     &__username {
       font-size: 2rem;
-      font-weight: 400
+      font-weight: 400;
     }
   }
 
@@ -36,20 +33,24 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    height: 60%;
+    align-items: center;
 
     &__settings {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      justify-content: center;
       align-items: center;
+      width: 95%;
+      overflow-y: scroll;
+
 
       &__settings1 {
         width: 100%;
-        height: 5rem;
-        background-color: $color-grey-light;
+        min-height: 5rem;
+        background-color: white;
         border-radius: 1rem;
-        box-shadow: 0.3rem 0.4rem 1rem rgba($color-black, 0.1);
+        box-shadow: 0.3rem 0.4rem 1rem rgb(4 3 3 / 2%);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -73,6 +74,8 @@
       box-shadow: 0.3rem 0.4rem 1rem rgba($color-black, 0.1);
       display: flex;
       align-items: center;
+      position: fixed;
+      bottom: 5rem;
 
       &__name {
         font-size: 1.5rem;
