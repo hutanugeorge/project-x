@@ -26,23 +26,29 @@ import { Post as IPost } from '../../shared/interfaces/post'
 
 export default () => {
 
+   const { user } = useSelector((state: RootState) => state.user)
+   const { url } = useSelector((state: RootState) => state.url)
+
    const [ postDescription, setPostDescription ] = useState<string>('')
    const [ postPhoto, setPostPhoto ] = useState<File | null>(null)
-   const [ previewPost, setPreviewPost ] = useState<IPost>({
-      ...DEFAULT_POST,
+   const [ previewPost, setPreviewPost ] = useState<any>({
+      user: {
+         firstName: user.firstName,
+         lastName: user.lastName,
+         profilePhoto: user.profilePhoto!,
+         _id: user._id,
+      },
       description: postDescription,
       photo: postPhoto ? URL.createObjectURL(postPhoto) : ''
    })
 
-   const { user } = useSelector((state: RootState) => state.user)
-   const { url } = useSelector((state: RootState) => state.url)
 
    const navigate = useNavigate()
 
    const photoInput = useRef<any>(null)
 
    useEffect(() => {
-      setPreviewPost(prev => ({
+      setPreviewPost((prev: any) => ({
          ...prev,
          description: postDescription,
          photo: postPhoto ? URL.createObjectURL(postPhoto) : ''
@@ -101,7 +107,7 @@ export default () => {
          </div>
       </form>
       {(postDescription || postPhoto) && <div className="post-form__preview-post">
-          <Post post={previewPost} preview={true}/>
+          <Post postID={"fwgweg"} isPreview={true} preview={previewPost}/>
       </div>}
    </div>
 }

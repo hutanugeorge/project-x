@@ -7,7 +7,7 @@ export enum ActivityActions {
 }
 
 export const DEFAULT_POST: Post = {
-   _id: '', user: { firstName: '', lastName: ''},
+   _id: '', user: { firstName: '', lastName: '', profilePhoto: '', _id: '' },
    liked: false, noComments: 0, noLikes: 0, noSaves: 0,
    date: 'a second ago', description: '', photo: ''
 

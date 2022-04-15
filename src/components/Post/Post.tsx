@@ -14,7 +14,7 @@ import MessageIcon from '../../icons/MessageIcon'
 import { PostProps } from './interfaces'
 
 
-export default ({ postID, preview }: PostProps) => {
+export default ({ postID, isPreview, preview }: PostProps) => {
 
    const [ showComments, setShowComments ] = useState<boolean>(false)
    const [ post, setPost ] = useState<IPost>()
@@ -27,27 +27,41 @@ export default ({ postID, preview }: PostProps) => {
    dispatch(goDevelop())
 
    useEffect(() => {
-      (async () => {
-         const [ response, error ] = await getPost(`${url}/post/${postID}`)
-         !error && response.status === 200 && setPost(response.data.post)
-      })()
+      if (isPreview && preview) {
+         setPost({
+            user: preview.user!,
+            date: 'a second ago',
+            description: preview.description!,
+            photo: preview.photo!,
+            _id: 'gregerg',
+            liked: false,
+            noLikes: 0,
+            noComments: 0,
+            noSaves: 0
+         })
+      } else {
+         (async () => {
+            const [ response, error ] = await getPost(`${url}/post/${postID}`)
+            !error && response.status === 200 && setPost(response.data.post)
+         })()
+      }
    }, [ postID ])
 
-   if(post) {
+   if (post) {
       const { user, date, description, photo, _id, liked, noLikes, noComments, noSaves } = post
       return (
          <div className="post">
             <div className="post__header">
                <div className="post__header__person">
                   <div className="post__header__person__photo"
-                       onClick={() => !preview && navigate(`/user/${user._id}`)}>
+                       onClick={() => !isPreview && navigate(`/user/${user._id}`)}>
                      <img src={user.profilePhoto} alt="person photo"/>
                   </div>
                   <div className="post__header__person__username">
                      <p className="post__header__person__username__content"
-                        onClick={() => !preview && navigate(`/user/${user._id}`)}>{`${user.firstName} ${user.lastName}`}</p>
+                        onClick={() => !isPreview && navigate(`/user/${user._id}`)}>{`${user.firstName} ${user.lastName}`}</p>
                      <p className="post__header__person__username__date"
-                        onClick={() => !preview && navigate(`/post/${_id}`)}>{date}</p>
+                        onClick={() => !isPreview && navigate(`/post/${_id}`)}>{date}</p>
                   </div>
                </div>
                <div className="post__header__more-options">
