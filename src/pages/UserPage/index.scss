@@ -65,44 +65,6 @@
         height: 20rem;
         clip-path: circle();
 
-        &__action-buttons {
-          display: flex;
-          gap: 3rem;
-          padding-top: 1rem;
-
-          &__upload, &__discard {
-            width: 15rem;
-            height: 4rem;
-            border-radius: 1rem;
-            text-align: center;
-            background-color: white;
-            font-size: 1.3rem;
-            cursor: pointer;
-
-            &:hover {
-              color: white;
-            }
-          }
-
-          &__upload {
-            border: 2px solid $color-primary-light;
-            color: $color-primary-light;
-
-            &:hover {
-              background-color: $color-primary-light;
-            }
-          }
-
-          &__discard {
-            border: 2px solid rgba(red, .5);
-            color: rgba(red, .5);
-
-            &:hover {
-              background-color: rgba(red, .5);
-            }
-          }
-        }
-
         & img {
           height: 100%;
         }
@@ -167,6 +129,44 @@
           }
 
 
+        }
+      }
+
+      &__action-buttons {
+        display: flex;
+        gap: 3rem;
+        padding-top: 4rem;
+
+        &__upload, &__discard {
+          width: 15rem;
+          height: 4rem;
+          border-radius: 1rem;
+          text-align: center;
+          background-color: white;
+          font-size: 1.3rem;
+          cursor: pointer;
+
+          &:hover {
+            color: white;
+          }
+        }
+
+        &__upload {
+          border: 2px solid $color-primary-light;
+          color: $color-primary-light;
+
+          &:hover {
+            background-color: $color-primary-light;
+          }
+        }
+
+        &__discard {
+          border: 2px solid rgba(red, .5);
+          color: rgba(red, .5);
+
+          &:hover {
+            background-color: rgba(red, .5);
+          }
         }
       }
     }
