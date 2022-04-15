@@ -18,7 +18,11 @@ export default () => {
    const dispatch = useDispatch()
 
    const { url } = useSelector((state: RootState) => state.url)
-   const { showNotifications, showExplore, showSettings } = useSelector((state: RootState) => state.modals)
+   const {
+      showNotifications,
+      showExplore,
+      showSettings
+   } = useSelector((state: RootState) => state.modals)
 
 
    // dispatch(goDevelop())
@@ -32,17 +36,16 @@ export default () => {
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
       })()
 
-   }, [ ])
-
+   }, [])
    return (
       <>
-         <div className='home-page'>
-            <DesktopNotifications />
-            {showNotifications && <MobileNotifications />}
-            {!showNotifications && !showExplore && !showSettings &&  <MainSection />}
-            {showExplore && <MobileExplore />}
-            {showSettings && <MobileSettings />}
-            <DesktopNotifications />
+         <div className="home-page">
+            <DesktopNotifications/>
+            {showNotifications && <MobileNotifications/>}
+            {!showNotifications && !showExplore && !showSettings && <MainSection/>}
+            {showExplore && <MobileExplore/>}
+            {showSettings && <MobileSettings/>}
+            <DesktopNotifications/>
          </div>
       </>
    )

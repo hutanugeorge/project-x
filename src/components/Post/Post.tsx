@@ -29,15 +29,13 @@ export default ({ postID, isPreview, preview }: PostProps) => {
    useEffect(() => {
       if (isPreview && preview) {
          setPost({
-            user: preview.user!,
             date: 'a second ago',
-            description: preview.description!,
-            photo: preview.photo!,
             _id: 'gregerg',
             liked: false,
             noLikes: 0,
             noComments: 0,
-            noSaves: 0
+            noSaves: 0,
+            ...preview
          })
       } else {
          (async () => {
@@ -45,7 +43,7 @@ export default ({ postID, isPreview, preview }: PostProps) => {
             !error && response.status === 200 && setPost(response.data.post)
          })()
       }
-   }, [ postID ])
+   }, [ postID, preview ])
 
    if (post) {
       const { user, date, description, photo, _id, liked, noLikes, noComments, noSaves } = post

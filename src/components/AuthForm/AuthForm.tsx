@@ -50,6 +50,9 @@ export default () => {
    const [ passwordError, setPasswordError ] = useState<string | undefined>()
    const [ confirmPasswordError, setConfirmPasswordError ] = useState<string | undefined>()
 
+   const [ loginButton, setLoginButton ] = useState('Login')
+   const [ signupButton, setSignupButton ] = useState('Signup')
+
    const token = localStorage.getItem('token')
 
    const dispatch = useDispatch()
@@ -80,6 +83,11 @@ export default () => {
       }
    }
 
+   const setLoadingButtons = () => {
+      setLoginButton('Loading...')
+      setSignupButton('Loading...')
+   }
+
 
    return !(token && !isJwtTokenExpired(token!)) ? (
       <div className="auth__wrapper">
@@ -107,9 +115,14 @@ export default () => {
                         },
                         `${url}/login`
                      )
-                     console.log(email, password)
-                     if (!error && response?.status === 200) window.location.pathname = '/'
-                     error && response?.status === 403 && setInputsErrors(AuthView.LOGIN, response)
+                     if (!error && response?.status === 200) {
+                        window.location.pathname = '/homepage'
+                        setLoginButton('Login Successfully')
+                     }
+                     if(error && response?.status === 403) {
+                        setInputsErrors(AuthView.LOGIN, response)
+                        setLoginButton('Try again')
+                     }
                   } else if (authView === AuthView.SIGNUP) {
                      const [ response, error ] = await signupUser(
                         {
@@ -121,8 +134,14 @@ export default () => {
                         },
                         `${url}/signup`
                      )
-                     if (!error && response?.status === 200) window.location.pathname = '/homepage'
-                     error && response?.status === 403 && setInputsErrors(AuthView.SIGNUP, response)
+                     if (!error && response?.status === 200) {
+                        window.location.pathname = '/homepage'
+                        setSignupButton('Signup Successfully')
+                     }
+                     if(error && response?.status === 403) {
+                        setInputsErrors(AuthView.SIGNUP, response)
+                        setSignupButton('Try again')
+                  }
                   }
                }}
             >
@@ -252,10 +271,11 @@ export default () => {
                   <div data-testid="form-button">
                      <Button
                         color={ButtonColor.POSITIVE}
+                        onClickFunctions={[ setLoadingButtons ]}
                         type={'submit'}
                         reactive={true}
-                        text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
-                        width={[ DesktopButtonWidth.L, TabletButtonWidth.M, MobileButtonWidth.XL ]}
+                        text={authView === AuthView.LOGIN ? loginButton : signupButton}
+                        width={[ DesktopButtonWidth.XL, TabletButtonWidth.XL, MobileButtonWidth.XL ]}
                         height={[
                            DesktopButtonHeight.L,
                            TabletButtonHeight.M,

@@ -28,17 +28,8 @@ export default () => {
 
    const [ postDescription, setPostDescription ] = useState<string>('')
    const [ postPhoto, setPostPhoto ] = useState<File | null>(null)
-   const [ previewPost, setPreviewPost ] = useState<any>({
-      user: {
-         firstName: user.firstName,
-         lastName: user.lastName,
-         profilePhoto: user.profilePhoto!,
-         _id: user._id,
-      },
-      description: postDescription,
-      photo: postPhoto ? URL.createObjectURL(postPhoto) : ''
-   })
-
+   const [ previewPost, setPreviewPost ] = useState<any>(null)
+   const [ buttonText, setButtonText ] = useState('Upload')
 
    const navigate = useNavigate()
 
@@ -48,9 +39,17 @@ export default () => {
       setPreviewPost((prev: any) => ({
          ...prev,
          description: postDescription,
-         photo: postPhoto ? URL.createObjectURL(postPhoto) : ''
+         photo: postPhoto ? URL.createObjectURL(postPhoto) : '',
+         user: {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            profilePhoto: user.profilePhoto!,
+            _id: user._id
+         }
       }))
-   }, [ postDescription, postPhoto ])
+   }, [ postDescription, postPhoto, user ])
+
+   console.log(previewPost)
 
    return <div className="post-form">
       <form className="post-form__form" onSubmit={(e) => {
@@ -69,6 +68,10 @@ export default () => {
                if (!error && response.status === 200) {
                   setPostDescription('')
                   setPostPhoto(null)
+                  setButtonText('Success')
+                  setTimeout(() => {
+                     setButtonText('Upload')
+                  }, 1000)
                } else {
                   console.log(error)
                }
@@ -77,7 +80,7 @@ export default () => {
       }}>
          <div className="post-form__form__input">
             <div className="post-form__user-image"
-                 onClick={() =>  navigate(`/user/${user._id}`)}>
+                 onClick={() => navigate(`/user/${user._id}`)}>
                <img
                   src={user.profilePhoto}
                   alt="user-image"/>
@@ -98,13 +101,15 @@ export default () => {
             }}>
                <ImageIcon width={35} height={35}/> Add Photo/Video
             </label>
-            <button type="submit" className="post-form__button">
-               Upload Post
+            <button type="submit"
+                    className={`post-form__button ${buttonText === 'Success' ? 'post-form__button--success' : ''}`}
+                    onClick={() => setButtonText('Loading...')}>
+               {buttonText}
             </button>
          </div>
       </form>
       {(postDescription || postPhoto) && <div className="post-form__preview-post">
-          <Post postID={"fwgweg"} isPreview={true} preview={previewPost}/>
+          <Post postID={''} isPreview={true} preview={previewPost}/>
       </div>}
    </div>
 }

@@ -83,6 +83,11 @@
     border: none;
     cursor: pointer;
 
+    &--success {
+      border: 1.5px solid $color-positive;
+      background-color: $color-positive;
+    }
+
     &:hover {
       background-color: $color-grey-light;
       border: 1.5px solid $color-primary-light;
