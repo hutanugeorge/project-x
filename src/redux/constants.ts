@@ -1,4 +1,4 @@
-import User from '../shared/interfaces/user'
+import User, { VisitorUser } from '../shared/interfaces/user'
 
 export const USER_DEFAULT: User = {
    bio: '',
@@ -29,4 +29,31 @@ export const USER_DEFAULT: User = {
    profilePhoto: '',
    sex: 'Male',
    _id: '',
+}
+
+export const VISITOR_USER_DEFAULT: VisitorUser = {
+   bio: '',
+   cityLiving: '',
+   coverPhoto: '',
+   dob: '',
+   email: '',
+   firstName: '',
+   followers: [],
+   following: [],
+   friends: [],
+   hobbies: [],
+   languages: [],
+   lastName: '',
+   middleName: '',
+   noFollowers: 0,
+   noFollowing: 0,
+   noFriends: 0,
+   noPhotos: 0,
+   noPreviousJobs: 0,
+   phoneNumber: '',
+   photos: [],
+   posts: [],
+   previousJobs: [],
+   profilePhoto: '',
+   sex: 'Male',
 }

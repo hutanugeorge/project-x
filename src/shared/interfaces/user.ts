@@ -1,4 +1,4 @@
-import IPost from './post'
+import { Post } from './post'
 
 export default interface User {
    _id: string
@@ -23,7 +23,7 @@ export default interface User {
 
    photos?: string[]
    noPhotos?: number
-   posts?: IPost[]
+   posts?: Post[]
    profilePhoto?: string
    coverPhoto?: string
 
@@ -36,6 +36,8 @@ export default interface User {
 
    messages?: Message[]
 }
+
+export type VisitorUser = Omit<User, "_id" | 'messages' | 'noFriendsRequest' | 'friendsRequest'>
 
 export interface Message {
    user: PartialUser

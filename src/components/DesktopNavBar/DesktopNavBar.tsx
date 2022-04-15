@@ -1,4 +1,3 @@
-import jwt_decode from 'jwt-decode'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import LogoutIcon from '../../icons/LogoutIcon'
@@ -91,7 +90,7 @@ export default () => {
                <div className='nav-bar__element__person__photo'
                     onClick={() => window.location.pathname = `/user/${user._id}`}>
                   <img
-                     src={`https://spaces.george-hutanu.com/${user.profilePhoto}`}
+                     src={user.profilePhoto}
                      alt='person photo'
                   />
                </div>

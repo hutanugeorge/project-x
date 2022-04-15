@@ -1,13 +1,15 @@
-import axios from 'axios'
+import { useEffect, useRef, useState } from 'react'
+
 import FormData from 'form-data'
 import jwt_decode from 'jwt-decode'
-import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import ArrowRightIcon from '../../icons/ArrowRightIcon'
+import { useNavigate } from 'react-router-dom'
+
 import ImageIcon from '../../icons/ImageIcon'
 import { RootState } from '../../redux/store'
-
-
+import { postPost } from '../../services/postServices'
+import { DEFAULT_POST } from '../../utils/constants'
+import getPhoto from '../../utils/getPhoto'
 import Input from '../Input'
 import {
    DesktopInputHeight,
@@ -16,23 +18,39 @@ import {
    MobileInputHeight,
    MobileInputWidth,
    TabletInputHeight,
-   TabletInputWidth,
+   TabletInputWidth
 } from '../Input/interface'
 import Post from '../Post'
-import index from '../Post'
+import { Post as IPost } from '../../shared/interfaces/post'
 
 
 export default () => {
 
    const [ postDescription, setPostDescription ] = useState<string>('')
    const [ postPhoto, setPostPhoto ] = useState<File | null>(null)
+   const [ previewPost, setPreviewPost ] = useState<IPost>({
+      ...DEFAULT_POST,
+      description: postDescription,
+      photo: postPhoto ? URL.createObjectURL(postPhoto) : ''
+   })
 
-   const {user} = useSelector((state: RootState) => state.user)
+   const { user } = useSelector((state: RootState) => state.user)
+   const { url } = useSelector((state: RootState) => state.url)
+
+   const navigate = useNavigate()
 
    const photoInput = useRef<any>(null)
 
-   return <div className='post-form'>
-      <form className='post-form__form' onSubmit={(e) => {
+   useEffect(() => {
+      setPreviewPost(prev => ({
+         ...prev,
+         description: postDescription,
+         photo: postPhoto ? URL.createObjectURL(postPhoto) : ''
+      }))
+   }, [ postDescription, postPhoto ])
+
+   return <div className="post-form">
+      <form className="post-form__form" onSubmit={(e) => {
          e.preventDefault()
          if (postDescription && postPhoto) {
             const token = localStorage.getItem('token')
@@ -44,52 +62,46 @@ export default () => {
             formData.append('photo', postPhoto);
 
             (async () => {
-               const response = await axios.post('https://project-x-server.vercel.app/post', formData, {
-                  headers: {
-                     Authorization: `Bearer ${token}`,
-                     'Content-Type': 'multipart/form-data',
-                  },
-               })
-               if (response.status === 200) {
+               const [ response, error ] = await postPost(url, formData)
+               if (!error && response.status === 200) {
                   setPostDescription('')
                   setPostPhoto(null)
+               } else {
+                  console.log(error)
                }
             })()
          }
       }}>
-         <div className='post-form__form__input'>
-            <div className='post-form__user-image'>
+         <div className="post-form__form__input">
+            <div className="post-form__user-image"
+                 onClick={() =>  navigate(`/user/${user._id}`)}>
                <img
-                  src={`https://spaces.george-hutanu.com/${user.profilePhoto}`}
-                  alt='user-image' />
+                  src={user.profilePhoto}
+                  alt="user-image"/>
             </div>
             <Input name={'post-input'} type={'text'} placeholder={'What\'s on your mind?'}
                    onChange={[ setPostDescription ]}
+                   color={InputColor.SECONDARY}
                    width={[ DesktopInputWidth.XL, TabletInputWidth.XL, MobileInputWidth.XL ]}
                    height={[ DesktopInputHeight.M, TabletInputHeight.L, MobileInputHeight.L ]}
-                   color={InputColor.SECONDARY}
-                   value={postDescription} error={undefined} />
+                   value={postDescription} error={undefined}/>
          </div>
-         <div className='post-form__file-upload'>
-            <input type='file' accept='image/png, image/jpeg, image/jpg' onChange={(e) => {
+         <div className="post-form__file-upload">
+            <input type="file" accept="image/png, image/jpeg, image/jpg" onChange={(e) => {
                e.target.files && setPostPhoto(e.target.files[0])
-            }} ref={photoInput} />
-            <label htmlFor='file-upload' className='post-form__file-upload__label' onClick={() => {
+            }} ref={photoInput}/>
+            <label htmlFor="file-upload" className="post-form__file-upload__label" onClick={() => {
                photoInput.current && photoInput.current.click()
             }}>
-               <ImageIcon width={35} height={35} /> Add Photo/Video
+               <ImageIcon width={35} height={35}/> Add Photo/Video
             </label>
-            <button type='submit' className='post-form__button'>
+            <button type="submit" className="post-form__button">
                Upload Post
             </button>
          </div>
       </form>
-      {(postDescription || postPhoto) && <div className='post-form__preview-post'>
-         <Post userID={''} postID={''}
-               userPhoto={'https://media.npr.org/assets/img/2021/11/10/will-smith-new-headshot-credit-lorenzo-agius_wide-fce30e30fbf83a2c586848fa991d1d61ab768cd2.jpg?s=1400'}
-               username={'Titi Bernard'} noLikes={0} noComments={0} noSaves={0} date={''}
-               text={postDescription}
-               photo={postPhoto ? URL.createObjectURL(postPhoto) : undefined} />
+      {(postDescription || postPhoto) && <div className="post-form__preview-post">
+          <Post post={previewPost} preview={true}/>
       </div>}
    </div>
 }

@@ -1,34 +1,35 @@
 import axios, { AxiosResponse } from 'axios'
-import jwt_decode from 'jwt-decode'
 
 import getHeaders from '../utils/getHeaders'
+import getUserIdFromToken from '../utils/getUserIdFromToken'
 import { LoginUserData, SignupUserData } from './interfaces'
+
 
 export const signInUser = async (
    data: LoginUserData,
-   url: string,
-): Promise<[AxiosResponse, boolean]> => {
+   url: string
+): Promise<[ AxiosResponse, boolean ]> => {
    const { email, password } = data
    try {
       const response = await axios.post(
          url,
          {
             email: email,
-            password: password,
+            password: password
          },
-         { headers: getHeaders() },
+         { headers: getHeaders() }
       )
       response.status === 200 && localStorage.setItem('token', response.data.token)
-      return [response, false]
+      return [ response, false ]
    } catch (error: any) {
-      return [error.response, true]
+      return [ error.response, true ]
    }
 }
 
 export const signupUser = async (
    data: SignupUserData,
-   url: string,
-): Promise<[AxiosResponse, boolean]> => {
+   url: string
+): Promise<[ AxiosResponse, boolean ]> => {
    const { firstName, lastName, email, password, confirmPassword } = data
    try {
       const response = await axios.post(
@@ -38,37 +39,39 @@ export const signupUser = async (
             password: password,
             confirmPassword: confirmPassword,
             firstName: firstName,
-            lastName: lastName,
+            lastName: lastName
          },
-         { headers: getHeaders() },
+         { headers: getHeaders() }
       )
       response.status === 200 && localStorage.setItem('token', response.data.token)
-      return [response, false]
+      return [ response, false ]
    } catch (error: any) {
-      return [error.response, true]
+      return [ error.response, true ]
    }
 }
 
-export const getUser = async (url: string, userID?: string): Promise<[AxiosResponse, boolean]> => {
-   const token = localStorage.getItem('token')
-   const decodedToken: any = token && jwt_decode(token)
+export const getUser = async (url: string, userID?: string): Promise<[ AxiosResponse, boolean ]> => {
    try {
-      const response = await axios.get(`${url}/${userID ?? decodedToken.userID}`, {
-         headers: getHeaders(true),
+      const response = await axios.get(`${url}/${userID ?? getUserIdFromToken()}`, {
+         headers: getHeaders({ auth: true })
       })
-      return [response, false]
+      return [ response, false ]
    } catch (error: any) {
-      return [error.response, true]
+      return [ error.response, true ]
    }
 }
 
-export const getPost = async (url: string): Promise<[AxiosResponse, boolean]> => {
+export const postProfilePhoto = async (url: string, profilePhoto: File | null): Promise<[ AxiosResponse, boolean ]> => {
    try {
-      const response = await axios.get(url, {
-         headers: getHeaders(true)
+      let formData = new FormData()
+      profilePhoto && formData.append('profilePhoto', profilePhoto)
+
+      const response = await axios.post(`${url}/user/profile-photo/${getUserIdFromToken()}`, formData, {
+         headers: getHeaders({ auth: true, multipartFormData: true })
       })
-      return [response, false]
-   }catch(error: any) {
-      return [error.response, true]
+      return [ response, false ]
+   } catch (error: any) {
+      return [ error.response, true ]
    }
 }
+

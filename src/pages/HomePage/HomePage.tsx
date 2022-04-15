@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react'
-
-import axios from 'axios'
-import FormData from 'form-data'
+import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import isJwtTokenExpired from 'jwt-check-expiry'
+
 import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
 import { loadUser } from '../../redux/user'
 import { getUser } from '../../services/userServices'
-
 import DesktopNotifications from '../../components/DesktopNotifications'
 import MainSection from '../../components/MainSection/MainSection'
 import MobileNotifications from '../../components/MobileNotifications'

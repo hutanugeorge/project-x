@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { InputBorderRadius, InputProps } from './interface'
 
 export default ({

@@ -15,7 +15,7 @@ import {
    MobileButtonHeight,
    MobileButtonWidth,
    TabletButtonHeight,
-   TabletButtonWidth,
+   TabletButtonWidth
 } from '../Button/interface'
 
 import {
@@ -25,9 +25,10 @@ import {
    MobileInputHeight,
    MobileInputWidth,
    TabletInputHeight,
-   TabletInputWidth,
+   TabletInputWidth
 } from '../Input/interface'
 import InputLabeled from '../InputLabeled'
+
 
 enum AuthView {
    LOGIN = 'LOGIN',
@@ -35,19 +36,19 @@ enum AuthView {
 }
 
 export default () => {
-   const [authView, setAuthView] = useState(AuthView.LOGIN)
+   const [ authView, setAuthView ] = useState(AuthView.LOGIN)
 
-   const [firstName, setFirstName] = useState<string>('')
-   const [lastName, setLastName] = useState<string>('')
-   const [email, setEmail] = useState<string>('')
-   const [password, setPassword] = useState<string>('')
-   const [confirmPassword, setConfirmPassword] = useState<string>('')
+   const [ firstName, setFirstName ] = useState<string>('')
+   const [ lastName, setLastName ] = useState<string>('')
+   const [ email, setEmail ] = useState<string>('')
+   const [ password, setPassword ] = useState<string>('')
+   const [ confirmPassword, setConfirmPassword ] = useState<string>('')
 
-   const [firstNameError, setFirstNameError] = useState<string | undefined>()
-   const [lastNameError, setLastNameError] = useState<string | undefined>()
-   const [emailError, setEmailError] = useState<string | undefined>()
-   const [passwordError, setPasswordError] = useState<string | undefined>()
-   const [confirmPasswordError, setConfirmPasswordError] = useState<string | undefined>()
+   const [ firstNameError, setFirstNameError ] = useState<string | undefined>()
+   const [ lastNameError, setLastNameError ] = useState<string | undefined>()
+   const [ emailError, setEmailError ] = useState<string | undefined>()
+   const [ passwordError, setPasswordError ] = useState<string | undefined>()
+   const [ confirmPasswordError, setConfirmPasswordError ] = useState<string | undefined>()
 
    const token = localStorage.getItem('token')
 
@@ -99,25 +100,26 @@ export default () => {
                onSubmit={async (e) => {
                   e.preventDefault()
                   if (authView === AuthView.LOGIN) {
-                     const [response, error] = await signInUser(
+                     const [ response, error ] = await signInUser(
                         {
                            email,
-                           password,
+                           password
                         },
-                        `${url}/login`,
+                        `${url}/login`
                      )
+                     console.log(email, password)
                      if (!error && response?.status === 200) window.location.pathname = '/'
                      error && response?.status === 403 && setInputsErrors(AuthView.LOGIN, response)
                   } else if (authView === AuthView.SIGNUP) {
-                     const [response, error] = await signupUser(
+                     const [ response, error ] = await signupUser(
                         {
                            firstName,
                            lastName,
                            email,
                            password,
-                           confirmPassword,
+                           confirmPassword
                         },
-                        `${url}/signup`,
+                        `${url}/signup`
                      )
                      if (!error && response?.status === 200) window.location.pathname = '/homepage'
                      error && response?.status === 403 && setInputsErrors(AuthView.SIGNUP, response)
@@ -128,7 +130,7 @@ export default () => {
                   <div className="auth__form__content__title">
                      <h2 data-testid="test-title" className="auth__form__content__title__content">
                         {(authView === AuthView.LOGIN && 'Login') ||
-                           (authView === AuthView.SIGNUP && 'Signup')}
+                        (authView === AuthView.SIGNUP && 'Signup')}
                      </h2>
                   </div>
                   {authView === AuthView.SIGNUP && (
@@ -137,14 +139,14 @@ export default () => {
                            name={'firstName'}
                            type={'text'}
                            placeholder={'First Name'}
-                           onChange={[setFirstName]}
+                           onChange={[ setFirstName ]}
                            error={firstNameError}
                            value={firstName ?? ''}
-                           width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                           width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
                            height={[
                               DesktopInputHeight.M,
                               TabletInputHeight.M,
-                              MobileInputHeight.XL,
+                              MobileInputHeight.XL
                            ]}
                            color={InputColor.PRIMARY}
                            labelText={firstNameError ?? 'First name'}
@@ -154,14 +156,14 @@ export default () => {
                            name={'lastName'}
                            type={'text'}
                            placeholder={'Last Name'}
-                           onChange={[setLastName]}
+                           onChange={[ setLastName ]}
                            error={lastNameError}
                            value={lastName ?? ''}
-                           width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                           width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
                            height={[
                               DesktopInputHeight.M,
                               TabletInputHeight.M,
-                              MobileInputHeight.XL,
+                              MobileInputHeight.XL
                            ]}
                            color={InputColor.PRIMARY}
                            labelText={lastNameError ?? 'Last name'}
@@ -172,11 +174,11 @@ export default () => {
                      name={'email'}
                      type={'email'}
                      placeholder={'Email'}
-                     onChange={[setEmail]}
+                     onChange={[ setEmail ]}
                      error={emailError}
                      value={email ?? ''}
-                     width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
-                     height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL]}
+                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
+                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL ]}
                      color={InputColor.PRIMARY}
                      labelText={emailError ?? 'Email'}
                   />
@@ -184,12 +186,12 @@ export default () => {
                      type="password"
                      name="password"
                      placeholder="Password"
-                     onChange={[setPassword]}
+                     onChange={[ setPassword ]}
                      value={password ?? ''}
                      labelText={passwordError ?? 'Password'}
                      error={passwordError}
-                     width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
-                     height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL]}
+                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
+                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL ]}
                      color={InputColor.PRIMARY}
                   />
                   {authView === AuthView.SIGNUP && (
@@ -199,14 +201,14 @@ export default () => {
                            type="password"
                            placeholder="Repeat password"
                            error={confirmPasswordError}
-                           onChange={[setConfirmPassword]}
+                           onChange={[ setConfirmPassword ]}
                            value={confirmPassword ?? ''}
                            labelText={confirmPasswordError ?? 'Repeat password'}
-                           width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                           width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
                            height={[
                               DesktopInputHeight.M,
                               TabletInputHeight.M,
-                              MobileInputHeight.XL,
+                              MobileInputHeight.XL
                            ]}
                            color={InputColor.PRIMARY}
                         />
@@ -253,11 +255,11 @@ export default () => {
                         type={'submit'}
                         reactive={true}
                         text={authView === AuthView.LOGIN ? 'Login' : 'Signup'}
-                        width={[DesktopButtonWidth.L, TabletButtonWidth.M, MobileButtonWidth.XL]}
+                        width={[ DesktopButtonWidth.L, TabletButtonWidth.M, MobileButtonWidth.XL ]}
                         height={[
                            DesktopButtonHeight.L,
                            TabletButtonHeight.M,
-                           MobileButtonHeight.XL,
+                           MobileButtonHeight.XL
                         ]}
                      />
                   </div>
