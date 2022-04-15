@@ -24,7 +24,7 @@ export default ({ postID, isPreview, preview }: PostProps) => {
 
    const { url } = useSelector((state: RootState) => state.url)
 
-   dispatch(goDevelop())
+   // dispatch(goDevelop())
 
    useEffect(() => {
       if (isPreview && preview) {
