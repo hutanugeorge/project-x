@@ -8,8 +8,6 @@ import { useNavigate } from 'react-router-dom'
 import ImageIcon from '../../icons/ImageIcon'
 import { RootState } from '../../redux/store'
 import { postPost } from '../../services/postServices'
-import { DEFAULT_POST } from '../../utils/constants'
-import getPhoto from '../../utils/getPhoto'
 import Input from '../Input'
 import {
    DesktopInputHeight,
@@ -21,7 +19,6 @@ import {
    TabletInputWidth
 } from '../Input/interface'
 import Post from '../Post'
-import { Post as IPost } from '../../shared/interfaces/post'
 
 
 export default () => {
