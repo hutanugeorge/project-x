@@ -8,7 +8,7 @@ import {
    setModalsOff,
    toggleExplore,
    toggleNotifications,
-   toggleSettings,
+   toggleSettings
 } from '../../redux/homepageModals'
 import ActivityIcon from '../../icons/ActivityIcon'
 import ExploreIcon from '../../icons/ExploreIcon'
@@ -63,27 +63,27 @@ export default () => {
 
    return (
       <>
-         <MobileUpperNavigation />
-         <div className='nav-bar__mobile'>
-            <div className='nav-bar__mobile__elements'>
+         <MobileUpperNavigation/>
+         <div className="nav-bar__mobile">
+            <div className="nav-bar__mobile__elements">
                <div
                   className={`nav-bar__mobile__elements__element${
                      userTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='profile'
+                  data-testid="profile"
                   onClick={() => {
                      if (!userTab) {
                         selectTab(Tabs.USER_TAB)
                      }
                   }}
                >
-                  <PhotoIcon />
+                  <PhotoIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
                      activityTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='activity'
+                  data-testid="activity"
                   onClick={() => {
                      if (!activityTab) {
                         selectTab(Tabs.ACTIVITY_TAB)
@@ -91,25 +91,25 @@ export default () => {
                      }
                   }}
                >
-                  <ActivityIcon />
+                  <ActivityIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
                      homepageTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='homepage'
+                  data-testid="homepage"
                   onClick={() => {
                      selectTab(Tabs.HOMEPAGE_TAB)
                      dispatch(setModalsOff())
                   }}
                >
-                  <HomePageIcon />
+                  <HomePageIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
                      exploreTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='explore'
+                  data-testid="explore"
                   onClick={() => {
                      if (!exploreTab) {
                         selectTab(Tabs.EXPLORER_TAB)
@@ -117,13 +117,13 @@ export default () => {
                      }
                   }}
                >
-                  <ExploreIcon />
+                  <ExploreIcon/>
                </div>
                <div
                   className={`nav-bar__mobile__elements__element${
                      settingsTab && '__active'
                   } nav-bar__mobile__elements__element`}
-                  data-testid='settings'
+                  data-testid="settings"
                   onClick={() => {
                      if (!settingsTab) {
                         selectTab(Tabs.SETTINGS_TAB)
@@ -131,7 +131,7 @@ export default () => {
                      }
                   }}
                >
-                  <SettingsIcon />
+                  <SettingsIcon/>
                </div>
             </div>
          </div>

@@ -37,7 +37,7 @@ export default interface User {
    messages?: Message[]
 }
 
-export type VisitorUser = Omit<User, "_id" | 'messages' | 'noFriendsRequest' | 'friendsRequest'>
+export type VisitorUser = Omit<User, '_id' | 'messages' | 'noFriendsRequest' | 'friendsRequest'>
 
 export interface Message {
    user: PartialUser

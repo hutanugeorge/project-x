@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
 
-
 export interface PostProps {
    postID: string
    isPreview?: boolean

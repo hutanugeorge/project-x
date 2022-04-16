@@ -1,90 +1,86 @@
 .mobile-settings {
-  width: 100vw;
-  height: 85vh;
+   width: 100vw;
+   height: 85vh;
 
-  &__header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 35%;
-    gap: 2rem;
+   &__header {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 35%;
+      gap: 2rem;
 
+      &__user-photo {
+         @include displayFlexCenterCenter;
+         clip-path: circle();
 
-    &__user-photo {
-      @include displayFlexCenterCenter;
-      clip-path: circle();
-
-
-      & img {
-        width: 10rem;
-        height: 10rem;
-
+         & img {
+            width: 10rem;
+            height: 10rem;
+         }
       }
-    }
 
-    &__username {
-      font-size: 2rem;
-      font-weight: 400;
-    }
-  }
+      &__username {
+         font-size: 2rem;
+         font-weight: 400;
+      }
+   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    height: 60%;
-    align-items: center;
-
-    &__settings {
+   &__content {
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      height: 60%;
       align-items: center;
-      width: 95%;
-      overflow-y: scroll;
 
+      &__settings {
+         display: flex;
+         flex-direction: column;
+         gap: 2rem;
+         align-items: center;
+         width: 95%;
+         overflow-y: scroll;
 
-      &__settings1 {
-        width: 100%;
-        min-height: 5rem;
-        background-color: white;
-        border-radius: 1rem;
-        box-shadow: 0.3rem 0.4rem 1rem rgb(4 3 3 / 2%);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+         &__settings1 {
+            width: 100%;
+            min-height: 5rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0.3rem 0.4rem 1rem rgb(4 3 3 / 2%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        &__name {
-          margin-left: 3rem;
-          font-size: 1.5rem;
-        }
+            &__name {
+               margin-left: 3rem;
+               font-size: 1.5rem;
+            }
 
-        & svg {
-          margin-right: 1.5rem;
-        }
-      }
-    }
-
-    &__log-out {
-      width: 100%;
-      height: 5rem;
-      background-color: $color-grey-light;
-      border-radius: 1rem;
-      box-shadow: 0.3rem 0.4rem 1rem rgba($color-black, 0.1);
-      display: flex;
-      align-items: center;
-      position: fixed;
-      bottom: 5rem;
-
-      &__name {
-        font-size: 1.5rem;
-        margin-left: 1rem;
+            & svg {
+               margin-right: 1.5rem;
+            }
+         }
       }
 
-      & svg {
-        margin-left: 3rem;
+      &__log-out {
+         width: 100%;
+         height: 5rem;
+         background-color: $color-grey-light;
+         border-radius: 1rem;
+         box-shadow: 0.3rem 0.4rem 1rem rgba($color-black, 0.1);
+         display: flex;
+         align-items: center;
+         position: fixed;
+         bottom: 5rem;
+
+         &__name {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+         }
+
+         & svg {
+            margin-left: 3rem;
+         }
       }
-    }
-  }
+   }
 }

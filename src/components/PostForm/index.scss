@@ -1,26 +1,26 @@
 .post-form {
-  margin-top: 2rem;
-  width: 95%;
-  background-color: white;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+   margin-top: 2rem;
+   width: 95%;
+   background-color: white;
+   border-radius: 1rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 
-    &__user-image {
+   &__user-image {
       @include displayFlexCenterCenter;
       width: 4rem;
       height: 4rem;
       clip-path: circle();
 
       & img {
-        height: 100%;
-        cursor: pointer;
+         height: 100%;
+         cursor: pointer;
       }
-    }
+   }
 
-    &__form {
+   &__form {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -28,80 +28,80 @@
       width: 100%;
 
       &__button {
-        color: grey;
+         color: grey;
       }
 
       &__input {
-        margin: 4rem 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        width: 90%;
+         margin: 4rem 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 1.5rem;
+         width: 90%;
       }
-    }
+   }
 
-  &__file-upload {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 3rem;
-    gap: 3rem;
+   &__file-upload {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 3rem;
+      gap: 3rem;
 
-    &__label {
+      &__label {
+         border-radius: 1rem;
+         height: 4rem;
+         display: flex;
+         align-items: center;
+         font-size: 1.6rem;
+         cursor: pointer;
+         background-color: $color-grey-light;
+         padding: 1rem;
+         color: $color-primary-light;
+         border: 1.5px solid $color-primary-light;
+
+         &:hover {
+            background-color: $color-primary-light;
+            color: white;
+         }
+      }
+
+      & input {
+         display: none;
+         cursor: pointer;
+      }
+   }
+
+   &__button {
+      background-color: $color-primary-light;
+      padding: 0.3rem;
+      color: white;
+      font-size: 1.4rem;
       border-radius: 1rem;
       height: 4rem;
-      display: flex;
-      align-items: center;
-      font-size: 1.6rem;
+      width: 9rem;
+      border: none;
       cursor: pointer;
-      background-color: $color-grey-light;
-      padding: 1rem;
-      color: $color-primary-light;
-      border: 1.5px solid $color-primary-light;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &--success {
+         border: 1.5px solid $color-positive;
+         background-color: $color-positive;
+      }
 
       &:hover {
-        background-color: $color-primary-light;
-        color: white;
+         background-color: $color-grey-light;
+         border: 1.5px solid $color-primary-light;
+         color: $color-primary-light;
       }
-    }
+   }
 
-    & input {
-      display: none;
-      cursor: pointer;
-    }
-  }
-
-  &__button {
-    background-color: $color-primary-light;
-    padding: .3rem;
-    color: white;
-    font-size: 1.4rem;
-    border-radius: 1rem;
-    height: 4rem;
-    width: 9rem;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &--success {
-      border: 1.5px solid $color-positive;
-      background-color: $color-positive;
-    }
-
-    &:hover {
-      background-color: $color-grey-light;
-      border: 1.5px solid $color-primary-light;
-      color: $color-primary-light;
-    }
-  }
-
-  &__preview-post {
-    width: 100%;
-    margin-bottom: 3rem;
-    border-radius: 1rem;
-    @include displayFlexCenterCenter;
-  }
+   &__preview-post {
+      width: 100%;
+      margin-bottom: 3rem;
+      border-radius: 1rem;
+      @include displayFlexCenterCenter;
+   }
 }

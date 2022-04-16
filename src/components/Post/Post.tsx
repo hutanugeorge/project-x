@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+
 import ReactLoading from 'react-loading'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
 import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
 import { getPost } from '../../services/postServices'
 import { Post as IPost } from '../../shared/interfaces/post'
-
 import CommentsSection from '../CommentsSection/CommentsSection'
 import SettingsIcon from '../../icons/SettingsIcon'
 import LikeIcon from '../../icons/LikeIcon'
@@ -14,12 +15,10 @@ import SaveIcon from '../../icons/SaveIcon'
 import MessageIcon from '../../icons/MessageIcon'
 import { PostProps } from './interfaces'
 
-
 export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
-
-   const [ showPostPhoto, setShowPostPhoto ] = useState<boolean>(false)
-   const [ showComments, setShowComments ] = useState<boolean>(false)
-   const [ post, setPost ] = useState<IPost>()
+   const [showPostPhoto, setShowPostPhoto] = useState<boolean>(false)
+   const [showComments, setShowComments] = useState<boolean>(false)
+   const [post, setPost] = useState<IPost>()
 
    const navigate = useNavigate()
    const dispatch = useDispatch()
@@ -37,15 +36,15 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
             noLikes: 0,
             noComments: 0,
             noSaves: 0,
-            ...preview
+            ...preview,
          })
       } else {
-         (async () => {
-            const [ response, error ] = await getPost(`${url}/post/${postID}`)
+         ;(async () => {
+            const [response, error] = await getPost(`${url}/post/${postID}`)
             !error && response.status === 200 && setPost(response.data.post)
          })()
       }
-   }, [ postID, preview ])
+   }, [postID, preview])
 
    if (post) {
       const { user, date, description, photo, _id, liked, noLikes, noComments, noSaves } = post
@@ -53,37 +52,55 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
          <div className="post">
             <div className="post__header">
                <div className="post__header__person">
-                  <div className="post__header__person__photo"
-                       onClick={() => !isPreview && navigate(`/user/${user._id}`)}>
-                     <img src={user.profilePhoto} alt="person photo"/>
+                  <div
+                     className="post__header__person__photo"
+                     onClick={() => !isPreview && navigate(`/user/${user._id}`)}
+                  >
+                     <img src={user.profilePhoto} alt="person photo" />
                   </div>
                   <div className="post__header__person__username">
-                     <p className="post__header__person__username__content"
-                        onClick={() => !isPreview && navigate(`/user/${user._id}`)}>{`${user.firstName} ${user.lastName}`}</p>
-                     <p className="post__header__person__username__date"
-                        onClick={() => !isPreview && navigate(`/post/${_id}`)}>{date}</p>
+                     <p
+                        className="post__header__person__username__content"
+                        onClick={() => !isPreview && navigate(`/user/${user._id}`)}
+                     >{`${user.firstName} ${user.lastName}`}</p>
+                     <p
+                        className="post__header__person__username__date"
+                        onClick={() => !isPreview && navigate(`/post/${_id}`)}
+                     >
+                        {date}
+                     </p>
                   </div>
                </div>
                <div className="post__header__more-options">
-                  <SettingsIcon width={30} height={30}/>
+                  <SettingsIcon width={30} height={30} />
                </div>
             </div>
             <div className="post__content">
-               {showPostPhoto &&
-               <div className="post__content__full-screen"
-                    onClick={() => {
-                       setShowPostPhoto(false)
-                    }}>
-                   <img onClick={(e) => e.stopPropagation()}
+               {showPostPhoto && (
+                  <div
+                     className="post__content__full-screen"
+                     onClick={() => {
+                        setShowPostPhoto(false)
+                     }}
+                  >
+                     <img
+                        onClick={(e) => e.stopPropagation()}
                         src={photo && photo}
-                        alt="profile photo"/>
-               </div>}
+                        alt="profile photo"
+                     />
+                  </div>
+               )}
                {description && <p className="post__content__text">{description}</p>}
-               {photo && <img src={photo} alt="post photo"
-                   onClick={() => {
-                      setShowPostPhoto(true)
-                      setStopScroll && setStopScroll(true)
-                   }} />}
+               {photo && (
+                  <img
+                     src={photo}
+                     alt="post photo"
+                     onClick={() => {
+                        setShowPostPhoto(true)
+                        setStopScroll && setStopScroll(true)
+                     }}
+                  />
+               )}
             </div>
             <div className="post__actions">
                <div className="post__actions__left">
@@ -93,7 +110,7 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
                            liked ? 'post__actions__left__action__like__active' : ''
                         }`}
                      >
-                        <LikeIcon width={30} height={30}/>
+                        <LikeIcon width={30} height={30} />
                      </div>
                      <p className="post__actions__left__action__count">{noLikes}</p>
                   </div>
@@ -104,7 +121,7 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
                            setShowComments((prev) => !prev)
                         }}
                      >
-                        <MessageIcon width={30} height={30}/>
+                        <MessageIcon width={30} height={30} />
                      </div>
                      <p className="post__actions__left__action__count">{noComments}</p>
                   </div>
@@ -112,7 +129,7 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
                <div className="post__actions__right">
                   <div className="post__actions__right__action">
                      <div className="post__actions__right__action__save">
-                        <SaveIcon width={30} height={30}/>
+                        <SaveIcon width={30} height={30} />
                      </div>
                      <p className="post__actions__left__action__count">{noSaves}</p>
                   </div>
@@ -120,11 +137,11 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
             </div>
             {showComments && (
                <div className="post__comments">
-                  <CommentsSection/>
+                  <CommentsSection />
                </div>
             )}
          </div>
       )
    }
-   return <ReactLoading type={'spokes'} width={25} height={25} color={'black'}/>
+   return <ReactLoading type={'spokes'} width={25} height={25} color={'#2d31fa'} />
 }

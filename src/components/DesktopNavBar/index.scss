@@ -49,7 +49,6 @@
          width: 15rem;
          display: flex;
          justify-content: flex-end;
-
       }
 
       &__person__photo {
@@ -85,7 +84,7 @@
             padding-top: 6rem;
             position: absolute;
             z-index: 50;
-            background-color: rgba(black, .8);
+            background-color: rgba(black, 0.8);
             top: 0;
             right: 0;
             left: 0;
@@ -107,7 +106,6 @@
                border-radius: 1rem;
             }
          }
-
       }
    }
 }

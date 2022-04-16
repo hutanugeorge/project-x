@@ -9,7 +9,7 @@ const store = configureStore({
       user,
       modals,
       url,
-      visitorUser
+      visitorUser,
    },
 })
 

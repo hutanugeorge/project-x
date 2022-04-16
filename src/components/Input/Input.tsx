@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { InputBorderRadius, InputProps } from './interface'
 
 export default ({
@@ -24,7 +25,7 @@ export default ({
          placeholder={placeholder}
          value={value}
          onClick={(e) => {
-            e.stopPropagation();
+            e.stopPropagation()
          }}
          onChange={(e) => {
             onChange[0](e.target.value)
@@ -34,7 +35,9 @@ export default ({
                })
          }}
          className={`input ${width[0]} ${width[1]} ${width[2]} ${height[0]} ${height[1]} 
-         ${height[2]} ${borderRadius} ${color} ${error ? 'input__error' : ''} ${hidden ? 'input__hidden': ''}`}
+         ${height[2]} ${borderRadius} ${color} ${error ? 'input__error' : ''} ${
+            hidden ? 'input__hidden' : ''
+         }`}
          id={id}
          ref={ref}
       />

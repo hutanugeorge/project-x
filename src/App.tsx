@@ -7,8 +7,6 @@ import HomePage from './pages/HomePage'
 import PostPage from './pages/PostPage'
 import UserPage from './pages/UserPage'
 
-
-
 export default () => {
    const token = localStorage.getItem('token')
 
@@ -20,7 +18,7 @@ export default () => {
                <Route element={<AuthForm />} path={'/'} />
                <Route element={<HomePage />} path={'/homepage'} />
                <Route element={<UserPage />} path={'/user/:userID'} />
-               <Route element={<PostPage/>} path={'/post/:postID'} />
+               <Route element={<PostPage />} path={'/post/:postID'} />
             </Routes>
          </Router>
       </>

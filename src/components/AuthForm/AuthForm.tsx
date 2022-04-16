@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import { AxiosResponse } from 'axios'
 import isJwtTokenExpired from 'jwt-check-expiry'
-import { useEffect, useState } from 'react'
+import ReactLoading from 'react-loading'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
-
 import { signInUser, signupUser } from '../../services/userServices'
-import ReactLoading from "react-loading"
 import Button from '../Button'
 import {
    ButtonColor,
@@ -16,7 +16,7 @@ import {
    MobileButtonHeight,
    MobileButtonWidth,
    TabletButtonHeight,
-   TabletButtonWidth
+   TabletButtonWidth,
 } from '../Button/interface'
 
 import {
@@ -26,10 +26,9 @@ import {
    MobileInputHeight,
    MobileInputWidth,
    TabletInputHeight,
-   TabletInputWidth
+   TabletInputWidth,
 } from '../Input/interface'
 import InputLabeled from '../InputLabeled'
-
 
 enum AuthView {
    LOGIN = 'LOGIN',
@@ -37,22 +36,22 @@ enum AuthView {
 }
 
 export default () => {
-   const [ authView, setAuthView ] = useState(AuthView.LOGIN)
+   const [authView, setAuthView] = useState(AuthView.LOGIN)
 
-   const [ firstName, setFirstName ] = useState<string>('')
-   const [ lastName, setLastName ] = useState<string>('')
-   const [ email, setEmail ] = useState<string>('')
-   const [ password, setPassword ] = useState<string>('')
-   const [ confirmPassword, setConfirmPassword ] = useState<string>('')
+   const [firstName, setFirstName] = useState<string>('')
+   const [lastName, setLastName] = useState<string>('')
+   const [email, setEmail] = useState<string>('')
+   const [password, setPassword] = useState<string>('')
+   const [confirmPassword, setConfirmPassword] = useState<string>('')
 
-   const [ firstNameError, setFirstNameError ] = useState<string | undefined>()
-   const [ lastNameError, setLastNameError ] = useState<string | undefined>()
-   const [ emailError, setEmailError ] = useState<string | undefined>()
-   const [ passwordError, setPasswordError ] = useState<string | undefined>()
-   const [ confirmPasswordError, setConfirmPasswordError ] = useState<string | undefined>()
+   const [firstNameError, setFirstNameError] = useState<string | undefined>()
+   const [lastNameError, setLastNameError] = useState<string | undefined>()
+   const [emailError, setEmailError] = useState<string | undefined>()
+   const [passwordError, setPasswordError] = useState<string | undefined>()
+   const [confirmPasswordError, setConfirmPasswordError] = useState<string | undefined>()
 
-   const [ loginButton, setLoginButton ] = useState<any>('Login')
-   const [ signupButton, setSignupButton ] = useState<any>('Signup')
+   const [loginButton, setLoginButton] = useState<any>('Login')
+   const [signupButton, setSignupButton] = useState<any>('Signup')
 
    const token = localStorage.getItem('token')
 
@@ -85,10 +84,9 @@ export default () => {
    }
 
    const setLoadingButtons = () => {
-      setLoginButton(<ReactLoading width={25} height={25} type={'spokes'}/>)
-      setSignupButton(<ReactLoading width={25} height={25} type={'spokes'}/>)
+      setLoginButton(<ReactLoading width={25} height={25} type={'spokes'} color={'#2d31fa'} />)
+      setSignupButton(<ReactLoading width={25} height={25} type={'spokes'} color={'#2d31fa'} />)
    }
-
 
    return !(token && !isJwtTokenExpired(token!)) ? (
       <div className="auth__wrapper">
@@ -109,40 +107,40 @@ export default () => {
                onSubmit={async (e) => {
                   e.preventDefault()
                   if (authView === AuthView.LOGIN) {
-                     const [ response, error ] = await signInUser(
+                     const [response, error] = await signInUser(
                         {
                            email,
-                           password
+                           password,
                         },
-                        `${url}/login`
+                        `${url}/login`,
                      )
                      if (!error && response?.status === 200) {
                         window.location.pathname = '/homepage'
                         setLoginButton('Login Successfully')
                      }
-                     if(error && response?.status === 403) {
+                     if (error && response?.status === 403) {
                         setInputsErrors(AuthView.LOGIN, response)
                         setLoginButton('Try again')
                      }
                   } else if (authView === AuthView.SIGNUP) {
-                     const [ response, error ] = await signupUser(
+                     const [response, error] = await signupUser(
                         {
                            firstName,
                            lastName,
                            email,
                            password,
-                           confirmPassword
+                           confirmPassword,
                         },
-                        `${url}/signup`
+                        `${url}/signup`,
                      )
                      if (!error && response?.status === 200) {
                         window.location.pathname = '/homepage'
                         setSignupButton('Signup Successfully')
                      }
-                     if(error && response?.status === 403) {
+                     if (error && response?.status === 403) {
                         setInputsErrors(AuthView.SIGNUP, response)
                         setSignupButton('Try again')
-                  }
+                     }
                   }
                }}
             >
@@ -150,7 +148,7 @@ export default () => {
                   <div className="auth__form__content__title">
                      <h2 data-testid="test-title" className="auth__form__content__title__content">
                         {(authView === AuthView.LOGIN && 'Login') ||
-                        (authView === AuthView.SIGNUP && 'Signup')}
+                           (authView === AuthView.SIGNUP && 'Signup')}
                      </h2>
                   </div>
                   {authView === AuthView.SIGNUP && (
@@ -159,14 +157,14 @@ export default () => {
                            name={'firstName'}
                            type={'text'}
                            placeholder={'First Name'}
-                           onChange={[ setFirstName ]}
+                           onChange={[setFirstName]}
                            error={firstNameError}
                            value={firstName ?? ''}
-                           width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
+                           width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
                            height={[
                               DesktopInputHeight.M,
                               TabletInputHeight.M,
-                              MobileInputHeight.XL
+                              MobileInputHeight.XL,
                            ]}
                            color={InputColor.PRIMARY}
                            labelText={firstNameError ?? 'First name'}
@@ -176,14 +174,14 @@ export default () => {
                            name={'lastName'}
                            type={'text'}
                            placeholder={'Last Name'}
-                           onChange={[ setLastName ]}
+                           onChange={[setLastName]}
                            error={lastNameError}
                            value={lastName ?? ''}
-                           width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
+                           width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
                            height={[
                               DesktopInputHeight.M,
                               TabletInputHeight.M,
-                              MobileInputHeight.XL
+                              MobileInputHeight.XL,
                            ]}
                            color={InputColor.PRIMARY}
                            labelText={lastNameError ?? 'Last name'}
@@ -194,11 +192,11 @@ export default () => {
                      name={'email'}
                      type={'email'}
                      placeholder={'Email'}
-                     onChange={[ setEmail ]}
+                     onChange={[setEmail]}
                      error={emailError}
                      value={email ?? ''}
-                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
-                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL ]}
+                     width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                     height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL]}
                      color={InputColor.PRIMARY}
                      labelText={emailError ?? 'Email'}
                   />
@@ -206,12 +204,12 @@ export default () => {
                      type="password"
                      name="password"
                      placeholder="Password"
-                     onChange={[ setPassword ]}
+                     onChange={[setPassword]}
                      value={password ?? ''}
                      labelText={passwordError ?? 'Password'}
                      error={passwordError}
-                     width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
-                     height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL ]}
+                     width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
+                     height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.XL]}
                      color={InputColor.PRIMARY}
                   />
                   {authView === AuthView.SIGNUP && (
@@ -221,14 +219,14 @@ export default () => {
                            type="password"
                            placeholder="Repeat password"
                            error={confirmPasswordError}
-                           onChange={[ setConfirmPassword ]}
+                           onChange={[setConfirmPassword]}
                            value={confirmPassword ?? ''}
                            labelText={confirmPasswordError ?? 'Repeat password'}
-                           width={[ DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL ]}
+                           width={[DesktopInputWidth.S, TabletInputWidth.S, MobileInputWidth.XL]}
                            height={[
                               DesktopInputHeight.M,
                               TabletInputHeight.M,
-                              MobileInputHeight.XL
+                              MobileInputHeight.XL,
                            ]}
                            color={InputColor.PRIMARY}
                         />
@@ -272,15 +270,15 @@ export default () => {
                   <div data-testid="form-button">
                      <Button
                         color={ButtonColor.POSITIVE}
-                        onClickFunctions={[ setLoadingButtons ]}
+                        onClickFunctions={[setLoadingButtons]}
                         type={'submit'}
                         reactive={true}
                         text={authView === AuthView.LOGIN ? loginButton : signupButton}
-                        width={[ DesktopButtonWidth.XL, TabletButtonWidth.XL, MobileButtonWidth.XL ]}
+                        width={[DesktopButtonWidth.XL, TabletButtonWidth.XL, MobileButtonWidth.XL]}
                         height={[
                            DesktopButtonHeight.L,
                            TabletButtonHeight.M,
-                           MobileButtonHeight.XL
+                           MobileButtonHeight.XL,
                         ]}
                      />
                   </div>

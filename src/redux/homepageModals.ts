@@ -19,8 +19,8 @@ export const homepageModalsSlice = createSlice({
          state.showSettings = false
       },
       toggleSettings: (state) => {
-        state.showSettings = !state.showSettings
-        state.showExplore = false
+         state.showSettings = !state.showSettings
+         state.showExplore = false
          state.showNotifications = false
       },
       setModalsOff: (state) => {
@@ -31,5 +31,6 @@ export const homepageModalsSlice = createSlice({
    },
 })
 
-export const { toggleExplore, toggleNotifications, toggleSettings, setModalsOff } = homepageModalsSlice.actions
+export const { toggleExplore, toggleNotifications, toggleSettings, setModalsOff } =
+   homepageModalsSlice.actions
 export default homepageModalsSlice.reducer

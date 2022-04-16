@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { LabelProps } from './interface'
 
 export default ({ htmlFor, text, error }: LabelProps) => {

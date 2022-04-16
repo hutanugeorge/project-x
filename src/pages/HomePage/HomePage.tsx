@@ -13,39 +13,33 @@ import MobileNotifications from '../../components/MobileNotifications'
 import MobileExplore from '../../components/MobileExplore'
 import MobileSettings from '../../components/MobileSettings'
 
-
 export default () => {
    const dispatch = useDispatch()
 
    const { url } = useSelector((state: RootState) => state.url)
-   const {
-      showNotifications,
-      showExplore,
-      showSettings
-   } = useSelector((state: RootState) => state.modals)
-
+   const { showNotifications, showExplore, showSettings } = useSelector(
+      (state: RootState) => state.modals,
+   )
 
    // dispatch(goDevelop())
    useEffect(() => {
       const token = localStorage.getItem('token')
       if (!token) window.location.pathname = '/'
       else if (token && isJwtTokenExpired(token)) window.location.pathname = '/'
-      ;
-      (async () => {
-         const [ response, error ] = await getUser(`${url}/user`)
+      ;(async () => {
+         const [response, error] = await getUser(url)
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
       })()
-
    }, [])
    return (
       <>
          <div className="home-page">
-            <DesktopNotifications/>
-            {showNotifications && <MobileNotifications/>}
-            {!showNotifications && !showExplore && !showSettings && <MainSection/>}
-            {showExplore && <MobileExplore/>}
-            {showSettings && <MobileSettings/>}
-            <DesktopNotifications/>
+            <DesktopNotifications />
+            {showNotifications && <MobileNotifications />}
+            {!showNotifications && !showExplore && !showSettings && <MainSection />}
+            {showExplore && <MobileExplore />}
+            {showSettings && <MobileSettings />}
+            <DesktopNotifications />
          </div>
       </>
    )

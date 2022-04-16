@@ -8,18 +8,16 @@ import Post from '../Post'
 import { getPosts } from '../../services/postServices'
 import PostForm from '../PostForm'
 
-
 export default () => {
-
    const dispatch = useDispatch()
-   const [ posts, setPosts ] = useState<string[] | undefined>()
+   const [posts, setPosts] = useState<string[] | undefined>()
 
    const { url } = useSelector((state: RootState) => state.url)
 
    // dispatch(goDevelop())
    useEffect(() => {
-      (async () => {
-         const [ response, error ] = await getPosts(url)
+      ;(async () => {
+         const [response, error] = await getPosts(url)
          !error && response.status === 200 && setPosts(response.data.posts)
       })()
    }, [])
@@ -27,8 +25,7 @@ export default () => {
    return (
       <div className="main-section">
          <PostForm setPosts={setPosts} />
-         {posts && posts.map((post: string, index: number) =>
-            <Post key={index} postID={post} />)}
+         {posts && posts.map((post: string, index: number) => <Post key={index} postID={post} />)}
       </div>
    )
 }

@@ -52,7 +52,7 @@ export const signupUser = async (
 
 export const getUser = async (url: string, userID?: string): Promise<[ AxiosResponse, boolean ]> => {
    try {
-      const response = await axios.get(`${url}/${userID ?? getUserIdFromToken()}`, {
+      const response = await axios.get(`${url}/user/${userID ?? getUserIdFromToken()}`, {
          headers: getHeaders({ auth: true })
       })
       return [ response, false ]
@@ -61,17 +61,35 @@ export const getUser = async (url: string, userID?: string): Promise<[ AxiosResp
    }
 }
 
-export const postProfilePhoto = async (url: string, profilePhoto: File | null): Promise<[ AxiosResponse, boolean ]> => {
+export const postUserPhoto = async (
+   url: string,
+   photoType: 'p' | 'c',
+   profilePhoto: File | null
+): Promise<[ AxiosResponse, boolean ]> => {
    try {
       let formData = new FormData()
-      profilePhoto && formData.append('profilePhoto', profilePhoto)
+      profilePhoto && formData.append('photo', profilePhoto)
 
-      const response = await axios.post(`${url}/user/profile-photo/${getUserIdFromToken()}`, formData, {
-         headers: getHeaders({ auth: true, multipartFormData: true })
-      })
+      const response = await axios.post(
+         `${url}/user/profile-photo/${photoType}/${getUserIdFromToken()}`,
+         formData,
+         {
+            headers: getHeaders({ auth: true, multipartFormData: true })
+         }
+      )
       return [ response, false ]
    } catch (error: any) {
       return [ error.response, true ]
    }
 }
 
+export const deleteUserPhoto = async (url: string, photo: string): Promise<[ AxiosResponse, boolean ]> => {
+   try {
+      const response = await axios.delete(`${url}/user/profile-photo/${photo}`, {
+         headers: getHeaders({ auth: true })
+      })
+      return [ response, false ]
+   } catch (error: any) {
+      return [ error.response, true ]
+   }
+}

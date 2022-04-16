@@ -1,12 +1,11 @@
 import User from './user'
 import { PartialUser } from './user'
 
-
 export interface Post {
    readonly user: {
-      _id: string,
-      firstName: string,
-      lastName: string,
+      _id: string
+      firstName: string
+      lastName: string
       profilePhoto: string
    }
    readonly date: string

@@ -11,8 +11,7 @@ export default (options?: GetHeadersProps) => {
       const { auth, multipartFormData } = options
       if (auth && multipartFormData)
          return Object.assign({ ...authHeader, 'Content-Type': 'multipart/form-data' })
-      else if (auth && !multipartFormData)
-         return Object.assign({ ...headers, ...authHeader })
+      else if (auth && !multipartFormData) return Object.assign({ ...headers, ...authHeader })
    }
    return headers
 }
