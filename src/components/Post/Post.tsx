@@ -71,7 +71,6 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
                {showPostPhoto &&
                <div className="post__content__full-screen"
                     onClick={() => {
-                       console.log(showPostPhoto)
                        setShowPostPhoto(false)
                     }}>
                    <img onClick={(e) => e.stopPropagation()}

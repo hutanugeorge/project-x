@@ -16,7 +16,7 @@ export default () => {
 
    const { url } = useSelector((state: RootState) => state.url)
 
-   dispatch(goDevelop())
+   // dispatch(goDevelop())
    useEffect(() => {
       (async () => {
          const [ response, error ] = await getPosts(url)
