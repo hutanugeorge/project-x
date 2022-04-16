@@ -14,8 +14,9 @@ import MessageIcon from '../../icons/MessageIcon'
 import { PostProps } from './interfaces'
 
 
-export default ({ postID, isPreview, preview }: PostProps) => {
+export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
 
+   const [ showPostPhoto, setShowPostPhoto ] = useState<boolean>(false)
    const [ showComments, setShowComments ] = useState<boolean>(false)
    const [ post, setPost ] = useState<IPost>()
 
@@ -67,8 +68,22 @@ export default ({ postID, isPreview, preview }: PostProps) => {
                </div>
             </div>
             <div className="post__content">
+               {showPostPhoto &&
+               <div className="post__content__full-screen"
+                    onClick={() => {
+                       console.log(showPostPhoto)
+                       setShowPostPhoto(false)
+                    }}>
+                   <img onClick={(e) => e.stopPropagation()}
+                        src={photo && photo}
+                        alt="profile photo"/>
+               </div>}
                {description && <p className="post__content__text">{description}</p>}
-               {photo && <img src={photo} alt="post photo"/>}
+               {photo && <img src={photo} alt="post photo"
+                   onClick={() => {
+                      setShowPostPhoto(true)
+                      setStopScroll && setStopScroll(true)
+                   }} />}
             </div>
             <div className="post__actions">
                <div className="post__actions__left">
@@ -103,7 +118,7 @@ export default ({ postID, isPreview, preview }: PostProps) => {
                   </div>
                </div>
             </div>
-            {noComments > 0 && showComments && (
+            {showComments && (
                <div className="post__comments">
                   <CommentsSection/>
                </div>

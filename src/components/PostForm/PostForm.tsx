@@ -21,7 +21,7 @@ import {
 import Post from '../Post'
 
 
-export default () => {
+export default ({ setPosts }: any) => {
 
    const { user } = useSelector((state: RootState) => state.user)
    const { url } = useSelector((state: RootState) => state.url)
@@ -49,19 +49,17 @@ export default () => {
       }))
    }, [ postDescription, postPhoto, user ])
 
-   console.log(previewPost)
-
    return <div className="post-form">
       <form className="post-form__form" onSubmit={(e) => {
          e.preventDefault()
-         if (postDescription && postPhoto) {
+         if (postDescription || postPhoto) {
             const token = localStorage.getItem('token')
             const decodedToken: any = token && jwt_decode(token)
 
             let formData = new FormData()
             formData.append('userID', decodedToken.userID)
-            formData.append('description', postDescription)
-            formData.append('photo', postPhoto);
+            postDescription && formData.append('description', postDescription)
+            postPhoto && formData.append('photo', postPhoto);
 
             (async () => {
                const [ response, error ] = await postPost(url, formData)
@@ -69,6 +67,7 @@ export default () => {
                   setPostDescription('')
                   setPostPhoto(null)
                   setButtonText('Success')
+                  setPosts((prev: any) => [ response.data.post._id, ...prev ])
                   setTimeout(() => {
                      setButtonText('Upload')
                   }, 1000)
@@ -103,7 +102,7 @@ export default () => {
             </label>
             <button type="submit"
                     className={`post-form__button ${buttonText === 'Success' ? 'post-form__button--success' : ''}`}
-                    onClick={() => setButtonText('Loading...')}>
+                    onClick={() => (postDescription || postPhoto) && setButtonText('Loading...')}>
                {buttonText}
             </button>
          </div>

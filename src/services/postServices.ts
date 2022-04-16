@@ -15,25 +15,23 @@ export const getPost = async (url: string): Promise<[ AxiosResponse, boolean ]> 
 }
 
 export const postPost = async (url: string, formData: any): Promise<[ AxiosResponse, boolean ]> => {
-   try{
+   try {
       const response = await axios.post(`${url}/post`, formData, {
          headers: getHeaders({ auth: true, multipartFormData: true })
       })
       return [ response, false ]
-   }
-   catch (error: any) {
+   } catch (error: any) {
       return [ error.response, true ]
    }
 }
 
-export const getPosts = async (url: string): Promise<[ AxiosResponse, boolean ]> => {
-   try{
-      const response = await axios.get(`${url}/posts`, {
+export const getPosts = async (url: string, userID?: string): Promise<[ AxiosResponse, boolean ]> => {
+   try {
+      const response = await axios.get(`${url}/posts${userID ? `/${userID}` : ''}`, {
          headers: getHeaders({ auth: true })
       })
       return [ response, false ]
-   }
-   catch (error: any) {
+   } catch (error: any) {
       return [ error.response, true ]
    }
 }

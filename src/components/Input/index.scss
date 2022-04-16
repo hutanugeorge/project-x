@@ -2,7 +2,7 @@
 
 .input {
    border: none;
-   box-shadow: 0 0.2rem 0.2rem rgba($color-black, 0.2);
+   box-shadow: .4rem .4rem 3rem rgba($color-black, 0.1);
    outline: none;
    color: white;
    transition: all 0.3s;
@@ -342,8 +342,19 @@
          }
       }
 
+      &-secondary-dark {
+         background-color: rgba($color-grey-dark, 0.6);
+         color: black !important;
+
+         &::placeholder {
+            text-align: center;
+            color: rgba(black, 0.4) !important;
+         }
+      }
+
       &-positivte {
          background-color: rgba($color-positive, 0.5);
+         color: black !important;
       }
 
       &-transparent {

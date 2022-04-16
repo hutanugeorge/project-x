@@ -36,36 +36,17 @@ export default () => {
                      type={'text'}
                      placeholder={'Write a comment...'}
                      onChange={[ setInputValue ]}
-                     borderRadius={InputBorderRadius.FULL}
+                     borderRadius={InputBorderRadius.STANDARD}
                      width={[ DesktopInputWidth.M, TabletInputWidth.L, MobileInputWidth.XL ]}
                      height={[ DesktopInputHeight.S, TabletInputHeight.M, MobileInputHeight.L ]}
-                     color={InputColor.SECONDARY}
+                     color={InputColor.SECONDARY_DARK}
                      value={inputValue}
                      error={undefined} />
                   <button type='submit' style={{ display: 'none' }} />
                </form>
             </div>
             <div className='comments-section__comments'>
-               <Comment
-                  userPhoto={'https://images.wsj.net/im-409842?width=1280&size=1'}
-                  username={'Mia Amelia'}
-                  comment={'Amazing view!'}
-                  noLikes={1}
-                  date={'two minutes ago'}
-                  liked={true}
-                  noReplies={1}
-               >
-                  <>
-                     <Comment
-                        userPhoto={'https://media.npr.org/assets/img/2021/11/10/will-smith-new-headshot-credit-lorenzo-agius_wide-fce30e30fbf83a2c586848fa991d1d61ab768cd2.jpg?s=1400'}
-                        username={'Will Smith'}
-                        comment={'Thanks!'}
-                        noLikes={1}
-                        isReply={true}
-                        date={'a few seconds ago'}
-                        noReplies={1} />
-                  </>
-               </Comment>
+
             </div>
          </div>
       </>

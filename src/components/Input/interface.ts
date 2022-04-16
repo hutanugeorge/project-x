@@ -72,6 +72,7 @@ export enum MobileInputHeight {
 export enum InputColor {
    PRIMARY = 'input-color-primary',
    SECONDARY = 'input-color-secondary',
+   SECONDARY_DARK = 'input-color-secondary-dark',
    POSITIVE = 'input-color-positive',
    TRANSPARENT = 'input-color-transparent',
    WHITE = 'input-color-white',

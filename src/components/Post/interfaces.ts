@@ -1,4 +1,4 @@
-import { Post } from '../../shared/interfaces/post'
+import { Dispatch, SetStateAction } from 'react'
 
 
 export interface PostProps {
@@ -14,4 +14,5 @@ export interface PostProps {
          _id: string
       }
    }
+   setStopScroll?: Dispatch<SetStateAction<boolean>>
 }

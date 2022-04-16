@@ -12,11 +12,11 @@ import PostForm from '../PostForm'
 export default () => {
 
    const dispatch = useDispatch()
-   const [ posts, setPosts ] = useState<{ _id: string }[] | undefined>()
+   const [ posts, setPosts ] = useState<string[] | undefined>()
 
    const { url } = useSelector((state: RootState) => state.url)
 
-   // dispatch(goDevelop())
+   dispatch(goDevelop())
    useEffect(() => {
       (async () => {
          const [ response, error ] = await getPosts(url)
@@ -26,9 +26,9 @@ export default () => {
 
    return (
       <div className="main-section">
-         <PostForm/>
-         {posts && posts.map((post: { _id: string }, index: number) =>
-            <Post key={index} postID={post._id}/>)}
+         <PostForm setPosts={setPosts} />
+         {posts && posts.map((post: string, index: number) =>
+            <Post key={index} postID={post} />)}
       </div>
    )
 }

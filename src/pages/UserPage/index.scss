@@ -1,5 +1,5 @@
 .profile-photo-full-screen {
-  position: absolute;
+  position: fixed;
   inset: 0;
   @include displayFlexCenterCenter;
   z-index: 1000;
@@ -23,6 +23,10 @@
   &__wrapper {
     height: 100vh;
     width: 100vw;
+  }
+
+  &--stop-scroll {
+    overflow: hidden;
   }
 
   &__upper-section {
