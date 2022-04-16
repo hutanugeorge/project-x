@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ReactLoading from 'react-loading'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { goDevelop } from '../../redux/apiURL'
@@ -125,5 +126,5 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
          </div>
       )
    }
-   return <p>Loading</p>
+   return <ReactLoading type={'spokes'} width={25} height={25} color={'black'}/>
 }

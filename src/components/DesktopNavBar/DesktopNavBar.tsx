@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactLoading from 'react-loading'
 import { useSelector } from 'react-redux'
 import LogoutIcon from '../../icons/LogoutIcon'
 import SearchIcon from '../../icons/SearchIcon'
@@ -89,10 +90,10 @@ export default () => {
 
                <div className='nav-bar__element__person__photo'
                     onClick={() => window.location.pathname = `/user/${user._id}`}>
-                  <img
+                  {user.profilePhoto ? <img
                      src={user.profilePhoto}
                      alt='person photo'
-                  />
+                  /> : <ReactLoading type={'spokes'} color={'black'} width={20} height={20}/>}
                </div>
                <div
                   className='nav-bar__element__svg'

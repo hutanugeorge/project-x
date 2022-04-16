@@ -1,6 +1,7 @@
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import React, { useEffect, useRef, useState } from 'react'
+import ReactLoading from 'react-loading'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -93,9 +94,9 @@ export default () => {
                             Upload photo
                         </div>}
                      </div>
-                     <img
+                     {user.profilePhoto ? <img
                         src={profilePhoto ? URL.createObjectURL(profilePhoto) : (isVisitorUser ? visitorUser.profilePhoto : user.profilePhoto)}
-                        alt="profile photo"/>
+                        alt='profile photo' />: <ReactLoading type={'spokes'} color={'black'} width={30} height={30}/>}
                   </div>
                </div>
                <div className="user-page__upper-section__navigation-tabs">
