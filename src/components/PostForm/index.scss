@@ -82,6 +82,9 @@
     width: 9rem;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &--success {
       border: 1.5px solid $color-positive;

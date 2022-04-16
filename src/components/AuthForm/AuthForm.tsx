@@ -7,6 +7,7 @@ import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
 
 import { signInUser, signupUser } from '../../services/userServices'
+import ReactLoading from "react-loading"
 import Button from '../Button'
 import {
    ButtonColor,
@@ -50,8 +51,8 @@ export default () => {
    const [ passwordError, setPasswordError ] = useState<string | undefined>()
    const [ confirmPasswordError, setConfirmPasswordError ] = useState<string | undefined>()
 
-   const [ loginButton, setLoginButton ] = useState('Login')
-   const [ signupButton, setSignupButton ] = useState('Signup')
+   const [ loginButton, setLoginButton ] = useState<any>('Login')
+   const [ signupButton, setSignupButton ] = useState<any>('Signup')
 
    const token = localStorage.getItem('token')
 
@@ -84,8 +85,8 @@ export default () => {
    }
 
    const setLoadingButtons = () => {
-      setLoginButton('Loading...')
-      setSignupButton('Loading...')
+      setLoginButton(<ReactLoading width={25} height={25} type={'spokes'}/>)
+      setSignupButton(<ReactLoading width={25} height={25} type={'spokes'}/>)
    }
 
 

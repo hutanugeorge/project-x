@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import FormData from 'form-data'
 import jwt_decode from 'jwt-decode'
+import ReactLoading from 'react-loading'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -29,7 +30,7 @@ export default ({ setPosts }: any) => {
    const [ postDescription, setPostDescription ] = useState<string>('')
    const [ postPhoto, setPostPhoto ] = useState<File | null>(null)
    const [ previewPost, setPreviewPost ] = useState<any>(null)
-   const [ buttonText, setButtonText ] = useState('Upload')
+   const [ buttonText, setButtonText ] = useState<any>('Upload')
 
    const navigate = useNavigate()
 
@@ -80,9 +81,9 @@ export default ({ setPosts }: any) => {
          <div className="post-form__form__input">
             <div className="post-form__user-image"
                  onClick={() => navigate(`/user/${user._id}`)}>
-               <img
+               {user.profilePhoto ? <img
                   src={user.profilePhoto}
-                  alt="user-image"/>
+                  alt='user-image' />: <ReactLoading type={'spokes'} color={'black'} width={20} height={20}/>}
             </div>
             <Input name={'post-input'} type={'text'} placeholder={'What\'s on your mind?'}
                    onChange={[ setPostDescription ]}
@@ -102,7 +103,7 @@ export default ({ setPosts }: any) => {
             </label>
             <button type="submit"
                     className={`post-form__button ${buttonText === 'Success' ? 'post-form__button--success' : ''}`}
-                    onClick={() => (postDescription || postPhoto) && setButtonText('Loading...')}>
+                    onClick={() => (postDescription || postPhoto) && setButtonText(<ReactLoading type={'spokes'} color={'white'} width={20} height={20}/>)}>
                {buttonText}
             </button>
          </div>
