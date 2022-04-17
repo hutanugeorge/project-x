@@ -36,3 +36,16 @@ export const getPosts = async (url: string, userID?: string): ServiceResult => {
       return [ error.response, true ]
    }
 }
+
+export const patchLikePost = async (url: string, postID: string, userID: string): ServiceResult => {
+   try {
+      const response = await axios.patch(`${url}/post`,
+         { postID, userID },
+         {
+            headers: getHeaders({ auth: true })
+         })
+      return [ response, false ]
+   } catch (error: any) {
+      return [ error.response, true ]
+   }
+}

@@ -1,6 +1,13 @@
 import User from './user'
 import { PartialUser } from './user'
 
+
+export interface LikeUser {
+   firstName: string
+   lastName: string
+   _id: string
+}
+
 export interface Post {
    readonly user: {
       _id: string
@@ -12,6 +19,7 @@ export interface Post {
    description: string
    photo?: string
    comments?: Comment[]
+   likedUsers: LikeUser[]
    noLikes: number
    noComments: number
    noSaves: number

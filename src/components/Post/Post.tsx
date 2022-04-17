@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { RootState } from '../../redux/store'
-import { getPost } from '../../services/postServices'
-import { Post as IPost } from '../../shared/interfaces/post'
+import { getPost, patchLikePost } from '../../services/postServices'
+import { LikeUser, Post as IPost } from '../../shared/interfaces/post'
 import CommentsSection from '../CommentsSection/CommentsSection'
 import SettingsIcon from '../../icons/SettingsIcon'
 import LikeIcon from '../../icons/LikeIcon'
@@ -19,6 +19,9 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
    const [ showPostPhoto, setShowPostPhoto ] = useState<boolean>(false)
    const [ showComments, setShowComments ] = useState<boolean>(false)
    const [ post, setPost ] = useState<IPost>()
+   const [ liked, setLiked ] = useState<boolean>(false)
+   const [ noLikes, setNoLikes ] = useState<number>(0)
+   const [ likedUsers, setLikedUsers ] = useState<LikeUser[]>()
 
    const navigate = useNavigate()
 
@@ -27,18 +30,32 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
    useEffect(() => {
       isPreview && preview
          ? setPost({
-            date: 'a second ago', _id: 'gregerg', liked: false,
-            noLikes: 0, noComments: 0, noSaves: 0, ...preview
+            date: 'a second ago', _id: '', liked: false,
+            noLikes: 0, noComments: 0, noSaves: 0, ...preview,
+            likedUsers: []
          })
          : (async () => {
             const [ response, error ] = await getPost(`${url}/post/${postID}`)
-            !error && response.status === 200 && setPost(response.data.post)
+            if (!error && response.status === 200) {
+               setPost(response.data.post)
+               setLiked(response.data.post.liked)
+               setNoLikes(response.data.post.noLikes)
+               setLikedUsers(response.data.post.likedUsers)
+            }
          })()
-
    }, [ postID, preview ])
 
    if (post) {
-      const { user, date, description, photo, _id, liked, noLikes, noComments, noSaves } = post
+      const {
+         user,
+         date,
+         description,
+         photo,
+         _id,
+         noComments,
+         noSaves
+      } = post
+
       return (
          <div className="post">
             <div className="post__header">
@@ -98,12 +115,29 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
                   <div className="post__actions__left__action">
                      <div
                         className={`post__actions__left__action__like ${
-                           liked ? 'post__actions__left__action__like__active' : ''
-                        }`}
+                           (liked) ? 'post__actions__left__action__like__active' : ''
+                        }`} onClick={async () => {
+                        const [ response, error ] = await patchLikePost(url, _id, user._id)
+                        if (!liked) {
+                           !error && response.status === 200 && setLiked(true)
+                           setNoLikes(prev => prev + 1)
+                        }
+                        if (liked) {
+                           !error && response.status === 200 && setLiked(false)
+                           setNoLikes(prev => prev - 1)
+                        }
+                     }}
                      >
                         <LikeIcon width={30} height={30}/>
                      </div>
                      <p className="post__actions__left__action__count">{noLikes}</p>
+                     <div>
+                        {likedUsers ? likedUsers.map(likeUser =>
+                           <p className="post__actions__left__action__like-person"
+                              onClick={() => user._id !== likeUser._id && navigate(`/user/${likeUser._id}`)}>
+                              {` ${user._id !== likeUser._id ? `${likeUser.firstName} ${likeUser.lastName}` : 'You'}`}
+                           </p>) : null}
+                     </div>
                   </div>
                   <div className="post__actions__left__action">
                      <div
