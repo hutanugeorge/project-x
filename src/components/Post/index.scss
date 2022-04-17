@@ -44,8 +44,11 @@
             height: 5rem;
             clip-path: circle();
 
+
             & img {
                height: 100%;
+               width: 100%;
+               object-fit: cover;
                cursor: pointer;
             }
          }

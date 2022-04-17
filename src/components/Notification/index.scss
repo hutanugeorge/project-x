@@ -20,17 +20,6 @@
    &__unseen {
       background-color: rgba($color-primary-light, 0.1);
       box-shadow: 0.3rem 0.4rem 1rem rgba($color-primary-light, 0.1);
-
-      & .notification__header__left__user-image {
-         & img {
-            border-radius: 4rem;
-            width: 100%;
-            height: 100%;
-            border: 2px solid transparent;
-            box-shadow: 0 0 0.1rem 0.1rem $color-primary-light,
-               0 0 1rem rgba($color-primary-light, 0.4);
-         }
-      }
    }
 
    &__mobile {
@@ -48,14 +37,18 @@
 
       &__left {
          &__user-image {
-            width: 4rem;
-            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 5rem;
+            clip-path: circle();
 
             & img {
-               border: 2px solid transparent;
-               border-radius: 4rem;
-               width: 100%;
                height: 100%;
+               width: 100%;
+               object-fit: cover;
+               cursor: pointer;
             }
          }
       }
