@@ -15,4 +15,5 @@ export const DEFAULT_POST: Post = {
    date: 'a second ago',
    description: '',
    photo: '',
+   likedUsers: []
 }
