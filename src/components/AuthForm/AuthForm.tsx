@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { AxiosResponse } from 'axios'
 import isJwtTokenExpired from 'jwt-check-expiry'
 import ReactLoading from 'react-loading'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
 import { signInUser, signupUser } from '../../services/userServices'
 import Button from '../Button'
@@ -55,14 +54,10 @@ export default () => {
 
    const token = localStorage.getItem('token')
 
-   const dispatch = useDispatch()
-
    const { url } = useSelector((state: RootState) => state.url)
 
    useEffect(() => {
       if (token && !isJwtTokenExpired(token!)) window.location.pathname = '/homepage'
-
-      // dispatch(goDevelop())
    }, [])
 
    const setInputsErrors = (authView: AuthView, response: AxiosResponse) => {
@@ -84,8 +79,8 @@ export default () => {
    }
 
    const setLoadingButtons = () => {
-      setLoginButton(<ReactLoading width={25} height={25} type={'spokes'} color={'#2d31fa'} />)
-      setSignupButton(<ReactLoading width={25} height={25} type={'spokes'} color={'#2d31fa'} />)
+      setLoginButton(<ReactLoading width={25} height={25} type={'spokes'} color={'#fff'} />)
+      setSignupButton(<ReactLoading width={25} height={25} type={'spokes'} color={'#fff'} />)
    }
 
    return !(token && !isJwtTokenExpired(token!)) ? (

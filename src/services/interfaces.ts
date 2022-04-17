@@ -1,3 +1,6 @@
+import { AxiosResponse } from 'axios'
+
+
 export interface LoginUserData {
    email: string
    password: string
@@ -10,3 +13,5 @@ export interface SignupUserData {
    password: string
    confirmPassword: string
 }
+
+export type ServiceResult = Promise<[ AxiosResponse, boolean ]>

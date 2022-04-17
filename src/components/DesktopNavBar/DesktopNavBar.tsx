@@ -14,7 +14,7 @@ import {
    MobileButtonHeight,
    MobileButtonWidth,
    TabletButtonHeight,
-   TabletButtonWidth,
+   TabletButtonWidth
 } from '../Button/interface'
 import Input from '../Input'
 import {
@@ -24,12 +24,13 @@ import {
    MobileInputHeight,
    MobileInputWidth,
    TabletInputHeight,
-   TabletInputWidth,
+   TabletInputWidth
 } from '../Input/interface'
 
+
 export default () => {
-   const [inputValue, setInputValue] = useState<string>('')
-   const [showInput, setShowInput] = useState<boolean>(false)
+   const [ inputValue, setInputValue ] = useState<string>('')
+   const [ showInput, setShowInput ] = useState<boolean>(false)
 
    const { user } = useSelector((state: RootState) => state.user)
 
@@ -56,11 +57,11 @@ export default () => {
                      <Input
                         type="text"
                         value={inputValue}
-                        onChange={[setInputValue]}
+                        onChange={[ setInputValue ]}
                         placeholder="Search anything..."
                         name="SearchInput"
-                        width={[DesktopInputWidth.XL, TabletInputWidth.L, MobileInputWidth.L]}
-                        height={[DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.M]}
+                        width={[ DesktopInputWidth.XL, TabletInputWidth.L, MobileInputWidth.L ]}
+                        height={[ DesktopInputHeight.M, TabletInputHeight.M, MobileInputHeight.M ]}
                         color={InputColor.WHITE}
                         error={undefined}
                         id={'input-bar'}
@@ -74,21 +75,21 @@ export default () => {
                   </div>
                   <Button
                      type={'submit'}
+                     preventDefault
                      color={ButtonColor.TRANSPARENT}
-                     width={[DesktopButtonWidth.FIT, TabletButtonWidth.FIT, MobileButtonWidth.FIT]}
+                     width={[ DesktopButtonWidth.FIT, TabletButtonWidth.FIT, MobileButtonWidth.FIT ]}
                      height={[
                         DesktopButtonHeight.FIT,
                         TabletButtonHeight.FIT,
-                        MobileButtonHeight.FIT,
+                        MobileButtonHeight.FIT
                      ]}
                      onClickFunctions={[
                         () => {
                            setShowInput((prev) => !prev)
-                        },
+                        }
                      ]}
-                     preventDefault
                   >
-                     <SearchIcon width={20} height={20} fillColor={'#c4c4c4'} />
+                     <SearchIcon width={20} height={20} fillColor={'#c4c4c4'}/>
                   </Button>
                </form>
 
@@ -103,12 +104,15 @@ export default () => {
 
                <div
                   className="nav-bar__element__person__photo"
-                  onClick={() => (window.location.pathname = `/user/${user._id}`)}
+                  onClick={() => {
+                     if (window.location.pathname !== `/user/${user._id}`)
+                        window.location.pathname = `/user/${user._id}`
+                  }}
                >
                   {user.profilePhoto ? (
-                     <img src={user.profilePhoto} alt="person photo" />
+                     <img src={user.profilePhoto} alt="person photo"/>
                   ) : (
-                     <ReactLoading type={'spokes'} color={'#2d31fa'} width={20} height={20} />
+                     <ReactLoading type={'spokes'} color={'#2d31fa'} width={20} height={20}/>
                   )}
                </div>
                <div
@@ -119,7 +123,7 @@ export default () => {
                      window.location.pathname = '/'
                   }}
                >
-                  <LogoutIcon />
+                  <LogoutIcon/>
                </div>
             </div>
          </nav>

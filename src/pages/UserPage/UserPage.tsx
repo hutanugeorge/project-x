@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 
 import Post from '../../components/Post'
 import PostForm from '../../components/PostForm'
-import { goDevelop } from '../../redux/apiURL'
 import { RootState } from '../../redux/store'
 import { loadUser } from '../../redux/user'
 import { loadVisitorUser } from '../../redux/visitorUser'
@@ -36,16 +35,15 @@ export default () => {
    const [ showPhotoUploadButtons, setShowPhotoUploadButtons ] = useState<boolean>(false)
    const [ enableUploadPhoto, setEnableUploadPhoto ] = useState<boolean>(true)
 
-   // dispatch(goDevelop())
-
    useEffect(() => {
       ;(async () => {
          const [ response, error ] = await getUser(url, userID)
-         if (!error && response.status === 200) {
-            if (getUserIdFromToken() === userID) dispatch(loadUser(response.data.user))
-            else dispatch(loadVisitorUser(response.data.user))
-         }
+         !error && response.status === 200 && getUserIdFromToken() === userID
+            ? dispatch(loadUser(response.data.user))
+            : dispatch(loadVisitorUser(response.data.user))
+
       })()
+
       ;(async () => {
          const [ response, error ] = await getPosts(url, userID)
          !error && response.status === 200 && setPosts(response.data.posts)
@@ -218,8 +216,8 @@ export default () => {
                               const photo = profilePhoto || coverPhoto
                               const photoType = profilePhoto ? 'p' : 'c'
                               await postUserPhoto(url, photoType, photo)
-                              photoType === 'p' && user.profilePhoto && await deleteUserPhoto(url, user.profilePhoto.split('/')[user.profilePhoto.split('/').length - 1])
-                              photoType === 'c' && user.coverPhoto && await deleteUserPhoto(url, user.coverPhoto.split('/')[user.coverPhoto.split('/').length - 1])
+                              photoType === 'p' && user.profilePhoto && await deleteUserPhoto(url, user.profilePhoto)
+                              photoType === 'c' && user.coverPhoto && await deleteUserPhoto(url, user.coverPhoto)
                               setShowPhotoUploadButtons(false)
                               setEnableUploadPhoto(false)
                            }}

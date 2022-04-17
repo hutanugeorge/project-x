@@ -81,11 +81,11 @@ export default ({ setPosts }: any) => {
             }}
          >
             <div className="post-form__form__input">
-               <div className="post-form__user-image" onClick={() => navigate(`/user/${user._id}`)}>
+               <div className="post-form__user-image" onClick={() => window.location.pathname !== `/user/${user._id}` &&  navigate(`/user/${user._id}`)}>
                   {user.profilePhoto ? (
                      <img src={user.profilePhoto} alt="user-image" />
                   ) : (
-                     <ReactLoading type={'spokes'} color={'black'} width={20} height={20} />
+                     <ReactLoading type={'spokes'} color={'2d31fa'} width={20} height={20} />
                   )}
                </div>
                <Input

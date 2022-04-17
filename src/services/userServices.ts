@@ -1,14 +1,15 @@
-import axios, { AxiosResponse } from 'axios'
+import axios  from 'axios'
 
 import getHeaders from '../utils/getHeaders'
 import getUserIdFromToken from '../utils/getUserIdFromToken'
-import { LoginUserData, SignupUserData } from './interfaces'
+import getPhotoIdentifierFromURL from '../utils/getPhotoIdentifierFromURL'
+import { LoginUserData, ServiceResult, SignupUserData } from './interfaces'
 
 
 export const signInUser = async (
    data: LoginUserData,
    url: string
-): Promise<[ AxiosResponse, boolean ]> => {
+): ServiceResult => {
    const { email, password } = data
    try {
       const response = await axios.post(
@@ -29,7 +30,7 @@ export const signInUser = async (
 export const signupUser = async (
    data: SignupUserData,
    url: string
-): Promise<[ AxiosResponse, boolean ]> => {
+): ServiceResult => {
    const { firstName, lastName, email, password, confirmPassword } = data
    try {
       const response = await axios.post(
@@ -50,7 +51,7 @@ export const signupUser = async (
    }
 }
 
-export const getUser = async (url: string, userID?: string): Promise<[ AxiosResponse, boolean ]> => {
+export const getUser = async (url: string, userID?: string): ServiceResult => {
    try {
       const response = await axios.get(`${url}/user/${userID ?? getUserIdFromToken()}`, {
          headers: getHeaders({ auth: true })
@@ -65,7 +66,7 @@ export const postUserPhoto = async (
    url: string,
    photoType: 'p' | 'c',
    profilePhoto: File | null
-): Promise<[ AxiosResponse, boolean ]> => {
+): ServiceResult => {
    try {
       let formData = new FormData()
       profilePhoto && formData.append('photo', profilePhoto)
@@ -83,9 +84,10 @@ export const postUserPhoto = async (
    }
 }
 
-export const deleteUserPhoto = async (url: string, photo: string): Promise<[ AxiosResponse, boolean ]> => {
+export const deleteUserPhoto = async (url: string, photo: string): ServiceResult => {
    try {
-      const response = await axios.delete(`${url}/user/profile-photo/${photo}`, {
+      const photoIdentifier = getPhotoIdentifierFromURL(photo)
+      const response = await axios.delete(`${url}/user/profile-photo/${photoIdentifier}`, {
          headers: getHeaders({ auth: true })
       })
       return [ response, false ]
