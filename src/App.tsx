@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
-import AuthForm from './components/AuthForm'
+import AuthForm from './components/Forms/AuthForm'
 import NavBar from './components/NavBar'
 import HomePage from './pages/HomePage'
 import PostPage from './pages/PostPage'

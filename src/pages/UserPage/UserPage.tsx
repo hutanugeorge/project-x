@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import Post from '../../components/Post'
-import PostForm from '../../components/PostForm'
+import PostForm from '../../components/Forms/PostForm'
 import { RootState } from '../../redux/store'
 import { loadUser } from '../../redux/user'
 import { loadVisitorUser } from '../../redux/visitorUser'
@@ -50,6 +50,21 @@ export default () => {
       })()
    }, [ userID, url ])
 
+   const getImageSrc = () => {
+      return showFullScreenProfilePhoto && (profilePhoto
+            ? URL.createObjectURL(profilePhoto)
+            : isVisitorUser
+               ? visitorUser.profilePhoto
+               : user.profilePhoto
+      ) || showFullScreenCoverPhoto && (
+         coverPhoto
+            ? URL.createObjectURL(coverPhoto)
+            : isVisitorUser
+               ? visitorUser.coverPhoto
+               : user.coverPhoto
+      ) || ''
+   }
+
    return (
       <>
          {(showFullScreenProfilePhoto || showFullScreenCoverPhoto) && (
@@ -63,20 +78,7 @@ export default () => {
             >
                <img
                   onClick={(e) => e.stopPropagation()}
-                  src={
-                     showFullScreenProfilePhoto && (profilePhoto
-                           ? URL.createObjectURL(profilePhoto)
-                           : isVisitorUser
-                              ? visitorUser.profilePhoto
-                              : user.profilePhoto
-                     ) || showFullScreenCoverPhoto && (
-                        coverPhoto
-                           ? URL.createObjectURL(coverPhoto)
-                           : isVisitorUser
-                              ? visitorUser.coverPhoto
-                              : user.coverPhoto
-                     ) || ''
-                  }
+                  src={getImageSrc()}
                   alt="photo"
                />
             </div>

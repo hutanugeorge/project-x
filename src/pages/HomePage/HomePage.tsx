@@ -9,16 +9,17 @@ import { loadUser } from '../../redux/user'
 import { getUser } from '../../services/userServices'
 import DesktopNotifications from '../../components/DesktopNotifications'
 import MainSection from '../../components/MainSection/MainSection'
-import MobileNotifications from '../../components/MobileNotifications'
-import MobileExplore from '../../components/MobileExplore'
-import MobileSettings from '../../components/MobileSettings'
+import MobileNotifications from '../../components/MobileComponents/MobileNotifications'
+import MobileExplore from '../../components/MobileComponents/MobileExplore'
+import MobileSettings from '../../components/MobileComponents/MobileSettings'
+
 
 export default () => {
    const dispatch = useDispatch()
 
    const { url } = useSelector((state: RootState) => state.url)
    const { showNotifications, showExplore, showSettings } = useSelector(
-      (state: RootState) => state.modals,
+      (state: RootState) => state.modals
    )
 
    // dispatch(goDevelop())
@@ -26,21 +27,20 @@ export default () => {
       const token = localStorage.getItem('token')
       if (!token) window.location.pathname = '/'
       else if (token && isJwtTokenExpired(token)) window.location.pathname = '/'
-      ;(async () => {
-         const [response, error] = await getUser(url)
+      ;
+      (async () => {
+         const [ response, error ] = await getUser(url)
          !error && response.status === 200 && dispatch(loadUser(response.data.user))
       })()
-   }, [])
+   }, [ url ])
    return (
-      <>
-         <div className="home-page">
-            <DesktopNotifications />
-            {showNotifications && <MobileNotifications />}
-            {!showNotifications && !showExplore && !showSettings && <MainSection />}
-            {showExplore && <MobileExplore />}
-            {showSettings && <MobileSettings />}
-            <DesktopNotifications />
-         </div>
-      </>
+      <div className="home-page">
+         <DesktopNotifications/>
+         {showNotifications && <MobileNotifications/>}
+         {!showNotifications && !showExplore && !showSettings && <MainSection/>}
+         {showExplore && <MobileExplore/>}
+         {showSettings && <MobileSettings/>}
+         <DesktopNotifications/>
+      </div>
    )
 }

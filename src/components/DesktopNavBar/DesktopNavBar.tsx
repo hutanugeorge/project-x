@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import LogoutIcon from '../../icons/LogoutIcon'
 import SearchIcon from '../../icons/SearchIcon'
 import { RootState } from '../../redux/store'
-import Button from '../Button'
+import Button from '../FormComponents/Button'
 import {
    ButtonColor,
    DesktopButtonHeight,
@@ -15,8 +15,8 @@ import {
    MobileButtonWidth,
    TabletButtonHeight,
    TabletButtonWidth
-} from '../Button/interface'
-import Input from '../Input'
+} from '../FormComponents/Button/interface'
+import Input from '../FormComponents/Input'
 import {
    DesktopInputHeight,
    DesktopInputWidth,
@@ -25,7 +25,7 @@ import {
    MobileInputWidth,
    TabletInputHeight,
    TabletInputWidth
-} from '../Input/interface'
+} from '../FormComponents/Input/interface'
 
 
 export default () => {

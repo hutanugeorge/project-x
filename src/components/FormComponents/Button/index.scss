@@ -1,0 +1,235 @@
+@import '../../sharedStyles/utils';
+
+.button {
+   text-transform: uppercase;
+   border: none;
+   border-radius: 0.7rem;
+   outline: none;
+   color: white;
+   cursor: pointer;
+   transition: all 0.3s;
+   @include displayFlexCenterCenter;
+
+   &-reactive {
+      box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
+
+      &:hover {
+         transform: translateY(-0.3rem);
+      }
+
+      &:active {
+         transform: translateY(0);
+      }
+   }
+
+   &-desktop {
+      &-width {
+         &-fit-content {
+            width: fit-content;
+         }
+
+         &-small {
+            width: 3rem;
+         }
+
+         &-medium {
+            width: 5rem;
+         }
+
+         &-large {
+            width: 7rem;
+         }
+
+         &-extra-large {
+            width: 10rem;
+         }
+      }
+
+      &-height {
+         &-fit-content {
+            height: fit-content;
+         }
+
+         &-small {
+            height: 1.5rem;
+            font-size: 1.2rem;
+         }
+
+         &-medium {
+            height: 2.5rem;
+            font-size: 1.4rem;
+         }
+
+         &-large {
+            height: 3.5rem;
+            font-size: 1.6rem;
+         }
+
+         &-extra-large {
+            height: 4.5rem;
+            font-size: 1.8rem;
+         }
+      }
+   }
+
+   &-tablet {
+      &-width {
+         &-fit-content {
+            @include respond($tablet-portrait) {
+               width: fit-content;
+            }
+         }
+
+         &-small {
+            @include respond($tablet-portrait) {
+               width: 6rem;
+            }
+         }
+
+         &-medium {
+            @include respond($tablet-portrait) {
+               width: 8rem;
+            }
+         }
+
+         &-large {
+            @include respond($tablet-portrait) {
+               width: 10rem;
+            }
+         }
+
+         &-extra-large {
+            @include respond($tablet-portrait) {
+               width: 12rem;
+            }
+         }
+      }
+
+      &-height {
+         &-fit-content {
+            @include respond($tablet-portrait) {
+               height: fit-content;
+               font-size: inherit;
+            }
+         }
+
+         &-small {
+            @include respond($tablet-portrait) {
+               height: 2rem;
+               font-size: 1.2rem;
+            }
+         }
+
+         &-medium {
+            @include respond($tablet-portrait) {
+               height: 3rem;
+               font-size: 1.4rem;
+            }
+         }
+
+         &-large {
+            @include respond($tablet-portrait) {
+               height: 4rem;
+               font-size: 1.6rem;
+            }
+         }
+
+         &-extra-large {
+            @include respond($tablet-portrait) {
+               height: 5rem;
+               font-size: 1.8rem;
+            }
+         }
+      }
+   }
+
+   &-mobile {
+      &-width {
+         &-fit-content {
+            @include respond($phone) {
+               width: fit-content;
+            }
+         }
+
+         &-small {
+            @include respond($phone) {
+               width: 5rem;
+            }
+         }
+
+         &-medium {
+            @include respond($phone) {
+               width: 7rem;
+            }
+         }
+
+         &-large {
+            @include respond($phone) {
+               width: 9rem;
+            }
+         }
+
+         &-extra-large {
+            @include respond($phone) {
+               width: 11rem;
+            }
+         }
+      }
+
+      &-height {
+         &-fit-content {
+            @include respond($phone) {
+               height: fit-content;
+               font-size: inherit;
+            }
+         }
+
+         &-small {
+            @include respond($phone) {
+               height: 2rem;
+               font-size: 1rem;
+            }
+         }
+
+         &-medium {
+            @include respond($phone) {
+               height: 2.5rem;
+               font-size: 1rem;
+            }
+         }
+
+         &-large {
+            @include respond($phone) {
+               height: 3rem;
+               font-size: 1.2rem;
+            }
+         }
+
+         &-extra-large {
+            @include respond($phone) {
+               height: 4rem;
+               font-size: 1.6rem;
+            }
+         }
+      }
+   }
+
+   &-color {
+      &-primary {
+         background-color: rgba($color-primary-light, 0.5);
+      }
+
+      &-secondary {
+         background-color: rgba($color-grey-light, 0.5);
+      }
+
+      &-positive {
+         background-color: rgba($color-positive, 0.5);
+      }
+
+      &-transparent {
+         background-color: transparent;
+         color: inherit;
+      }
+   }
+}

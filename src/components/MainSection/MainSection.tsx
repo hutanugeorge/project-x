@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { RootState } from '../../redux/store'
+import PostForm from '../Forms/PostForm'
 import Post from '../Post'
+import { RootState } from '../../redux/store'
 import { getPosts } from '../../services/postServices'
-import PostForm from '../PostForm'
 
 export default () => {
    const [posts, setPosts] = useState<string[] | undefined>()

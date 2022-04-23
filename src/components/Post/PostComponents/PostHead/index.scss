@@ -1,0 +1,70 @@
+@import '../../../sharedStyles/utils';
+
+
+.post__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__more-options {
+    &:hover {
+      & svg {
+        cursor: pointer;
+
+        & path {
+          stroke: $color-primary-light !important;
+        }
+      }
+    }
+  }
+
+  &__person {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    gap: 1rem;
+
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 5rem;
+      height: 5rem;
+      clip-path: circle();
+
+
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        cursor: pointer;
+      }
+    }
+
+    &__username {
+      &__content {
+        font-size: 1.3rem;
+        text-shadow: 0.1rem 0.1rem 0.4rem rgba(black, 0.2);
+      }
+
+      &__date {
+        font-size: 1rem;
+        font-weight: 400;
+        color: rgba(black, 0.3);
+
+        &:hover {
+          color: rgba(black, 0.4);
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__more-options {
+    display: flex;
+    align-items: center;
+  }
+}

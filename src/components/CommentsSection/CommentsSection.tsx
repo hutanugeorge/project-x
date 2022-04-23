@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
-import Input from '../Input'
+import Input from '../FormComponents/Input'
 import {
    DesktopInputHeight,
    DesktopInputWidth,
@@ -13,7 +13,7 @@ import {
    MobileInputWidth,
    TabletInputHeight,
    TabletInputWidth,
-} from '../Input/interface'
+} from '../FormComponents/Input/interface'
 
 export default () => {
    const [inputValue, setInputValue] = useState<string>('')

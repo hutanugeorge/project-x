@@ -8,24 +8,24 @@
 @import '../../pages/UserPage';
 
 @import '../NavBar';
-@import '../AuthForm';
+@import '../Forms/AuthForm';
 @import '../MainSection';
 @import '../Post';
-@import '../Input';
-@import '../Label';
-@import '../InputLabeled';
-@import '../Button';
+@import '../FormComponents/Input';
+@import '../FormComponents/Label';
+@import '../FormComponents/InputLabeled';
+@import '../FormComponents/Button';
 @import '../SideMenu';
 @import '../DesktopNavBar';
-@import '../MobileNavBar';
-@import '../MobileUpperNavigation';
+@import '../MobileComponents/MobileNavBar';
+@import '../MobileComponents/MobileUpperNavigation';
 @import '../Notification';
-@import '../MobileNotifications';
-@import '../MobileExplore';
+@import '../MobileComponents/MobileNotifications';
+@import '../MobileComponents/MobileExplore';
 @import '../Comment';
 @import '../CommentsSection';
-@import '../PostForm';
-@import '../MobileSettings';
+@import '../Forms/PostForm';
+@import '../MobileComponents/MobileSettings';
 
 *,
 html,

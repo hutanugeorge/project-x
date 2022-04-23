@@ -1,0 +1,105 @@
+@import '../../../sharedStyles/utils';
+
+
+.post__actions {
+  display: flex;
+  height: 3rem;
+  justify-content: space-between;
+
+  &__left {
+    gap: 3rem;
+    display: flex;
+
+    &__action {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      &__like {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        &__active {
+          svg {
+            fill: red;
+            stroke-opacity: 0;
+          }
+        }
+
+        &:hover {
+          & svg {
+            cursor: pointer;
+            fill: rgba(red, 0.7);
+            stroke-opacity: 0;
+          }
+        }
+      }
+
+      &__comments {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        & svg {
+          & .point {
+            stroke: black !important;
+            stroke-width: 1;
+          }
+        }
+
+        &:hover {
+          & svg {
+            & .outline {
+              cursor: pointer;
+              fill: rgba(blue, 0.6);
+              stroke-opacity: 0;
+            }
+
+            & .point {
+              stroke: white !important;
+            }
+          }
+        }
+      }
+
+      &__count {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+
+    &__action {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      &__save {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      &__count {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-size: 1.1rem;
+      }
+
+      &:hover {
+        & div svg {
+          cursor: pointer;
+          fill: $color-primary-light;
+          stroke-opacity: 0;
+        }
+      }
+    }
+  }
+}

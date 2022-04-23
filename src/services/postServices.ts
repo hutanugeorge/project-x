@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-import getHeaders from '../utils/getHeaders'
 import { ServiceResult } from './interfaces'
+import getHeaders from '../utils/getHeaders'
 
 
 export const getPost = async (url: string): ServiceResult => {
@@ -39,7 +39,7 @@ export const getPosts = async (url: string, userID?: string): ServiceResult => {
 
 export const patchLikePost = async (url: string, postID: string, userID: string): ServiceResult => {
    try {
-      const response = await axios.patch(`${url}/post`,
+      const response = await axios.patch(`${url}/post/like`,
          { postID, userID },
          {
             headers: getHeaders({ auth: true })
