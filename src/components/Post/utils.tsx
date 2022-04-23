@@ -10,17 +10,17 @@ export const getLikedUsers = (globalUserID: string, likedUsers: LikeUser[] | und
          {
             likedUsers && likedUsers.length === 1 && globalUserID === likedUsers[0]._id &&
             <p className="post__people-reactions__people__person"
-               onClick={() => navigate(`/user/${likedUsers[0]._id}`)}>
+               onClick={() => navigate(`/user/${likedUsers[0]._id}`, { replace: true })}>
                 <span>You</span>
             </p>
          }
          {
             likedUsers && likedUsers.length === 2 && globalUserID === likedUsers[0]._id &&
             <p className="post__people-reactions__people__person">
-                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`, { replace: true })}>
                     You
                 </span>&nbsp;and&nbsp;
-                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`, { replace: true })}>
                    {likedUsers[1].firstName} {likedUsers[1].lastName}
                 </span>
             </p>
@@ -28,10 +28,10 @@ export const getLikedUsers = (globalUserID: string, likedUsers: LikeUser[] | und
          {
             likedUsers && likedUsers.length > 2 && globalUserID === likedUsers[0]._id &&
             <p className="post__people-reactions__people__person">
-                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`, { replace: true })}>
                     You
                 </span>,&nbsp;
-                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`, { replace: true })}>
                    {likedUsers[1].firstName} {likedUsers[1].lastName}
                 </span>
                 &nbsp;
@@ -43,7 +43,7 @@ export const getLikedUsers = (globalUserID: string, likedUsers: LikeUser[] | und
          {
             likedUsers && likedUsers.length === 1 && globalUserID !== likedUsers[0]._id &&
             <p className="post__people-reactions__people__person">
-                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`, { replace: true })}>
                    {likedUsers[0].firstName} {likedUsers[0].lastName}
                 </span>
             </p>
@@ -51,10 +51,10 @@ export const getLikedUsers = (globalUserID: string, likedUsers: LikeUser[] | und
          {
             likedUsers && likedUsers.length === 2 && globalUserID !== likedUsers[0]._id &&
             <p className="post__people-reactions__people__person">
-                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`, { replace: true })}>
                    {likedUsers[0].firstName} {likedUsers[0].lastName}
                 </span>&nbsp;and&nbsp;
-                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`, { replace: true })}>
                    {likedUsers[1].firstName} {likedUsers[1].lastName}
                 </span>
             </p>
@@ -62,10 +62,10 @@ export const getLikedUsers = (globalUserID: string, likedUsers: LikeUser[] | und
          {
             likedUsers && likedUsers.length > 2 && globalUserID !== likedUsers[0]._id &&
             <p className="post__people-reactions__people__person">
-                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[0]._id}`, { replace: true })}>
                    {likedUsers[0].firstName} {likedUsers[0].lastName}
                 </span>,&nbsp;
-                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`)}>
+                <span onClick={() => navigate(`/user/${likedUsers[1]._id}`, { replace: true })}>
                    {likedUsers[1].firstName} {likedUsers[1].lastName}
                 </span>
                 &nbsp;

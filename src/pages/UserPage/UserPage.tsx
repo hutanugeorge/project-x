@@ -31,7 +31,7 @@ export default () => {
    const [ profilePhoto, setProfilePhoto ] = useState<File | null>(null)
    const [ coverPhoto, setCoverPhoto ] = useState<File | null>(null)
    const [ posts, setPosts ] = useState<string[] | undefined>()
-   const [ isVisitorUser ] = useState(!(getUserIdFromToken() === userID))
+   const [ isVisitorUser, setIsVisitorUser ] = useState(!(getUserIdFromToken() === userID))
    const [ showPhotoUploadButtons, setShowPhotoUploadButtons ] = useState<boolean>(false)
    const [ enableUploadPhoto, setEnableUploadPhoto ] = useState<boolean>(true)
 
@@ -48,6 +48,7 @@ export default () => {
          const [ response, error ] = await getPosts(url, userID)
          !error && response.status === 200 && setPosts(response.data.posts)
       })()
+      setIsVisitorUser(!(getUserIdFromToken() === userID))
    }, [ userID, url ])
 
    const getImageSrc = () => {
@@ -232,7 +233,7 @@ export default () => {
                <div
                   className={`user-page__posts ${profilePhoto ? 'user-page__posts__editing' : ''}`}
                >
-                  <PostForm setPosts={setPosts}/>
+                  {!isVisitorUser && <PostForm setPosts={setPosts}/>}
                   {posts &&
                   posts.map((post: string, index: number) => (
                      <Post key={index} postID={post} setStopScroll={setStopScroll}/>
