@@ -21,14 +21,15 @@ import {
 } from '../Input/interface'
 import Post from '../Post'
 
+
 export default ({ setPosts }: any) => {
    const { user } = useSelector((state: RootState) => state.user)
    const { url } = useSelector((state: RootState) => state.url)
 
-   const [postDescription, setPostDescription] = useState<string>('')
-   const [postPhoto, setPostPhoto] = useState<File | null>(null)
-   const [previewPost, setPreviewPost] = useState<any>(null)
-   const [buttonText, setButtonText] = useState<any>('Upload')
+   const [ postDescription, setPostDescription ] = useState<string>('')
+   const [ postPhoto, setPostPhoto ] = useState<File | null>(null)
+   const [ previewPost, setPreviewPost ] = useState<any>(null)
+   const [ buttonText, setButtonText ] = useState<any>('Upload')
 
    const navigate = useNavigate()
 
@@ -46,12 +47,12 @@ export default ({ setPosts }: any) => {
             _id: user._id,
          },
       }))
-   }, [postDescription, postPhoto, user])
+   }, [ postDescription, postPhoto, user ])
 
    return (
-      <div className="post-form">
+      <div className='post-form'>
          <form
-            className="post-form__form"
+            className='post-form__form'
             onSubmit={(e) => {
                e.preventDefault()
                if (postDescription || postPhoto) {
@@ -64,12 +65,12 @@ export default ({ setPosts }: any) => {
                   postPhoto && formData.append('photo', postPhoto)
 
                   ;(async () => {
-                     const [response, error] = await postPost(url, formData)
+                     const [ response, error ] = await postPost(url, formData)
                      if (!error && response.status === 200) {
                         setPostDescription('')
                         setPostPhoto(null)
                         setButtonText('Success')
-                        setPosts((prev: any) => [response.data.post._id, ...prev])
+                        setPosts((prev: any) => [ response.data.post._id, ...prev ])
                         setTimeout(() => {
                            setButtonText('Upload')
                         }, 1000)
@@ -79,11 +80,13 @@ export default ({ setPosts }: any) => {
                   })()
                }
             }}
+            autoComplete='off'
          >
-            <div className="post-form__form__input">
-               <div className="post-form__user-image" onClick={() => window.location.pathname !== `/user/${user._id}` &&  navigate(`/user/${user._id}`)}>
+            <div className='post-form__form__input'>
+               <div className='post-form__user-image'
+                    onClick={() => window.location.pathname !== `/user/${user._id}` && navigate(`/user/${user._id}`)}>
                   {user.profilePhoto ? (
-                     <img src={user.profilePhoto} alt="user-image" />
+                     <img src={user.profilePhoto} alt='user-image' />
                   ) : (
                      <ReactLoading type={'spokes'} color={'2d31fa'} width={20} height={20} />
                   )}
@@ -91,27 +94,27 @@ export default ({ setPosts }: any) => {
                <Input
                   name={'post-input'}
                   type={'text'}
-                  placeholder={"What's on your mind?"}
-                  onChange={[setPostDescription]}
+                  placeholder={'What\'s on your mind?'}
+                  onChange={[ setPostDescription ]}
                   color={InputColor.SECONDARY}
-                  width={[DesktopInputWidth.XL, TabletInputWidth.XL, MobileInputWidth.XL]}
-                  height={[DesktopInputHeight.M, TabletInputHeight.L, MobileInputHeight.L]}
+                  width={[ DesktopInputWidth.XL, TabletInputWidth.XL, MobileInputWidth.XL ]}
+                  height={[ DesktopInputHeight.M, TabletInputHeight.L, MobileInputHeight.L ]}
                   value={postDescription}
                   error={undefined}
                />
             </div>
-            <div className="post-form__file-upload">
+            <div className='post-form__file-upload'>
                <input
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg"
+                  type='file'
+                  accept='image/png, image/jpeg, image/jpg'
                   onChange={(e) => {
                      e.target.files && setPostPhoto(e.target.files[0])
                   }}
                   ref={photoInput}
                />
                <label
-                  htmlFor="file-upload"
-                  className="post-form__file-upload__label"
+                  htmlFor='file-upload'
+                  className='post-form__file-upload__label'
                   onClick={() => {
                      photoInput.current && photoInput.current.click()
                   }}
@@ -119,7 +122,7 @@ export default ({ setPosts }: any) => {
                   <ImageIcon width={35} height={35} /> Add Photo/Video
                </label>
                <button
-                  type="submit"
+                  type='submit'
                   className={`post-form__button ${
                      buttonText === 'Success' ? 'post-form__button--success' : ''
                   }`}
@@ -135,7 +138,7 @@ export default ({ setPosts }: any) => {
             </div>
          </form>
          {(postDescription || postPhoto) && (
-            <div className="post-form__preview-post">
+            <div className='post-form__preview-post'>
                <Post postID={''} isPreview={true} preview={previewPost} />
             </div>
          )}

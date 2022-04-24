@@ -8,7 +8,7 @@ import {
    setModalsOff,
    toggleExplore,
    toggleNotifications,
-   toggleSettings
+   toggleSettings, toggleUserPage,
 } from '../../redux/homepageModals'
 import ActivityIcon from '../../icons/ActivityIcon'
 import ExploreIcon from '../../icons/ExploreIcon'
@@ -74,6 +74,7 @@ export default () => {
                   onClick={() => {
                      if (!userTab) {
                         selectTab(Tabs.USER_TAB)
+                        dispatch(toggleUserPage())
                      }
                   }}
                >
