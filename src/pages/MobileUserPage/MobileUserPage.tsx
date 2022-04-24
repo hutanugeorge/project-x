@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Post from '../../components/Post'
-import PostForm from '../../components/PostForm'
+import PostForm from '../../components/Forms/PostForm'
 import ArrowRightIcon from '../../icons/ArrowRightIcon'
 import ClockIcon from '../../icons/ClockIcon'
 import LocationIcon from '../../icons/LocationIcon'
