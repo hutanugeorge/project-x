@@ -13,13 +13,15 @@ import MobileNotifications from '../../components/MobileComponents/MobileNotific
 import MobileExplore from '../../components/MobileComponents/MobileExplore'
 import MobileSettings from '../../components/MobileComponents/MobileSettings'
 
+import MobileUserPage from '../MobileUserPage'
+
 
 export default () => {
    const dispatch = useDispatch()
 
    const { url } = useSelector((state: RootState) => state.url)
-   const { showNotifications, showExplore, showSettings } = useSelector(
-      (state: RootState) => state.modals
+   const { showNotifications, showExplore, showSettings, showUserPage } = useSelector(
+      (state: RootState) => state.modals,
    )
 
    // dispatch(goDevelop())
@@ -34,13 +36,16 @@ export default () => {
       })()
    }, [ url ])
    return (
-      <div className="home-page">
-         <DesktopNotifications/>
-         {showNotifications && <MobileNotifications/>}
-         {!showNotifications && !showExplore && !showSettings && <MainSection/>}
-         {showExplore && <MobileExplore/>}
-         {showSettings && <MobileSettings/>}
-         <DesktopNotifications/>
-      </div>
+      <>
+         <div className="home-page">
+            <DesktopNotifications />
+            {showNotifications && <MobileNotifications />}
+            {showUserPage && <MobileUserPage />}
+            {!showNotifications && !showExplore && !showSettings && !showUserPage &&  <MainSection />}
+            {showExplore && <MobileExplore />}
+            {showSettings && <MobileSettings />}
+            <DesktopNotifications />
+         </div>
+      </>
    )
 }
