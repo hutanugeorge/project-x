@@ -60,12 +60,7 @@ export interface PostHeadProps {
 export interface PostPeopleReactionsProps {
    likedUsers: LikeUser[] | undefined
    globalUser: any
-   user: {
-      _id: string
-      firstName: string
-      lastName: string
-      profilePhoto: string
-   }
+   postID: string
 }
 
 export interface PostComments {

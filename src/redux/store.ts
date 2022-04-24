@@ -3,6 +3,7 @@ import modals from './homepageModals'
 import url from './apiURL'
 import user from './user'
 import visitorUser from './visitorUser'
+import likes from './likes'
 
 const store = configureStore({
    reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
       modals,
       url,
       visitorUser,
+      likes,
    },
 })
 

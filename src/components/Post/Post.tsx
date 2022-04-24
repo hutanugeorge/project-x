@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 import ReactLoading from 'react-loading'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { addLike, removeLike } from '../../redux/likes'
 
 import PostActions from './PostComponents/PostActions'
 import PostComments from './PostComponents/PostComments'
@@ -24,6 +25,7 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
    const [ likedUsers, setLikedUsers ] = useState<LikeUser[]>()
 
    const navigate = useNavigate()
+   const dispatch = useDispatch()
 
    const { url } = useSelector((state: RootState) => state.url)
    const globalUser = useSelector((state: RootState) => state.user)
@@ -71,13 +73,17 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
          },
          onLikeClickHandler: async () => {
             const [ response, error ] = await patchLikePost(url, _id, globalUser.user._id)
-            if (!liked) {
-               !error && response.status === 200 && setLiked(true)
-               setNoLikes(prev => prev + 1)
-            }
-            if (liked) {
-               !error && response.status === 200 && setLiked(false)
-               setNoLikes(prev => prev - 1)
+            if (!error && response.status === 200) {
+               if (!liked) {
+                  setLiked(true)
+                  setNoLikes(prev => prev + 1)
+                  dispatch(addLike(_id))
+               }
+               if (liked) {
+                  setLiked(false)
+                  setNoLikes(prev => prev - 1)
+                  dispatch(removeLike(_id))
+               }
             }
          },
          onCommentsClickHandler: () => {
@@ -103,7 +109,7 @@ export default ({ postID, isPreview, preview, setStopScroll }: PostProps) => {
             <PostPeopleReactions
                likedUsers={likedUsers}
                globalUser={globalUser}
-               user={user}
+               postID={_id}
             />
             <PostActions
                liked={liked}

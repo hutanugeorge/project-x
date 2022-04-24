@@ -6,9 +6,6 @@ import MessageIcon from '../../../../icons/MessageIcon'
 import SaveIcon from '../../../../icons/SaveIcon'
 
 
-
-
-
 export default  (props: PostActionsProps) => {
    const { liked, noComments, noSaves, noLikes, onLikeClick, onCommentsClick } = props
 
